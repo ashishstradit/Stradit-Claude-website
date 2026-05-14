@@ -2079,6 +2079,11 @@
 
   // Careers — Global Talent Network
   function careers(canvas, theme) {
+    if (canvas.__straditCareersStop) {
+      canvas.__straditCareersStop();
+      canvas.__straditCareersStop = null;
+    }
+
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     const ctx = canvas.getContext('2d');
 
@@ -2096,9 +2101,9 @@
     let lastArc = 0, lastHire = 0;
 
     const HUB_DEFS = [
-      { label: 'New York',   fx: 0.22, fy: 0.44, team: 85,  col: ORANGE, roles: 7 },
-      { label: 'London',     fx: 0.50, fy: 0.36, team: 112, col: CYAN,   roles: 6 },
-      { label: 'Pune',  fx: 0.78, fy: 0.54, team: 125, col: TEAL,   roles: 5 },
+      { label: 'New York', fx: 0.22, fy: 0.44, team: 85, col: ORANGE, roles: 7 },
+      { label: 'London', fx: 0.50, fy: 0.36, team: 112, col: CYAN, roles: 6 },
+      { label: 'US and UK', fx: 0.78, fy: 0.54, team: 125, col: TEAL, roles: 5 },
     ];
 
     function initScene() {
@@ -2144,6 +2149,7 @@
       initScene();
     }
 
+    let rafId = 0;
     function frame(ts) {
       t += 0.016;
       ctx.fillStyle = '#060912';
@@ -2233,12 +2239,21 @@
         ctx.textAlign = 'left';
       }
 
-      requestAnimationFrame(frame);
+      rafId = requestAnimationFrame(frame);
+    }
+
+    function onResize() {
+      resize();
     }
 
     resize();
-    window.addEventListener('resize', resize);
-    requestAnimationFrame(frame);
+    window.addEventListener('resize', onResize);
+    rafId = requestAnimationFrame(frame);
+
+    canvas.__straditCareersStop = function () {
+      window.removeEventListener('resize', onResize);
+      cancelAnimationFrame(rafId);
+    };
   }
 
 })();

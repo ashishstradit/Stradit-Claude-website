@@ -15,6 +15,8 @@ declare global {
   }
 }
 
+type HeroCanvas = HTMLCanvasElement & { __straditCareersStop?: () => void }
+
 function runOnCanvas(canvas: HTMLCanvasElement, retries = 20) {
   if (window.__straditAnimSingle) {
     window.__straditAnimSingle(canvas)
@@ -57,7 +59,14 @@ export default function AnimCanvas({ theme, animKey }: Props) {
       document.head.appendChild(script)
     })
 
-    return () => cancelAnimationFrame(rafId)
+    return () => {
+      cancelAnimationFrame(rafId)
+      const c = canvasRef.current as HeroCanvas | null
+      if (c && typeof c.__straditCareersStop === 'function') {
+        c.__straditCareersStop()
+        c.__straditCareersStop = undefined
+      }
+    }
   }, [theme, animKey])
 
   return (
