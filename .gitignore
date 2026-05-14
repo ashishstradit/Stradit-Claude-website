@@ -1,0 +1,4 @@
+stradit-next/node_modules/
+stradit-next/.next/
+stradit-next/.env*
+*.log
