@@ -1,21 +1,24 @@
 'use client'
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import AnimCanvas from '@/components/AnimCanvas'
 
+/** Reveal stagger classes — matches `Stradit Careers (1).html` job list order */
+const JOB_REVEAL_DELAY: (number | null)[] = [null, 1, 2, null, 1, 2, 3, null, 1, 2, 3, null, 1]
+
 const JOBS = [
   { title: 'Senior ML Engineer — LLM Workflows', dept: 'Applied AI', loc: 'New York · London', type: 'Full-time · Hybrid', desc: 'Design and ship production LLM pipelines for capital-markets clients. Experience with RAG architectures, prompt engineering, and model evaluation required.' },
   { title: 'AI Governance & Safety Lead', dept: 'Applied AI', loc: 'London · Remote', type: 'Full-time', desc: 'Own AI risk frameworks, red-teaming, and compliance alignment for regulated client programs. NIST AI RMF and financial services background preferred.' },
-  { title: 'AI Solutions Architect', dept: 'Applied AI', loc: 'New York · Bengaluru', type: 'Full-time · Hybrid', desc: 'Lead technical discovery and architecture design for enterprise AI programs. Breadth across LLMs, data pipelines, and cloud infrastructure essential.' },
+  { title: 'AI Solutions Architect', dept: 'Applied AI', loc: 'New York · US and UK', type: 'Full-time · Hybrid', desc: 'Lead technical discovery and architecture design for enterprise AI programs. Breadth across LLMs, data pipelines, and cloud infrastructure essential.' },
   { title: 'Senior Data Engineer — Capital Markets', dept: 'Data', loc: 'New York · London', type: 'Full-time', desc: 'Build streaming data pipelines and governed data products for asset management and banking clients. Spark, dbt, Kafka, and financial domain knowledge.' },
-  { title: 'Analytics Engineer', dept: 'Data', loc: 'Bengaluru · Remote', type: 'Full-time', desc: 'Model and document enterprise data domains, build semantic layers, and deliver analytics that decision-makers actually use. dbt and SQL mastery required.' },
+  { title: 'Analytics Engineer', dept: 'Data', loc: 'US and UK · Remote', type: 'Full-time', desc: 'Model and document enterprise data domains, build semantic layers, and deliver analytics that decision-makers actually use. dbt and SQL mastery required.' },
   { title: 'AI Security Engineer', dept: 'Cyber', loc: 'London · New York', type: 'Full-time', desc: 'Secure AI systems against prompt injection, model exfiltration, and adversarial attacks. Red-team AI deployments and own the security design of LLM-powered workflows.' },
   { title: 'Compliance & Threat Intelligence Analyst', dept: 'Cyber', loc: 'London', type: 'Full-time', desc: 'Map client postures to NIST, ISO 27001, and SOC2 continuously. Build AI-assisted threat detection and compliance reporting pipelines.' },
-  { title: 'Staff Platform Engineer — Cloud & Infrastructure', dept: 'Cloud', loc: 'New York · London · Bengaluru', type: 'Full-time · Hybrid', desc: 'Define landing-zone standards and lead cloud migrations for institutional clients. AWS/Azure/GCP expertise + strong Terraform and Kubernetes fundamentals.' },
-  { title: 'FinOps Analyst', dept: 'Cloud', loc: 'Bengaluru · Remote', type: 'Full-time', desc: 'Drive cloud cost discipline for enterprise programs — tagging, allocation, rightsizing, and FinOps reporting. FinOps Foundation certification a plus.' },
-  { title: 'Senior QA Automation Engineer', dept: 'QA', loc: 'Bengaluru · London', type: 'Full-time', desc: 'Build automation-first QA frameworks for AI-powered financial applications. Playwright, Cypress, and AI-assisted test generation experience valued.' },
-  { title: 'AI Testing Specialist', dept: 'QA', loc: 'Remote · Bengaluru', type: 'Full-time', desc: 'Evaluate LLM outputs, design bias and hallucination test suites, and own synthetic data generation for regulated AI programs.' },
+  { title: 'Staff Platform Engineer — Cloud & Infrastructure', dept: 'Cloud', loc: 'New York · London · US and UK', type: 'Full-time · Hybrid', desc: 'Define landing-zone standards and lead cloud migrations for institutional clients. AWS/Azure/GCP expertise + strong Terraform and Kubernetes fundamentals.' },
+  { title: 'FinOps Analyst', dept: 'Cloud', loc: 'US and UK · Remote', type: 'Full-time', desc: 'Drive cloud cost discipline for enterprise programs — tagging, allocation, rightsizing, and FinOps reporting. FinOps Foundation certification a plus.' },
+  { title: 'Senior QA Automation Engineer', dept: 'QA', loc: 'US and UK · London', type: 'Full-time', desc: 'Build automation-first QA frameworks for AI-powered financial applications. Playwright, Cypress, and AI-assisted test generation experience valued.' },
+  { title: 'AI Testing Specialist', dept: 'QA', loc: 'Remote · US and UK', type: 'Full-time', desc: 'Evaluate LLM outputs, design bias and hallucination test suites, and own synthetic data generation for regulated AI programs.' },
   { title: 'AI Program Director', dept: 'Strategy', loc: 'New York · London', type: 'Full-time', desc: 'Lead cross-functional AI transformation programs for Tier 1 financial institutions. CTO/CIO stakeholder management and delivery governance expertise required.' },
   { title: 'StartIT AI Training Lead', dept: 'Strategy', loc: 'New York · London · Remote', type: 'Full-time', desc: 'Design and deliver our AI upskilling curriculum for enterprise cohorts. Experience in corporate L&D or technical education at financial institutions preferred.' },
 ]
@@ -30,6 +33,19 @@ export default function CareersPage() {
   const [fileName, setFileName] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const applyRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const io = new IntersectionObserver(
+      entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) e.target.classList.add('in')
+        })
+      },
+      { threshold: 0.1 }
+    )
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el))
+    return () => io.disconnect()
+  }, [activeFilter])
 
   const filtered = activeFilter === 'All roles' ? JOBS : JOBS.filter(j => j.dept === (FILTER_TO_DEPT[activeFilter] || activeFilter))
 
@@ -58,7 +74,7 @@ export default function CareersPage() {
       <Nav activePage="careers" />
 
       {/* HERO */}
-      <header className="hero careers-hero" style={{minHeight:'72vh',paddingTop:'80px'}}>
+      <header className="hero careers-hero" style={{ minHeight: '72vh', paddingTop: '80px' }}>
         <div className="hero__canvas">
           <AnimCanvas theme="careers" animKey="careers-hero" />
         </div>
@@ -110,11 +126,15 @@ export default function CareersPage() {
               {n:'01',title:'Work on real production AI',desc:'No toy demos. You\'ll ship governed LLM workflows, agents, and data systems that run inside the most regulated institutions in the world.'},
               {n:'02',title:'Deep domain, not shallow consulting',desc:'Our teams are embedded with clients long-term. You\'ll develop genuine expertise in capital markets, risk, and financial operations — not just surface-level delivery.'},
               {n:'03',title:'Engineer-led culture',desc:'Decisions are made by people who write code. Senior engineers run programs, set architecture, and have real ownership over outcomes.'},
-              {n:'04',title:'Global reach, local feel',desc:'Three hubs — New York, London, Bengaluru — with genuine follow-the-sun collaboration and flexible hybrid working by design.'},
+              {n:'04',title:'Global reach, local feel',desc:'Three hubs — New York, London, US and UK — with genuine follow-the-sun collaboration and flexible hybrid working by design.'},
               {n:'05',title:'5 Centers of Excellence',desc:'Specialize deeply in Applied AI, Data Analytics, Cyber Security, Cloud & Infrastructure, or QA Engineering — with clear career paths in each.'},
               {n:'06',title:'StartIT training included',desc:'Every Stradit team member gets access to our AI upskilling program — keeping you at the frontier regardless of your starting point.'},
-            ].map((v,i)=>(
-              <div key={v.n} className={`value-card reveal${i>0?` reveal-delay-${Math.min(i,5)}`:''}`}>
+            ].map((v, i) => (
+              <div
+                key={v.n}
+                className={`value-card reveal${i > 0 && i < 5 ? ` reveal-delay-${i}` : ''}`}
+                style={i === 5 ? { transitionDelay: '.40s' } : undefined}
+              >
                 <div className="value-card__num">{v.n}</div>
                 <div className="value-card__title">{v.title}</div>
                 <div className="value-card__desc">{v.desc}</div>
@@ -134,16 +154,26 @@ export default function CareersPage() {
           </div>
 
           {/* Filters */}
-          <div className="job-filters">
+          <div className="job-filters" id="job-filters">
             {FILTERS.map(f=>(
               <button key={f} className={`job-filter${activeFilter===f?' active':''}`} onClick={()=>setActiveFilter(f)}>{f}</button>
             ))}
           </div>
 
           {/* Job list */}
-          <div className="job-list">
-            {filtered.map((job,i)=>(
-              <a key={job.title} className={`job-card reveal${i>0?` reveal-delay-${Math.min(i%3+1,5)}`:''}`} href="#apply" onClick={()=>handleApply(job.title)}>
+          <div className="job-list" id="job-list">
+            {filtered.map(job => {
+              const origIdx = JOBS.findIndex(j => j.title === job.title)
+              const d = origIdx >= 0 ? JOB_REVEAL_DELAY[origIdx] : null
+              const delayCls = d != null ? ` reveal-delay-${d}` : ''
+              return (
+              <a
+                key={job.title}
+                className={`job-card reveal${delayCls}`}
+                href="#apply"
+                data-dept={job.dept}
+                onClick={() => handleApply(job.title)}
+              >
                 <div className="job-card__left">
                   <div className="job-card__title">{job.title}</div>
                   <div className="job-card__meta">
@@ -155,7 +185,8 @@ export default function CareersPage() {
                 </div>
                 <div className="job-card__right"><span className="job-card__apply">Apply</span></div>
               </a>
-            ))}
+              )
+            })}
           </div>
 
           <div style={{marginTop:'24px',textAlign:'center'}}>
@@ -209,7 +240,9 @@ export default function CareersPage() {
                   <div className="form-field">
                     <label htmlFor="location">Preferred Location</label>
                     <select id="location">
-                      {['New York','London','Bengaluru','Remote','Flexible'].map(l=><option key={l}>{l}</option>)}
+                      {['New York', 'London', 'US and UK', 'Remote', 'Flexible'].map(l => (
+                        <option key={l}>{l}</option>
+                      ))}
                     </select>
                   </div>
                   <div className="form-field"><label htmlFor="message">Cover Note *</label><textarea id="message" placeholder="Tell us why you want to join Stradit and what you'd bring to the team..." required /></div>

@@ -8,12 +8,17 @@ interface Props {
   animKey?: string
 }
 
+/** Bump when `public/anim-engine.js` changes (Vercel/CDN + SPA cache). */
+const ANIM_ENGINE_VER = '3'
+
 declare global {
   interface Window {
     __straditAnimInit?: () => void
     __straditAnimSingle?: (canvas: HTMLCanvasElement) => void
   }
 }
+
+type HeroCanvas = HTMLCanvasElement & { __straditCareersStop?: () => void }
 
 function runOnCanvas(canvas: HTMLCanvasElement, retries = 20) {
   if (window.__straditAnimSingle) {
@@ -33,20 +38,33 @@ export default function AnimCanvas({ theme, animKey }: Props) {
     if (!canvas) return
 
     const rafId = requestAnimationFrame(() => {
-      if (window.__straditAnimSingle) {
+      const existingEl = document.getElementById('stradit-anim-engine') as HTMLScriptElement | null
+      const versionMatches = existingEl?.dataset.straditVer === ANIM_ENGINE_VER
+
+      if (window.__straditAnimSingle && versionMatches) {
         window.__straditAnimSingle(canvas)
         return
       }
 
-      const existing = document.getElementById('stradit-anim-engine')
-      if (existing) {
+      if (existingEl && !versionMatches) {
+        existingEl.remove()
+        try {
+          delete window.__straditAnimSingle
+        } catch {
+          window.__straditAnimSingle = undefined
+        }
+      }
+
+      const pending = document.getElementById('stradit-anim-engine') as HTMLScriptElement | null
+      if (pending && pending.dataset.straditVer === ANIM_ENGINE_VER) {
         runOnCanvas(canvas)
         return
       }
 
       const script = document.createElement('script')
       script.id = 'stradit-anim-engine'
-      script.src = '/anim-engine.js'
+      script.dataset.straditVer = ANIM_ENGINE_VER
+      script.src = `/anim-engine.js?v=${ANIM_ENGINE_VER}`
       script.onload = () => {
         if (window.__straditAnimSingle) {
           document.querySelectorAll<HTMLCanvasElement>('canvas[data-hero-anim]').forEach(c => {
@@ -57,7 +75,14 @@ export default function AnimCanvas({ theme, animKey }: Props) {
       document.head.appendChild(script)
     })
 
-    return () => cancelAnimationFrame(rafId)
+    return () => {
+      cancelAnimationFrame(rafId)
+      const c = canvasRef.current as HeroCanvas | null
+      if (c && typeof c.__straditCareersStop === 'function') {
+        c.__straditCareersStop()
+        c.__straditCareersStop = undefined
+      }
+    }
   }, [theme, animKey])
 
   return (
