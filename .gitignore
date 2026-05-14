@@ -1,5 +1,8 @@
+node_modules/
+.next/
+.env*
+*.log
+package-lock.json
 stradit-next/node_modules/
 stradit-next/.next/
-stradit-next/.env*
-*.log
 stradit-next/package-lock.json
