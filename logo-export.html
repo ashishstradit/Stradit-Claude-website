@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: transparent; }
+</style>
+</head>
+<body>
+
+<svg id="full-logo" width="320" height="80" viewBox="0 0 320 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Icon -->
+  <polygon points="40,10 56,19 56,37 40,46 24,37 24,19" fill="#ff7a3d" stroke="#ff7a3d" stroke-width="2"/>
+  <circle cx="40" cy="28" r="5.5" fill="#ffffff"/>
+  <line x1="40" y1="22.5" x2="40" y2="11" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+  <line x1="44.8" y1="30.8" x2="55" y2="36.5" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+  <line x1="35.2" y1="30.8" x2="25" y2="36.5" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- STRAD in orange -->
+  <text x="72" y="38" font-family="'Inter Tight', sans-serif" font-weight="700" font-size="28" letter-spacing="2" fill="#ff7a3d">STRAD</text>
+  <!-- IT in white -->
+  <text x="185" y="38" font-family="'Inter Tight', sans-serif" font-weight="700" font-size="28" letter-spacing="2" fill="#f5f7fb">IT</text>
+</svg>
+
+<script>
+window.onload = function() {
+  setTimeout(() => {
+    const svg = document.getElementById('full-logo');
+    const canvas = document.createElement('canvas');
+    canvas.width = 640; canvas.height = 160;
+    const ctx = canvas.getContext('2d');
+    const svgData = new XMLSerializer().serializeToString(svg);
+    const svgBlob = new Blob([svgData], {type: 'image/svg+xml;charset=utf-8'});
+    const url = URL.createObjectURL(svgBlob);
+    const img = new Image();
+    img.onload = () => {
+      ctx.drawImage(img, 0, 0, 640, 160);
+      const a = document.createElement('a');
+      a.download = 'stradit-logo-full.png';
+      a.href = canvas.toDataURL('image/png');
+      a.click();
+      URL.revokeObjectURL(url);
+    };
+    img.src = url;
+  }, 800);
+};
+</script>
+</body>
+</html>
