@@ -2098,7 +2098,7 @@
     const HUB_DEFS = [
       { label: 'New York',   fx: 0.22, fy: 0.44, team: 85,  col: ORANGE, roles: 7 },
       { label: 'London',     fx: 0.50, fy: 0.36, team: 112, col: CYAN,   roles: 6 },
-      { label: 'Bengaluru',  fx: 0.78, fy: 0.54, team: 125, col: TEAL,   roles: 5 },
+      { label: 'Pune',  fx: 0.78, fy: 0.54, team: 125, col: TEAL,   roles: 5 },
     ];
 
     function initScene() {

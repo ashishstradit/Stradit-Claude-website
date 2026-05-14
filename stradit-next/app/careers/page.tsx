@@ -20,7 +20,8 @@ const JOBS = [
   { title: 'StartIT AI Training Lead', dept: 'Strategy', loc: 'New York · London · Remote', type: 'Full-time', desc: 'Design and deliver our AI upskilling curriculum for enterprise cohorts. Experience in corporate L&D or technical education at financial institutions preferred.' },
 ]
 
-const FILTERS = ['All roles', 'Applied AI', 'Data', 'Cyber', 'Cloud', 'QA', 'Strategy']
+const FILTERS = ['All roles', 'Applied AI', 'Data Analytics', 'Cyber Security', 'Cloud', 'QA Engineering', 'Strategy']
+const FILTER_TO_DEPT: Record<string, string> = { 'Applied AI': 'Applied AI', 'Data Analytics': 'Data', 'Cyber Security': 'Cyber', 'Cloud': 'Cloud', 'QA Engineering': 'QA', 'Strategy': 'Strategy' }
 const DEPT_LABEL: Record<string, string> = { 'Applied AI': 'Applied AI', 'Data': 'Data Analytics', 'Cyber': 'Cyber Security', 'Cloud': 'Cloud', 'QA': 'QA Engineering', 'Strategy': 'Strategy' }
 
 export default function CareersPage() {
@@ -30,7 +31,7 @@ export default function CareersPage() {
   const [submitted, setSubmitted] = useState(false)
   const applyRef = useRef<HTMLElement>(null)
 
-  const filtered = activeFilter === 'All roles' ? JOBS : JOBS.filter(j => j.dept === activeFilter)
+  const filtered = activeFilter === 'All roles' ? JOBS : JOBS.filter(j => j.dept === (FILTER_TO_DEPT[activeFilter] || activeFilter))
 
   function handleApply(role: string) {
     setSelectedRole(role)
@@ -61,9 +62,9 @@ export default function CareersPage() {
         <div className="hero__canvas">
           <AnimCanvas theme="careers" animKey="careers-hero" />
         </div>
-        <div className="container" style={{position:'relative',zIndex:2,padding:'60px 0 40px'}}>
+        <div className="container hero__inner">
           <div className="eyebrow" style={{marginBottom:'28px'}}>Careers · Join Stradit</div>
-          <h1 style={{fontSize:'clamp(38px,5.5vw,76px)',letterSpacing:'-0.038em',lineHeight:'0.98',marginBottom:'24px'}}>
+          <h1 style={{fontFamily:'var(--font-display)',fontSize:'clamp(38px,5.5vw,76px)',fontWeight:400,letterSpacing:'-0.038em',lineHeight:'0.98',marginBottom:'24px'}}>
             Building for the future<br/>of global{' '}
             <em style={{fontStyle:'normal',background:'linear-gradient(120deg,var(--accent),var(--accent-2),var(--gold))',WebkitBackgroundClip:'text',backgroundClip:'text',color:'transparent'}}>capacity.</em>
           </h1>
@@ -71,18 +72,24 @@ export default function CareersPage() {
             We&apos;re looking for engineers, architects, data scientists, and operators who want to solve real challenges, create meaningful impact, and deliver results that matter at the most demanding regulated institutions on the planet.
           </p>
           <div style={{display:'flex',gap:'12px',flexWrap:'wrap',marginBottom:'72px'}}>
-            <button className="btn btn--primary" onClick={()=>applyRef.current?.scrollIntoView({behavior:'smooth'})}>
+            <a className="btn btn--primary" href="#open-roles">
               View Open Roles<svg className="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </button>
-            <button className="btn btn--ghost" onClick={()=>applyRef.current?.scrollIntoView({behavior:'smooth'})}>Send Your CV</button>
+            </a>
+            <a className="btn btn--ghost" href="#apply">Send Your CV</a>
           </div>
           <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',maxWidth:'660px',borderTop:'1px solid var(--line)',paddingTop:'28px'}}>
-            {[['Founded','2014','10+ years deep'],['Open roles','18','across 5 practices'],['Remote','Hybrid','flexible by design']].map(([k,v,s],i,arr)=>(
-              <div key={k} style={{paddingRight:i<arr.length-1?'24px':'0',paddingLeft:i>0?'24px':'0',borderRight:i<arr.length-1?'1px solid var(--line)':'none'}}>
-                <div style={{fontFamily:'var(--font-mono)',fontSize:'10px',letterSpacing:'0.16em',textTransform:'uppercase',color:'var(--text-3)',marginBottom:'8px'}}>{k}</div>
-                <div style={{fontFamily:'var(--font-display)',fontSize:'22px',fontWeight:500}}>{v} <span style={{display:'block',fontFamily:'var(--font-body)',fontSize:'12px',color:'var(--text-2)',fontWeight:400,marginTop:'4px'}}>{s}</span></div>
-              </div>
-            ))}
+            <div style={{paddingRight:'24px',borderRight:'1px solid var(--line)'}}>
+              <div style={{fontFamily:'var(--font-mono)',fontSize:'10px',letterSpacing:'0.16em',textTransform:'uppercase',color:'var(--text-3)',marginBottom:'8px'}}>Founded</div>
+              <div style={{fontFamily:'var(--font-display)',fontSize:'22px',fontWeight:500}}>2014 <span style={{display:'block',fontFamily:'var(--font-body)',fontSize:'12px',color:'var(--text-2)',fontWeight:400,marginTop:'4px'}}>10+ years deep</span></div>
+            </div>
+            <div style={{padding:'0 24px',borderRight:'1px solid var(--line)'}}>
+              <div style={{fontFamily:'var(--font-mono)',fontSize:'10px',letterSpacing:'0.16em',textTransform:'uppercase',color:'var(--text-3)',marginBottom:'8px'}}>Open roles</div>
+              <div style={{fontFamily:'var(--font-display)',fontSize:'22px',fontWeight:500}}>18 <span style={{display:'block',fontFamily:'var(--font-body)',fontSize:'12px',color:'var(--text-2)',fontWeight:400,marginTop:'4px'}}>across 5 practices</span></div>
+            </div>
+            <div style={{paddingLeft:'24px'}}>
+              <div style={{fontFamily:'var(--font-mono)',fontSize:'10px',letterSpacing:'0.16em',textTransform:'uppercase',color:'var(--text-3)',marginBottom:'8px'}}>Remote</div>
+              <div style={{fontFamily:'var(--font-display)',fontSize:'22px',fontWeight:500}}>Hybrid <span style={{display:'block',fontFamily:'var(--font-body)',fontSize:'12px',color:'var(--text-2)',fontWeight:400,marginTop:'4px'}}>flexible by design</span></div>
+            </div>
           </div>
         </div>
         <div className="hero__hud">
