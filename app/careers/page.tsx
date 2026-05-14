@@ -93,18 +93,18 @@ export default function CareersPage() {
             </a>
             <a className="btn btn--ghost" href="#apply">Send Your CV</a>
           </div>
-          <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',maxWidth:'660px',borderTop:'1px solid var(--line)',paddingTop:'28px'}}>
-            <div style={{paddingRight:'24px',borderRight:'1px solid var(--line)'}}>
-              <div style={{fontFamily:'var(--font-mono)',fontSize:'10px',letterSpacing:'0.16em',textTransform:'uppercase',color:'var(--text-3)',marginBottom:'8px'}}>Founded</div>
-              <div style={{fontFamily:'var(--font-display)',fontSize:'22px',fontWeight:500}}>2014 <span style={{display:'block',fontFamily:'var(--font-body)',fontSize:'12px',color:'var(--text-2)',fontWeight:400,marginTop:'4px'}}>10+ years deep</span></div>
+          <div className="careers-hero-stats">
+            <div className="careers-hero-stats__item">
+              <div className="careers-hero-stats__k">Founded</div>
+              <div className="careers-hero-stats__v">2014 <span className="careers-hero-stats__sub">10+ years deep</span></div>
             </div>
-            <div style={{padding:'0 24px',borderRight:'1px solid var(--line)'}}>
-              <div style={{fontFamily:'var(--font-mono)',fontSize:'10px',letterSpacing:'0.16em',textTransform:'uppercase',color:'var(--text-3)',marginBottom:'8px'}}>Open roles</div>
-              <div style={{fontFamily:'var(--font-display)',fontSize:'22px',fontWeight:500}}>18 <span style={{display:'block',fontFamily:'var(--font-body)',fontSize:'12px',color:'var(--text-2)',fontWeight:400,marginTop:'4px'}}>across 5 practices</span></div>
+            <div className="careers-hero-stats__item careers-hero-stats__item--mid">
+              <div className="careers-hero-stats__k">Open roles</div>
+              <div className="careers-hero-stats__v">18 <span className="careers-hero-stats__sub">across 5 practices</span></div>
             </div>
-            <div style={{paddingLeft:'24px'}}>
-              <div style={{fontFamily:'var(--font-mono)',fontSize:'10px',letterSpacing:'0.16em',textTransform:'uppercase',color:'var(--text-3)',marginBottom:'8px'}}>Remote</div>
-              <div style={{fontFamily:'var(--font-display)',fontSize:'22px',fontWeight:500}}>Hybrid <span style={{display:'block',fontFamily:'var(--font-body)',fontSize:'12px',color:'var(--text-2)',fontWeight:400,marginTop:'4px'}}>flexible by design</span></div>
+            <div className="careers-hero-stats__item">
+              <div className="careers-hero-stats__k">Remote</div>
+              <div className="careers-hero-stats__v">Hybrid <span className="careers-hero-stats__sub">flexible by design</span></div>
             </div>
           </div>
         </div>
@@ -148,9 +148,9 @@ export default function CareersPage() {
       <section className="section" id="open-roles" style={{paddingTop:'60px',borderTop:'1px solid var(--line)'}}>
         <div className="container">
           <div className="section-eyebrow"><span className="idx">02</span><span>Open Roles</span></div>
-          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'48px',alignItems:'end',marginBottom:'40px'}}>
-            <h2 style={{fontSize:'clamp(30px,4vw,48px)',letterSpacing:'-0.03em'}}>18 open roles across<br/>our global practices.</h2>
-            <p style={{color:'var(--text-1)',fontSize:'16px',lineHeight:'1.6'}}>We hire for depth and curiosity. If you don&apos;t see your exact role below, send an open application — we&apos;re always interested in exceptional people.</p>
+          <div className="careers-open-intro">
+            <h2 className="careers-open-intro__title">18 open roles across<br/>our global practices.</h2>
+            <p className="careers-open-intro__lead">We hire for depth and curiosity. If you don&apos;t see your exact role below, send an open application — we&apos;re always interested in exceptional people.</p>
           </div>
 
           {/* Filters */}
