@@ -1,3 +1,6 @@
 {
-  "rootDirectory": "stradit-next"
+  "buildCommand": "cd stradit-next && npm install && npm run build",
+  "outputDirectory": "stradit-next/.next",
+  "installCommand": "cd stradit-next && npm install",
+  "framework": "nextjs"
 }
