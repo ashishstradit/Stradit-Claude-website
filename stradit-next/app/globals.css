@@ -287,7 +287,7 @@ h1, h2, h3, h4 {
 .logos__item:hover { opacity: 1; color: var(--text-0); }
 @media (max-width: 760px) { .logos__row { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
 
-/* CoE cards */
+/* ── CoE section ──────────────────────────────────────────────── */
 .coe-section { padding: 100px 0; border-top: 1px solid var(--line); position: relative; }
 .coe-header { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; margin-bottom: 64px; }
 .coe-header h2 { font-size: clamp(34px, 4.5vw, 56px); letter-spacing: -0.03em; line-height: 1; }
@@ -295,46 +295,282 @@ h1, h2, h3, h4 {
 .coe-header p { color: var(--text-1); font-size: 16px; max-width: 520px; line-height: 1.6; }
 @media (max-width: 800px) { .coe-header { grid-template-columns: 1fr; gap: 24px; } }
 .coe-rail { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
-.coe-card { position: relative; background: var(--ink-1); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; text-decoration: none; color: inherit; display: flex; flex-direction: column; min-height: 360px; transition: all .3s cubic-bezier(0.2,0.7,0.2,1); isolation: isolate; }
+
+/* ── CoE card base ────────────────────────────────────────────── */
+.coe-card {
+  position: relative;
+  background: var(--ink-1);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  min-height: 360px;
+  transition: border-color .25s ease, transform .3s cubic-bezier(0.2,0.7,0.2,1), box-shadow .3s ease;
+}
 .coe-card--lg { grid-column: span 4; min-height: 440px; }
 .coe-card--md { grid-column: span 2; }
 .coe-card--sm { grid-column: span 2; }
-.coe-card--md { grid-column: span 2; }
-.coe-card--sm { grid-column: span 2; }
-.coe-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 24px 60px rgba(0,0,0,0.4), 0 0 0 1px var(--accent-soft); }
-.coe-card__visual { position: relative; flex: 1; min-height: 220px; background: var(--ink-2); overflow: hidden; }
+
+/* ── Visual (canvas) ──────────────────────────────────────────── */
+.coe-card__visual {
+  position: relative;
+  flex: 1;
+  min-height: 220px;
+  background: var(--ink-2);
+  overflow: hidden;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
 .coe-card--lg .coe-card__visual { min-height: 280px; }
 .coe-card__visual canvas { width: 100% !important; height: 100% !important; display: block; transition: transform .6s ease; }
-.coe-card:hover .coe-card__visual canvas { transform: scale(1.06); }
 .coe-card__visual::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(10,16,32,0.55) 100%); pointer-events: none; }
 .coe-card__badge { position: absolute; top: 16px; left: 16px; z-index: 2; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-0); background: rgba(6,9,18,0.6); backdrop-filter: blur(10px); border: 1px solid var(--line-strong); padding: 6px 10px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px; }
 .coe-card__badge::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent-glow); }
-.coe-card__body { padding: 24px 24px 26px; background: var(--ink-1); border-top: 1px solid var(--line); }
-.coe-card__title { font-family: var(--font-display); font-size: 19px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 8px; color: var(--text-0); }
+
+/* ── Card body ────────────────────────────────────────────────── */
+.coe-card__body {
+  padding: 22px 24px 24px;
+  background: var(--ink-1);
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+}
+.coe-card__title {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 8px;
+  color: var(--text-0);
+}
 .coe-card--lg .coe-card__title { font-size: 26px; }
-.coe-card__desc { color: var(--text-2); font-size: 13px; line-height: 1.55; margin-bottom: 14px; }
-.coe-card--lg .coe-card__desc { font-size: 14px; max-width: 540px; }
-.coe-card__cta { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+.coe-card__desc {
+  color: var(--text-2);
+  font-size: 13px;
+  line-height: 1.55;
+  margin-bottom: 12px;
+}
+.coe-card--lg .coe-card__desc { font-size: 14px; }
+
+/* ── 4 bullet highlights — hidden by default ──────────────────── */
+.coe-card__highlights {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transition: max-height .38s cubic-bezier(0.2,0.8,0.2,1), opacity .28s ease, margin .28s ease;
+}
+.coe-card__highlight {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  font-size: 12.5px;
+  color: var(--text-1);
+  line-height: 1.45;
+}
+.coe-card__highlight > span { color: var(--accent); flex-shrink: 0; font-size: 11px; }
+
+/* ── Mobile toggle (hidden on desktop) ───────────────────────── */
+.coe-card__toggle { display: none; }
+
+/* ── CTA link ─────────────────────────────────────────────────── */
+.coe-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+  margin-top: auto;
+  padding-top: 14px;
+}
 .coe-card__cta::after { content: "→"; transition: transform .2s ease; }
-.coe-card:hover .coe-card__cta::after { transform: translateX(4px); }
+
+/* ── DESKTOP hover reveal (≥ 701px) ──────────────────────────── */
+@media (min-width: 701px) {
+  .coe-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 28px 64px rgba(0,0,0,0.45), 0 0 0 1px var(--accent-soft);
+  }
+  .coe-card:hover .coe-card__visual canvas { transform: scale(1.06); }
+  .coe-card:hover .coe-card__cta::after { transform: translateX(4px); }
+
+  /* ★ Reveal 4 bullets on hover ★ */
+  .coe-card:hover .coe-card__highlights {
+    max-height: 240px;
+    opacity: 1;
+    margin-bottom: 12px;
+    pointer-events: auto;
+  }
+  .coe-card:hover .coe-card__desc { margin-bottom: 6px; }
+  .coe-card__toggle { display: none !important; }
+}
+
+/* ── Tablet 2-col (1100 → 701px) ─────────────────────────────── */
 @media (max-width: 1100px) {
   .coe-rail { grid-template-columns: repeat(2, 1fr); }
   .coe-card--lg, .coe-card--md, .coe-card--sm { grid-column: span 1; }
 }
+
+/* ── MOBILE single-col (≤ 700px) ─────────────────────────────── */
+
+/* Scroll-in keyframe for mobile cards */
+@keyframes coe-card-in {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Animated accent bar that runs across the top of each mobile card */
+@keyframes coe-bar-slide {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Toggle arrow spin */
+@keyframes coe-toggle-open  { from { transform: rotate(0deg);    } to { transform: rotate(180deg); } }
+@keyframes coe-toggle-close { from { transform: rotate(180deg);  } to { transform: rotate(0deg);   } }
+
+/* Tap press */
+@keyframes coe-tap {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(0.975); }
+  100% { transform: scale(1); }
+}
+
 @media (max-width: 700px) {
-  .coe-rail { grid-template-columns: 1fr !important; gap: 12px; }
+  .coe-rail { grid-template-columns: 1fr !important; gap: 10px; }
+
+  /* ── Card base ── */
   .coe-card, .coe-card--lg, .coe-card--md, .coe-card--sm {
     grid-column: 1 / -1 !important;
     min-height: unset;
-    border-left: 2px solid var(--accent);
+    border-left: none;
+    border-top: 3px solid transparent;
+    border-radius: 12px;
+    transform: none !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25) !important;
+    /* Scroll-in animation — stagger via nth-child */
+    animation: coe-card-in 0.45s cubic-bezier(0.2,0.8,0.2,1) both;
   }
+  .coe-card:nth-child(1) { animation-delay: 0.00s; }
+  .coe-card:nth-child(2) { animation-delay: 0.07s; }
+  .coe-card:nth-child(3) { animation-delay: 0.14s; }
+  .coe-card:nth-child(4) { animation-delay: 0.21s; }
+  .coe-card:nth-child(5) { animation-delay: 0.28s; }
+  .coe-card:nth-child(6) { animation-delay: 0.35s; }
+
+  /* Tap feedback */
+  .coe-card:active { animation: coe-tap 0.22s ease forwards; }
+
+  /* ── Animated accent bar at top (replaces canvas on mobile) ── */
   .coe-card__visual { display: none !important; }
-  .coe-card__body { padding: 24px 20px; border-top: none; }
-  .coe-card__title { font-size: 17px !important; }
-  .coe-card--lg .coe-card__title { font-size: 19px !important; }
-  .coe-card__desc { font-size: 13px; margin-bottom: 12px; }
-  .coe-section { padding: 60px 0; }
-  .coe-header { margin-bottom: 32px; }
+  .coe-card::before {
+    content: "";
+    display: block;
+    height: 3px;
+    width: 100%;
+    background: linear-gradient(90deg,
+      var(--accent) 0%,
+      var(--accent-2, #4cc8ff) 40%,
+      var(--accent) 80%,
+      var(--accent-2, #4cc8ff) 100%);
+    background-size: 200% 100%;
+    animation: coe-bar-slide 3s linear infinite;
+    border-radius: 12px 12px 0 0;
+    flex-shrink: 0;
+  }
+
+  /* Open card — brighter bar + elevated shadow */
+  .coe-card--open {
+    box-shadow: 0 6px 28px rgba(255,122,61,0.18), 0 0 0 1px var(--accent-soft, rgba(255,122,61,0.2)) !important;
+    background: var(--ink-2);
+  }
+  .coe-card--open::before { animation-duration: 1.4s; }
+
+  /* ── Body ── */
+  .coe-card__body { padding: 16px 18px 20px; border-top: none; }
+  .coe-card__title { font-size: 16px !important; line-height: 1.25; }
+  .coe-card--lg .coe-card__title { font-size: 18px !important; }
+  .coe-card__desc { font-size: 13px; margin-bottom: 0; color: var(--text-2); }
+
+  /* ── Toggle button ── */
+  .coe-card__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    border-top: 1px solid var(--line);
+    padding: 11px 0 8px;
+    margin-top: 12px;
+    width: 100%;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    cursor: pointer;
+    transition: color 0.15s ease;
+  }
+  .coe-card__toggle::after {
+    content: "↓";
+    font-size: 13px;
+    transition: transform 0.3s cubic-bezier(0.2,0.8,0.2,1);
+    display: inline-block;
+  }
+  /* Rotate arrow when open */
+  .coe-card--open .coe-card__toggle::after { transform: rotate(180deg); }
+  .coe-card__toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+
+  /* ── Bullet highlights expand ── */
+  .coe-card--open .coe-card__highlights {
+    max-height: 280px;
+    opacity: 1;
+    margin-top: 10px;
+    margin-bottom: 6px;
+    pointer-events: auto;
+  }
+  .coe-card__highlight {
+    font-size: 13px;
+    /* Each bullet slides in with a small delay */
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: opacity 0.22s ease, transform 0.22s ease;
+  }
+  .coe-card--open .coe-card__highlight { opacity: 1; transform: translateX(0); }
+  .coe-card--open .coe-card__highlight:nth-child(1) { transition-delay: 0.06s; }
+  .coe-card--open .coe-card__highlight:nth-child(2) { transition-delay: 0.12s; }
+  .coe-card--open .coe-card__highlight:nth-child(3) { transition-delay: 0.18s; }
+  .coe-card--open .coe-card__highlight:nth-child(4) { transition-delay: 0.24s; }
+
+  /* ── CTA ── */
+  .coe-card__cta { padding-top: 10px; }
+
+  /* ── Section spacing ── */
+  .coe-section { padding: 52px 0; }
+  .coe-header { margin-bottom: 24px; }
+  .coe-header h2 { font-size: clamp(26px, 8vw, 38px); }
+  .coe-header p { font-size: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coe-card, .coe-card__highlights, .coe-card__highlight,
+  .coe-card::before { transition: none; animation: none; }
 }
 
 /* Pair card */
@@ -349,10 +585,13 @@ h1, h2, h3, h4 {
 .pair-card .cta-link::after { content: "→"; transition: transform .2s ease; }
 .pair-card:hover .cta-link::after { transform: translateX(4px); }
 
-.coe-card { min-height: 280px; }
-.coe-card--lg { grid-column: span 4; min-height: 340px; }
-.coe-card__visual { min-height: 160px; }
-.coe-card--lg .coe-card__visual { min-height: 200px; }
+/* CoE card size overrides for mid-range screens */
+@media (max-width: 1280px) and (min-width: 701px) {
+  .coe-card { min-height: 280px; }
+  .coe-card--lg { min-height: 340px; }
+  .coe-card__visual { min-height: 160px; }
+  .coe-card--lg .coe-card__visual { min-height: 200px; }
+}
 
 /* CoE card chip */
 .coe-card__chip {

@@ -3,6 +3,65 @@ import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import AnimCanvas from '@/components/AnimCanvas'
 import LandingCarousel from '@/components/LandingCarousel'
+import CoeCard from '@/components/CoeCard'
+
+const coeCards = [
+  {
+    href: '/coe/ai', size: 'lg' as const, revealClass: '',
+    badge: 'CoE · Flagship', chips: ['LLM', 'Agents', 'Governance'],
+    theme: 'ai' as const, animKey: 'card-ai',
+    title: 'Applied Artificial Intelligence',
+    desc: 'Production-grade AI workflows with guardrails, human oversight, and clear ROI paths.',
+    highlights: ['Intelligent process automation','LLM governance and guardrails','AI readiness training for teams','Responsible AI playbooks'],
+    cta: 'Explore practice',
+  },
+  {
+    href: '/coe/data', size: 'md' as const, revealClass: 'reveal-delay-1',
+    badge: 'CoE', chips: ['Streaming', 'BI'],
+    theme: 'data' as const, animKey: 'card-data',
+    title: 'Data Analytics — Applied AI',
+    desc: 'Turn fragmented data into trusted insights; built for speed, accuracy, and action.',
+    highlights: ['Modern analytics foundations','AI-powered data quality','Executive dashboards','Predictive models'],
+    cta: 'Explore',
+  },
+  {
+    href: '/coe/cyber', size: 'sm' as const, revealClass: 'reveal-delay-2',
+    badge: 'CoE', chips: ['Threat', 'Compliance'],
+    theme: 'cyber' as const, animKey: 'card-cyber',
+    title: 'Cyber Security — Applied AI',
+    desc: 'Strengthen security posture with AI-driven threat intelligence.',
+    highlights: ['Security architecture','AI-enhanced threat visibility','Compliance & audit readiness','Secure AI & data protection'],
+    cta: 'Explore',
+  },
+  {
+    href: '/coe/cloud', size: 'sm' as const, revealClass: 'reveal-delay-3',
+    badge: 'CoE', chips: ['Migration', 'SRE'],
+    theme: 'cloud' as const, animKey: 'card-cloud',
+    title: 'Cloud & Infrastructure — Applied AI',
+    desc: "AI-optimized cloud & infrastructure that's resilient, scalable, and cost-aware.",
+    highlights: ['AI-assisted cloud migration','Infrastructure modernization','Reliability engineering','Platform standardization'],
+    cta: 'Explore',
+  },
+  {
+    href: '/coe/testing', size: 'sm' as const, revealClass: 'reveal-delay-4',
+    badge: 'CoE', chips: ['QA', 'Resilience'],
+    theme: 'testing' as const, animKey: 'card-testing',
+    title: 'Automated AI Testing',
+    desc: 'Ship faster with AI-powered testing woven into every release.',
+    highlights: ['Automation-first QA','Performance & resilience testing','Test strategy and tooling','Continuous quality systems'],
+    cta: 'Explore',
+  },
+  {
+    href: '/gcc', size: 'md' as const, revealClass: 'reveal-delay-5',
+    style: { minHeight: '280px' }, visualStyle: { minHeight: '130px' },
+    badge: 'Global', chips: ['GCC', 'Enablement'],
+    theme: 'gcc' as const, animKey: 'card-gcc',
+    title: 'Global Capability Center (GCC)',
+    desc: 'AI-enabled centers that operate as a true extension of your business.',
+    highlights: ['GCC setup and operating model','Talent, tooling, and delivery governance','CoE design and scaling','Continuous performance improvement'],
+    cta: 'Explore GCC',
+  },
+]
 
 export const metadata = { title: 'StradIT — Applied AI & Engineering for Capital Markets' }
 
@@ -79,121 +138,9 @@ export default function HomePage() {
             <p className="reveal reveal-delay-1">AI built into every layer so your enterprise doesn&apos;t just keep up, it pulls ahead.</p>
           </div>
           <div className="coe-rail">
-
-            {/* Applied AI — large */}
-            <Link className="coe-card coe-card--lg reveal" href="/coe/ai">
-              <div className="coe-card__visual">
-                <span className="coe-card__badge">CoE · Flagship</span>
-                <span className="coe-card__chip"><span>LLM</span><span>Agents</span><span>Governance</span></span>
-                <AnimCanvas theme="ai" animKey="card-ai" />
-              </div>
-              <div className="coe-card__body">
-                <div className="coe-card__title">Applied Artificial Intelligence</div>
-                <div className="coe-card__desc">Production-grade AI workflows with guardrails, human oversight, and clear ROI paths.</div>
-                <ul style={{listStyle:'none',display:'flex',flexDirection:'column',gap:'4px',marginBottom:'14px'}}>
-                  {['Intelligent process automation','LLM governance and guardrails','AI readiness training for teams','Responsible AI playbooks'].map(i=>(
-                    <li key={i} style={{fontSize:'12px',color:'var(--text-2)',display:'flex',gap:'6px'}}><span style={{color:'var(--accent)'}}>→</span>{i}</li>
-                  ))}
-                </ul>
-                <span className="coe-card__cta">Explore practice</span>
-              </div>
-            </Link>
-
-            {/* Data Analytics */}
-            <Link className="coe-card coe-card--md reveal reveal-delay-1" href="/coe/data">
-              <div className="coe-card__visual">
-                <span className="coe-card__badge">CoE</span>
-                <span className="coe-card__chip"><span>Streaming</span><span>BI</span></span>
-                <AnimCanvas theme="data" animKey="card-data" />
-              </div>
-              <div className="coe-card__body">
-                <div className="coe-card__title">Data Analytics — Applied AI</div>
-                <div className="coe-card__desc">Turn fragmented data into trusted insights; built for speed, accuracy, and action.</div>
-                <ul style={{listStyle:'none',display:'flex',flexDirection:'column',gap:'4px',marginBottom:'14px'}}>
-                  {['Modern analytics foundations','AI-powered data quality','Executive dashboards','Predictive models'].map(i=>(
-                    <li key={i} style={{fontSize:'12px',color:'var(--text-2)',display:'flex',gap:'6px'}}><span style={{color:'var(--accent)'}}>→</span>{i}</li>
-                  ))}
-                </ul>
-                <span className="coe-card__cta">Explore</span>
-              </div>
-            </Link>
-
-            {/* Cybersecurity */}
-            <Link className="coe-card coe-card--sm reveal reveal-delay-2" href="/coe/cyber">
-              <div className="coe-card__visual">
-                <span className="coe-card__badge">CoE</span>
-                <span className="coe-card__chip"><span>Threat</span><span>Compliance</span></span>
-                <AnimCanvas theme="cyber" animKey="card-cyber" />
-              </div>
-              <div className="coe-card__body">
-                <div className="coe-card__title">Cyber Security — Applied AI</div>
-                <div className="coe-card__desc">Strengthen security posture with AI-driven threat intelligence.</div>
-                <ul style={{listStyle:'none',display:'flex',flexDirection:'column',gap:'4px',marginBottom:'14px'}}>
-                  {['Security architecture','AI-enhanced threat visibility','Compliance & audit readiness','Secure AI & data protection'].map(i=>(
-                    <li key={i} style={{fontSize:'12px',color:'var(--text-2)',display:'flex',gap:'6px'}}><span style={{color:'var(--accent)'}}>→</span>{i}</li>
-                  ))}
-                </ul>
-                <span className="coe-card__cta">Explore</span>
-              </div>
-            </Link>
-
-            {/* Cloud & Infrastructure */}
-            <Link className="coe-card coe-card--sm reveal reveal-delay-3" href="/coe/cloud">
-              <div className="coe-card__visual">
-                <span className="coe-card__badge">CoE</span>
-                <span className="coe-card__chip"><span>Migration</span><span>SRE</span></span>
-                <AnimCanvas theme="cloud" animKey="card-cloud" />
-              </div>
-              <div className="coe-card__body">
-                <div className="coe-card__title">Cloud &amp; Infrastructure — Applied AI</div>
-                <div className="coe-card__desc">AI-optimized cloud &amp; infrastructure that&apos;s resilient, scalable, and cost-aware.</div>
-                <ul style={{listStyle:'none',display:'flex',flexDirection:'column',gap:'4px',marginBottom:'14px'}}>
-                  {['AI-assisted cloud migration','Infrastructure modernization','Reliability engineering','Platform standardization'].map(i=>(
-                    <li key={i} style={{fontSize:'12px',color:'var(--text-2)',display:'flex',gap:'6px'}}><span style={{color:'var(--accent)'}}>→</span>{i}</li>
-                  ))}
-                </ul>
-                <span className="coe-card__cta">Explore</span>
-              </div>
-            </Link>
-
-            {/* Testing */}
-            <Link className="coe-card coe-card--sm reveal reveal-delay-4" href="/coe/testing">
-              <div className="coe-card__visual">
-                <span className="coe-card__badge">CoE</span>
-                <span className="coe-card__chip"><span>QA</span><span>Resilience</span></span>
-                <AnimCanvas theme="testing" animKey="card-testing" />
-              </div>
-              <div className="coe-card__body">
-                <div className="coe-card__title">Automated AI Testing</div>
-                <div className="coe-card__desc">Ship faster with AI-powered testing woven into every release.</div>
-                <ul style={{listStyle:'none',display:'flex',flexDirection:'column',gap:'4px',marginBottom:'14px'}}>
-                  {['Automation-first QA','Performance & resilience testing','Test strategy and tooling','Continuous quality systems'].map(i=>(
-                    <li key={i} style={{fontSize:'12px',color:'var(--text-2)',display:'flex',gap:'6px'}}><span style={{color:'var(--accent)'}}>→</span>{i}</li>
-                  ))}
-                </ul>
-                <span className="coe-card__cta">Explore</span>
-              </div>
-            </Link>
-
-            {/* GCC — medium card */}
-            <Link className="coe-card coe-card--md reveal reveal-delay-5" href="/gcc" style={{minHeight:'280px'}}>
-              <div className="coe-card__visual" style={{minHeight:'130px'}}>
-                <span className="coe-card__badge">Global</span>
-                <span className="coe-card__chip"><span>GCC</span><span>Enablement</span></span>
-                <AnimCanvas theme="gcc" animKey="card-gcc" />
-              </div>
-              <div className="coe-card__body">
-                <div className="coe-card__title">Global Capability Center (GCC)</div>
-                <div className="coe-card__desc">AI-enabled centers that operate as a true extension of your business.</div>
-                <ul style={{listStyle:'none',display:'flex',flexDirection:'column',gap:'4px',marginBottom:'14px'}}>
-                  {['GCC setup and operating model','Talent, tooling, and delivery governance','CoE design and scaling','Continuous performance improvement'].map(i=>(
-                    <li key={i} style={{fontSize:'12px',color:'var(--text-2)',display:'flex',gap:'6px'}}><span style={{color:'var(--accent)'}}>→</span>{i}</li>
-                  ))}
-                </ul>
-                <span className="coe-card__cta">Explore GCC</span>
-              </div>
-            </Link>
-
+            {coeCards.map((card) => (
+              <CoeCard key={card.href} {...card} />
+            ))}
           </div>{/* end coe-rail */}
         </div>{/* end container */}
       </section>{/* end coe-section */}
