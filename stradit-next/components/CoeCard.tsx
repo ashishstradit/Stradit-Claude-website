@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useState, type CSSProperties } from 'react'
+import { useState, useEffect, useRef, type CSSProperties } from 'react'
 import AnimCanvas from '@/components/AnimCanvas'
 
 type CoeCardProps = {
@@ -18,6 +18,7 @@ type CoeCardProps = {
   desc: string
   highlights: string[]
   cta: string
+  animDelay?: number
 }
 
 export default function CoeCard({
@@ -34,12 +35,32 @@ export default function CoeCard({
   desc,
   highlights,
   cta,
+  animDelay = 0,
 }: CoeCardProps) {
   const [open, setOpen] = useState(false)
+  const [visible, setVisible] = useState(false)
+  const ref = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => setVisible(true), animDelay)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.1 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [animDelay])
 
   return (
     <article
-      className={`coe-card coe-card--${size} reveal ${revealClass}${open ? ' coe-card--open' : ''}`.trim()}
+      ref={ref}
+      className={`coe-card coe-card--${size} ${revealClass}${visible ? ' coe-card--visible' : ''}${open ? ' coe-card--open' : ''}`.trim()}
       style={style}
     >
       {/* Canvas visual — navigates on click */}

@@ -123,20 +123,40 @@ export default function CoeDataPage() {
       <section className="section" style={{background:'var(--ink-1)',borderTop:'1px solid var(--line)'}}>
         <div className="container">
           <div className="section-eyebrow"><span className="idx">02</span><span>Client Impact</span></div>
-          <div style={{display:'grid',gridTemplateColumns:'1fr',gap:'80px',alignItems:'center'}}>
+          <div className="two-col">
             <div>
               <h2 style={{fontSize:'clamp(28px,4vw,46px)',letterSpacing:'-0.03em',marginBottom:'20px'}}>
                 Data Stories From{' '}
                 <em style={{fontStyle:'normal',background:'linear-gradient(120deg,var(--accent),var(--accent-2))',WebkitBackgroundClip:'text',backgroundClip:'text',color:'transparent'}}>the Field</em>
               </h2>
               <p style={{color:'var(--text-1)',fontSize:'16px',lineHeight:'1.7',marginBottom:'32px'}}>
-                For our clients, data isn't noise. It's leverage. The stories below show how teams used StradIT's AI-powered analytics to turn data into momentum, and momentum into sustained results.
+                For our clients, data isn&apos;t noise. It&apos;s leverage. The stories below show how teams used StradIT&apos;s AI-powered analytics to turn data into momentum, and momentum into sustained results.
               </p>
               <Link href="/contact" className="btn btn--primary">
                 Write Your Data Success Story With Us
                 <svg className="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
               </Link>
             </div>
+
+            {/* Case Study Card */}
+            <Link href="/case-studies/data-analytics" className="cs-card">
+              <div className="cs-card__tag">Case Study · Data Analytics</div>
+              <div className="cs-card__title">
+                80% Reduction in Manual Reporting<br />&amp; Scalability Delivered
+              </div>
+              <p className="cs-card__desc">
+                How StradIT modernised a global investment bank&apos;s data infrastructure 360° — delivering a cloud-native data lake, real-time ingestion, unified data models, and self-service BI across 300+ applications.
+              </p>
+              <div className="cs-card__stats">
+                {[['80%','Less Manual Reporting'],['Real-Time','Risk Visibility'],['360°','Transformation']].map(([v,l]) => (
+                  <div key={l}>
+                    <div className="cs-card__stat-v">{v}</div>
+                    <div className="cs-card__stat-l">{l}</div>
+                  </div>
+                ))}
+              </div>
+              <div className="cs-card__cta">Read Case Study →</div>
+            </Link>
           </div>
         </div>
       </section>

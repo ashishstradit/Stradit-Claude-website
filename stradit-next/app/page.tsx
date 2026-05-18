@@ -7,7 +7,7 @@ import CoeCard from '@/components/CoeCard'
 
 const coeCards = [
   {
-    href: '/coe/ai', size: 'lg' as const, revealClass: '',
+    href: '/coe/ai', size: 'lg' as const, animDelay: 0,
     badge: 'CoE · Flagship', chips: ['LLM', 'Agents', 'Governance'],
     theme: 'ai' as const, animKey: 'card-ai',
     title: 'Applied Artificial Intelligence',
@@ -16,7 +16,7 @@ const coeCards = [
     cta: 'Explore practice',
   },
   {
-    href: '/coe/data', size: 'md' as const, revealClass: 'reveal-delay-1',
+    href: '/coe/data', size: 'md' as const, animDelay: 80,
     badge: 'CoE', chips: ['Streaming', 'BI'],
     theme: 'data' as const, animKey: 'card-data',
     title: 'Data Analytics — Applied AI',
@@ -25,7 +25,7 @@ const coeCards = [
     cta: 'Explore',
   },
   {
-    href: '/coe/cyber', size: 'sm' as const, revealClass: 'reveal-delay-2',
+    href: '/coe/cyber', size: 'sm' as const, animDelay: 160,
     badge: 'CoE', chips: ['Threat', 'Compliance'],
     theme: 'cyber' as const, animKey: 'card-cyber',
     title: 'Cyber Security — Applied AI',
@@ -34,7 +34,7 @@ const coeCards = [
     cta: 'Explore',
   },
   {
-    href: '/coe/cloud', size: 'sm' as const, revealClass: 'reveal-delay-3',
+    href: '/coe/cloud', size: 'sm' as const, animDelay: 240,
     badge: 'CoE', chips: ['Migration', 'SRE'],
     theme: 'cloud' as const, animKey: 'card-cloud',
     title: 'Cloud & Infrastructure — Applied AI',
@@ -43,7 +43,7 @@ const coeCards = [
     cta: 'Explore',
   },
   {
-    href: '/coe/testing', size: 'sm' as const, revealClass: 'reveal-delay-4',
+    href: '/coe/testing', size: 'sm' as const, animDelay: 320,
     badge: 'CoE', chips: ['QA', 'Resilience'],
     theme: 'testing' as const, animKey: 'card-testing',
     title: 'Automated AI Testing',
@@ -52,7 +52,7 @@ const coeCards = [
     cta: 'Explore',
   },
   {
-    href: '/gcc', size: 'md' as const, revealClass: 'reveal-delay-5',
+    href: '/gcc', size: 'md' as const, animDelay: 400,
     style: { minHeight: '280px' }, visualStyle: { minHeight: '130px' },
     badge: 'Global', chips: ['GCC', 'Enablement'],
     theme: 'gcc' as const, animKey: 'card-gcc',

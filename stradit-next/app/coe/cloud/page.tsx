@@ -105,17 +105,39 @@ export default function CoeCloudPage() {
       <section className="section" style={{background:'var(--ink-1)',borderTop:'1px solid var(--line)'}}>
         <div className="container">
           <div className="section-eyebrow"><span className="idx">02</span><span>Client Impact</span></div>
-          <div>
-            <h2 style={{fontSize:'clamp(28px,4vw,46px)',letterSpacing:'-0.03em',marginBottom:'20px'}}>
-              Cloud Outcomes That Actually{' '}
-              <em style={{fontStyle:'normal',background:'linear-gradient(120deg,var(--accent),var(--accent-2))',WebkitBackgroundClip:'text',backgroundClip:'text',color:'transparent'}}>Hold Up In Production</em>
-            </h2>
-            <p style={{color:'var(--text-1)',fontSize:'16px',lineHeight:'1.7',marginBottom:'32px',maxWidth:'680px'}}>
-              Wondering how the cloud is becoming the backbone of modern businesses? Read the case studies below to see how our cloud infrastructure has fixed performance bottlenecks, tamed costs, and laid the foundations of fast and stable growth.
-            </p>
-            <Link href="/contact" className="btn btn--primary">
-              Redefine Cloud With StradIT
-              <svg className="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <div className="two-col">
+            <div>
+              <h2 style={{fontSize:'clamp(28px,4vw,46px)',letterSpacing:'-0.03em',marginBottom:'20px'}}>
+                Cloud Outcomes That Actually{' '}
+                <em style={{fontStyle:'normal',background:'linear-gradient(120deg,var(--accent),var(--accent-2))',WebkitBackgroundClip:'text',backgroundClip:'text',color:'transparent'}}>Hold Up In Production</em>
+              </h2>
+              <p style={{color:'var(--text-1)',fontSize:'16px',lineHeight:'1.7',marginBottom:'32px',maxWidth:'680px'}}>
+                Wondering how the cloud is becoming the backbone of modern businesses? Read the case study below to see how our cloud advisory fixed operational costs, tamed licence spend, and laid the foundations of fast and stable growth.
+              </p>
+              <Link href="/contact" className="btn btn--primary">
+                Redefine Cloud With StradIT
+                <svg className="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </Link>
+            </div>
+
+            {/* Case Study Card */}
+            <Link href="/case-studies/cloud-advisory" className="cs-card">
+              <div className="cs-card__tag">Case Study · Cloud &amp; Infrastructure</div>
+              <div className="cs-card__title">
+                30% Less Operations Cost with<br />Expert Cloud Advisory
+              </div>
+              <p className="cs-card__desc">
+                How StradIT helped a US-based financial institution move from a fragmented legacy data-centre landscape to a cloud-ready, cost-optimised portfolio — without compromising regulatory or data-residency requirements.
+              </p>
+              <div className="cs-card__stats">
+                {[['30%','Less Ops Cost'],['70%','Less Licence Cost'],['50%','Faster Deployment']].map(([v,l]) => (
+                  <div key={l}>
+                    <div className="cs-card__stat-v">{v}</div>
+                    <div className="cs-card__stat-l">{l}</div>
+                  </div>
+                ))}
+              </div>
+              <div className="cs-card__cta">Read Case Study →</div>
             </Link>
           </div>
         </div>

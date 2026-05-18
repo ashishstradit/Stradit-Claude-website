@@ -113,7 +113,7 @@ export default function CoeCyberPage() {
       <section className="section" style={{background:'var(--ink-1)',borderTop:'1px solid var(--line)'}}>
         <div className="container">
           <div className="section-eyebrow"><span className="idx">02</span><span>Client Impact</span></div>
-          <div style={{display:'grid',gridTemplateColumns:'1fr',gap:'80px',alignItems:'center'}}>
+          <div className="two-col">
             <div>
               <h2 style={{fontSize:'clamp(28px,4vw,46px)',letterSpacing:'-0.03em',marginBottom:'20px'}}>
                 Learn How Security Wins From{' '}
@@ -127,6 +127,26 @@ export default function CoeCyberPage() {
                 <svg className="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
               </Link>
             </div>
+
+            {/* Case Study Card */}
+            <Link href="/case-studies/cyber-resiliency" className="cs-card">
+              <div className="cs-card__tag">Case Study · Cyber Resiliency</div>
+              <div className="cs-card__title">
+                Zero Data Loss Readiness<br />Across 300+ Applications
+              </div>
+              <p className="cs-card__desc">
+                How StradIT helped a global asset management firm build bulletproof cyber resiliency — assessing, testing, and documenting every application with tailored playbooks and automated recovery tools.
+              </p>
+              <div className="cs-card__stats">
+                {[['300+','Apps Covered'],['Zero','Data Loss'],['2+ yrs','Partnership']].map(([v,l]) => (
+                  <div key={l}>
+                    <div className="cs-card__stat-v">{v}</div>
+                    <div className="cs-card__stat-l">{l}</div>
+                  </div>
+                ))}
+              </div>
+              <div className="cs-card__cta">Read Case Study →</div>
+            </Link>
           </div>
         </div>
       </section>

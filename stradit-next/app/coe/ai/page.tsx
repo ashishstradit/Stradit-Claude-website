@@ -147,17 +147,39 @@ export default function CoeAiPage() {
       <section className="section" style={{background:'var(--ink-1)',borderTop:'1px solid var(--line)'}}>
         <div className="container">
           <div className="section-eyebrow"><span className="idx">02</span><span>Client Impact</span></div>
-          <div>
-            <h2 style={{fontSize:'clamp(28px,4vw,46px)',letterSpacing:'-0.03em',marginBottom:'20px'}}>
-              AI That's More Than{' '}
-              <em style={{fontStyle:'normal',background:'linear-gradient(120deg,var(--accent),var(--accent-2))',WebkitBackgroundClip:'text',backgroundClip:'text',color:'transparent'}}>A Buzzword</em>
-            </h2>
-            <p style={{color:'var(--text-1)',fontSize:'16px',lineHeight:'1.7',marginBottom:'32px',maxWidth:'680px'}}>
-              Our Center of Excellence around AI Solutions has helped global enterprises move from "let's try AI" to "we can't imagine running this operation without it." The stories below are proof of this.
-            </p>
-            <Link href="/contact" className="btn btn--primary">
-              Validate AI With Confidence
-              <svg className="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <div className="two-col">
+            <div>
+              <h2 style={{fontSize:'clamp(28px,4vw,46px)',letterSpacing:'-0.03em',marginBottom:'20px'}}>
+                AI That&apos;s More Than{' '}
+                <em style={{fontStyle:'normal',background:'linear-gradient(120deg,var(--accent),var(--accent-2))',WebkitBackgroundClip:'text',backgroundClip:'text',color:'transparent'}}>A Buzzword</em>
+              </h2>
+              <p style={{color:'var(--text-1)',fontSize:'16px',lineHeight:'1.7',marginBottom:'32px',maxWidth:'680px'}}>
+                Our Center of Excellence around AI Solutions has helped global enterprises move from &quot;let&apos;s try AI&quot; to &quot;we can&apos;t imagine running this operation without it.&quot; The stories below are proof of this.
+              </p>
+              <Link href="/contact" className="btn btn--primary">
+                Validate AI With Confidence
+                <svg className="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </Link>
+            </div>
+
+            {/* Case Study Card */}
+            <Link href="/case-studies/ai-agents" className="cs-card">
+              <div className="cs-card__tag">Case Study · Applied AI</div>
+              <div className="cs-card__title">
+                70% Faster Due Diligence with<br />Purpose-Built AI Agents
+              </div>
+              <p className="cs-card__desc">
+                How StradIT built a digital AI workforce that cut a 2-week due diligence cycle to 2 minutes — operating 24/7 across 50+ jurisdictions, delivering a 5,000% ROI for a global financial organisation.
+              </p>
+              <div className="cs-card__stats">
+                {[['70%+','Faster Due Diligence'],['5,000%','ROI'],['24/7','50+ Jurisdictions']].map(([v,l]) => (
+                  <div key={l}>
+                    <div className="cs-card__stat-v">{v}</div>
+                    <div className="cs-card__stat-l">{l}</div>
+                  </div>
+                ))}
+              </div>
+              <div className="cs-card__cta">Read Case Study →</div>
             </Link>
           </div>
         </div>
