@@ -325,7 +325,7 @@ h1, h2, h3, h4 {
   color: inherit;
 }
 .coe-card--lg .coe-card__visual { min-height: 280px; }
-.coe-card__visual canvas { width: 100% !important; height: 100% !important; display: block; transition: transform .6s ease; }
+.coe-card__visual canvas { position: absolute !important; inset: 0; width: 100% !important; height: 100% !important; display: block; transition: transform .6s ease; }
 .coe-card__visual::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(10,16,32,0.55) 100%); pointer-events: none; }
 .coe-card__badge { position: absolute; top: 16px; left: 16px; z-index: 2; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-0); background: rgba(6,9,18,0.6); backdrop-filter: blur(10px); border: 1px solid var(--line-strong); padding: 6px 10px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px; }
 .coe-card__badge::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent-glow); }
@@ -463,9 +463,9 @@ h1, h2, h3, h4 {
     transition-duration: 0.12s;
   }
 
-  /* ── Canvas: show on mobile with reduced height ── */
-  .coe-card__visual { display: block !important; min-height: 140px !important; }
-  .coe-card--lg .coe-card__visual { min-height: 160px !important; }
+  /* ── Canvas: show on mobile with explicit height so height:100% resolves ── */
+  .coe-card__visual { display: block !important; height: 140px !important; min-height: 140px !important; }
+  .coe-card--lg .coe-card__visual { height: 160px !important; min-height: 160px !important; }
 
   /* Open card — glow */
   .coe-card--open {
@@ -896,6 +896,7 @@ h1, h2, h3, h4 {
   height: 360px;
   background: var(--ink-2);
 }
+.coe-slider-canvas canvas { position: absolute !important; inset: 0; width: 100% !important; height: 100% !important; display: block; }
 .coe-tab-strip {
   display: flex;
   gap: 2px;
