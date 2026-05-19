@@ -9,7 +9,7 @@ interface Props {
 }
 
 /** Bump when `public/anim-engine.js` changes (Vercel/CDN + SPA cache). */
-const ANIM_ENGINE_VER = '3'
+const ANIM_ENGINE_VER = '4'
 
 declare global {
   interface Window {

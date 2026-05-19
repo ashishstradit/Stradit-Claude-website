@@ -121,6 +121,12 @@
   function rgba(c, a) { return `rgba(${c[0]},${c[1]},${c[2]},${a})`; }
   function lerp(a, b, t) { return a + (b - a) * t; }
   function rand(a, b) { return a + Math.random() * (b - a); }
+  function clampMin(v, min) { return v < min ? min : v; }
+  function safeRadius(r, min) {
+    min = min === undefined ? 0.5 : min;
+    if (!isFinite(r) || r < min) return min;
+    return r;
+  }
 
   function setupHiDPI(canvas) {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -578,11 +584,11 @@
         }
       }
 
-      // panel layout
+      // panel layout (clamp so small mobile canvases never produce negative arc radii)
       const pad = 18;
       const cols = W < 380 ? 1 : 2;
-      const cellW = (W - pad * 3) / cols;
-      const cellH = (H - pad * (cols === 1 ? 5 : 3)) / (cols === 1 ? 4 : 2);
+      const cellW = clampMin((W - pad * 3) / cols, 72);
+      const cellH = clampMin((H - pad * (cols === 1 ? 5 : 3)) / (cols === 1 ? 4 : 2), 56);
 
       // ---- BAR CHART (top-left) ----
       drawPanel(pad, pad, cellW, cellH, "VOLUME · 12M");
@@ -591,7 +597,7 @@
         lastBarTick = ts;
       }
       const bx = pad + 12, by = pad + 28;
-      const bw = cellW - 24, bh = cellH - 40;
+      const bw = clampMin(cellW - 24, 8), bh = clampMin(cellH - 40, 12);
       const bgap = 4;
       const barW = (bw - bgap * (bars.length - 1)) / bars.length;
       for (let i = 0; i < bars.length; i++) {
@@ -623,7 +629,7 @@
       lineHist2.shift();
       lineHist2.push(Math.max(0.05, Math.min(0.95, lineHist2[lineHist2.length - 1] + rand(-0.04, 0.04))));
       const lpx = lx + 12, lpy = ly + 28;
-      const lpw = cellW - 24, lph = cellH - 40;
+      const lpw = clampMin(cellW - 24, 8), lph = clampMin(cellH - 40, 12);
       // area fill
       function drawSeries(hist, mix, fill) {
         ctx.beginPath();
@@ -697,9 +703,10 @@
       const sy2 = cols === 2 ? pad * 2 + cellH : pad * 4 + cellH * 3;
       drawPanel(sx2, sy2, cellW, cellH, "CLUSTER · K-MEANS");
       const spx = sx2 + 12, spy = sy2 + 28;
-      const spw = cellW - 24, sph = cellH - 40;
+      const spw = clampMin(cellW - 24, 8), sph = clampMin(cellH - 40, 20);
       // donut on right
-      const dr = Math.min(sph * 0.4, 36);
+      const dr = safeRadius(Math.min(sph * 0.4, 36), 6);
+      const drInner = safeRadius(dr - 8, 0.5);
       const dcx = spx + spw - dr - 6;
       const dcy = spy + sph / 2;
       pieAngle += 0.01;
@@ -708,7 +715,7 @@
       for (let i = 0; i < segments.length; i++) {
         ctx.beginPath();
         ctx.arc(dcx, dcy, dr, ang, ang + segments[i] * Math.PI * 2);
-        ctx.arc(dcx, dcy, dr - 8, ang + segments[i] * Math.PI * 2, ang, true);
+        ctx.arc(dcx, dcy, drInner, ang + segments[i] * Math.PI * 2, ang, true);
         ctx.closePath();
         ctx.fillStyle = rgb(i / segments.length, 0.85);
         ctx.fill();
@@ -725,9 +732,9 @@
         const px = spx + p.x * scaW;
         const py = spy + p.y * sph;
         ctx.fillStyle = rgb(p.mix, 0.7);
-        ctx.beginPath(); ctx.arc(px, py, p.s, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(px, py, safeRadius(p.s, 0.5), 0, Math.PI * 2); ctx.fill();
         ctx.fillStyle = rgb(p.mix, 0.15);
-        ctx.beginPath(); ctx.arc(px, py, p.s * 3, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(px, py, safeRadius(p.s * 3, 0.5), 0, Math.PI * 2); ctx.fill();
       }
       // axes
       ctx.strokeStyle = "rgba(255,255,255,0.12)";
@@ -1358,12 +1365,12 @@
 
       const pad = 16;
       const cols = W < 380 ? 1 : 2;
-      const cellW = (W - pad * 3) / cols;
-      const cellH = (H - pad * (cols === 1 ? 5 : 3)) / (cols === 1 ? 4 : 2);
+      const cellW = clampMin((W - pad * 3) / cols, 72);
+      const cellH = clampMin((H - pad * (cols === 1 ? 5 : 3)) / (cols === 1 ? 4 : 2), 56);
 
       // ---- PIPELINE (top-left) ----
       drawPanel(pad, pad, cellW, cellH, "CI PIPELINE");
-      const stageW = (cellW - 24) / PIPE_STAGES.length;
+      const stageW = clampMin((cellW - 24) / PIPE_STAGES.length, 4);
       const stageY = pad + 36;
 
       // advance pipeline stages
@@ -1484,7 +1491,7 @@
       // ---- COVERAGE METER (bottom-left) ----
       const cx2 = pad, cy2 = cols === 2 ? pad * 2 + cellH : pad * 3 + cellH * 2;
       drawPanel(cx2, cy2, cellW, cellH, "COVERAGE");
-      const covX = cx2 + 12, covY = cy2 + 28, covW = cellW - 24, covH = cellH - 44;
+      const covX = cx2 + 12, covY = cy2 + 28, covW = clampMin(cellW - 24, 8), covH = clampMin(cellH - 44, 12);
 
       // big coverage number
       ctx.font = `bold ${Math.min(56, covH * 0.55)}px 'Inter Tight', sans-serif`;

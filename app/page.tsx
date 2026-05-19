@@ -1,8 +1,91 @@
 import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
-import AnimCanvas from '@/components/AnimCanvas'
 import LandingCarousel from '@/components/LandingCarousel'
+import CoeCard from '@/components/CoeCard'
+
+const coeCards = [
+  {
+    href: '/coe/ai',
+    size: 'lg' as const,
+    revealClass: '',
+    badge: 'CoE · Flagship',
+    chips: ['LLM', 'Agents', 'Governance'],
+    theme: 'ai' as const,
+    animKey: 'card-ai',
+    title: 'Applied Artificial Intelligence',
+    desc: 'Production-grade AI workflows with guardrails, human oversight, and clear ROI paths.',
+    highlights: ['Intelligent process automation', 'LLM governance and guardrails', 'AI readiness training for teams', 'Responsible AI playbooks'],
+    cta: 'Explore practice',
+  },
+  {
+    href: '/coe/data',
+    size: 'md' as const,
+    revealClass: 'reveal-delay-1',
+    badge: 'CoE',
+    chips: ['Streaming', 'BI'],
+    theme: 'data' as const,
+    animKey: 'card-data',
+    title: 'Data Analytics — Applied AI',
+    desc: 'Turn fragmented data into trusted insights; built for speed, accuracy, and action.',
+    highlights: ['Modern analytics foundations', 'AI-powered data quality', 'Executive dashboards', 'Predictive models'],
+    cta: 'Explore',
+  },
+  {
+    href: '/coe/cyber',
+    size: 'sm' as const,
+    revealClass: 'reveal-delay-2',
+    badge: 'CoE',
+    chips: ['Threat', 'Compliance'],
+    theme: 'cyber' as const,
+    animKey: 'card-cyber',
+    title: 'Cyber Security — Applied AI',
+    desc: 'Strengthen security posture with AI-driven threat intelligence.',
+    highlights: ['Security architecture', 'AI-enhanced threat visibility', 'Compliance & audit readiness', 'Secure AI & data protection'],
+    cta: 'Explore',
+  },
+  {
+    href: '/coe/cloud',
+    size: 'sm' as const,
+    revealClass: 'reveal-delay-3',
+    badge: 'CoE',
+    chips: ['Migration', 'SRE'],
+    theme: 'cloud' as const,
+    animKey: 'card-cloud',
+    title: 'Cloud & Infrastructure — Applied AI',
+    desc: "AI-optimized cloud & infrastructure that's resilient, scalable, and cost-aware.",
+    highlights: ['AI-assisted cloud migration', 'Infrastructure modernization', 'Reliability engineering', 'Platform standardization'],
+    cta: 'Explore',
+  },
+  {
+    href: '/coe/testing',
+    size: 'sm' as const,
+    revealClass: 'reveal-delay-4',
+    badge: 'CoE',
+    chips: ['QA', 'Resilience'],
+    theme: 'testing' as const,
+    animKey: 'card-testing',
+    title: 'Automated AI Testing',
+    desc: 'Ship faster with AI-powered testing woven into every release.',
+    highlights: ['Automation-first QA', 'Performance & resilience testing', 'Test strategy and tooling', 'Continuous quality systems'],
+    cta: 'Explore',
+  },
+  {
+    href: '/gcc',
+    size: 'md' as const,
+    revealClass: 'reveal-delay-5',
+    style: { minHeight: '280px' },
+    visualStyle: { minHeight: '130px' },
+    badge: 'Global',
+    chips: ['GCC', 'Enablement'],
+    theme: 'gcc' as const,
+    animKey: 'card-gcc',
+    title: 'Global Capability Center (GCC)',
+    desc: 'AI-enabled centers that operate as a true extension of your business.',
+    highlights: ['GCC setup and operating model', 'Talent, tooling, and delivery governance', 'CoE design and scaling', 'Continuous performance improvement'],
+    cta: 'Explore GCC',
+  },
+]
 
 export const metadata = { title: 'StradIT — Applied AI & Engineering for Capital Markets' }
 
@@ -51,7 +134,7 @@ export default function HomePage() {
         <div className="container">
           <div className="section-eyebrow"><span className="idx">01</span><span>The Firm</span></div>
           <Link className="pair-card reveal" href="/about" style={{display:'block',maxWidth:'100%'}}>
-            <div style={{display:'grid',gridTemplateColumns:'1.2fr 1fr',gap:'48px',alignItems:'center'}}>
+            <div className="pair-card__grid">
               <div>
                 <div className="num" style={{marginBottom:'10px'}}>→ About Stradit</div>
                 <div className="title">About <em>Stradit</em></div>
@@ -79,127 +162,15 @@ export default function HomePage() {
             <p className="reveal reveal-delay-1">AI built into every layer so your enterprise doesn&apos;t just keep up, it pulls ahead.</p>
           </div>
           <div className="coe-rail">
-
-            {/* Applied AI — large */}
-            <Link className="coe-card coe-card--lg reveal" href="/coe/ai">
-              <div className="coe-card__visual">
-                <span className="coe-card__badge">CoE · Flagship</span>
-                <span className="coe-card__chip"><span>LLM</span><span>Agents</span><span>Governance</span></span>
-                <AnimCanvas theme="ai" animKey="card-ai" />
-              </div>
-              <div className="coe-card__body">
-                <div className="coe-card__title">Applied Artificial Intelligence</div>
-                <div className="coe-card__desc">Production-grade AI workflows with guardrails, human oversight, and clear ROI paths.</div>
-                <ul style={{listStyle:'none',display:'flex',flexDirection:'column',gap:'4px',marginBottom:'14px'}}>
-                  {['Intelligent process automation','LLM governance and guardrails','AI readiness training for teams','Responsible AI playbooks'].map(i=>(
-                    <li key={i} style={{fontSize:'12px',color:'var(--text-2)',display:'flex',gap:'6px'}}><span style={{color:'var(--accent)'}}>→</span>{i}</li>
-                  ))}
-                </ul>
-                <span className="coe-card__cta">Explore practice</span>
-              </div>
-            </Link>
-
-            {/* Data Analytics */}
-            <Link className="coe-card coe-card--md reveal reveal-delay-1" href="/coe/data">
-              <div className="coe-card__visual">
-                <span className="coe-card__badge">CoE</span>
-                <span className="coe-card__chip"><span>Streaming</span><span>BI</span></span>
-                <AnimCanvas theme="data" animKey="card-data" />
-              </div>
-              <div className="coe-card__body">
-                <div className="coe-card__title">Data Analytics — Applied AI</div>
-                <div className="coe-card__desc">Turn fragmented data into trusted insights; built for speed, accuracy, and action.</div>
-                <ul style={{listStyle:'none',display:'flex',flexDirection:'column',gap:'4px',marginBottom:'14px'}}>
-                  {['Modern analytics foundations','AI-powered data quality','Executive dashboards','Predictive models'].map(i=>(
-                    <li key={i} style={{fontSize:'12px',color:'var(--text-2)',display:'flex',gap:'6px'}}><span style={{color:'var(--accent)'}}>→</span>{i}</li>
-                  ))}
-                </ul>
-                <span className="coe-card__cta">Explore</span>
-              </div>
-            </Link>
-
-            {/* Cybersecurity */}
-            <Link className="coe-card coe-card--sm reveal reveal-delay-2" href="/coe/cyber">
-              <div className="coe-card__visual">
-                <span className="coe-card__badge">CoE</span>
-                <span className="coe-card__chip"><span>Threat</span><span>Compliance</span></span>
-                <AnimCanvas theme="cyber" animKey="card-cyber" />
-              </div>
-              <div className="coe-card__body">
-                <div className="coe-card__title">Cyber Security — Applied AI</div>
-                <div className="coe-card__desc">Strengthen security posture with AI-driven threat intelligence.</div>
-                <ul style={{listStyle:'none',display:'flex',flexDirection:'column',gap:'4px',marginBottom:'14px'}}>
-                  {['Security architecture','AI-enhanced threat visibility','Compliance & audit readiness','Secure AI & data protection'].map(i=>(
-                    <li key={i} style={{fontSize:'12px',color:'var(--text-2)',display:'flex',gap:'6px'}}><span style={{color:'var(--accent)'}}>→</span>{i}</li>
-                  ))}
-                </ul>
-                <span className="coe-card__cta">Explore</span>
-              </div>
-            </Link>
-
-            {/* Cloud & Infrastructure */}
-            <Link className="coe-card coe-card--sm reveal reveal-delay-3" href="/coe/cloud">
-              <div className="coe-card__visual">
-                <span className="coe-card__badge">CoE</span>
-                <span className="coe-card__chip"><span>Migration</span><span>SRE</span></span>
-                <AnimCanvas theme="cloud" animKey="card-cloud" />
-              </div>
-              <div className="coe-card__body">
-                <div className="coe-card__title">Cloud &amp; Infrastructure — Applied AI</div>
-                <div className="coe-card__desc">AI-optimized cloud &amp; infrastructure that&apos;s resilient, scalable, and cost-aware.</div>
-                <ul style={{listStyle:'none',display:'flex',flexDirection:'column',gap:'4px',marginBottom:'14px'}}>
-                  {['AI-assisted cloud migration','Infrastructure modernization','Reliability engineering','Platform standardization'].map(i=>(
-                    <li key={i} style={{fontSize:'12px',color:'var(--text-2)',display:'flex',gap:'6px'}}><span style={{color:'var(--accent)'}}>→</span>{i}</li>
-                  ))}
-                </ul>
-                <span className="coe-card__cta">Explore</span>
-              </div>
-            </Link>
-
-            {/* Testing */}
-            <Link className="coe-card coe-card--sm reveal reveal-delay-4" href="/coe/testing">
-              <div className="coe-card__visual">
-                <span className="coe-card__badge">CoE</span>
-                <span className="coe-card__chip"><span>QA</span><span>Resilience</span></span>
-                <AnimCanvas theme="testing" animKey="card-testing" />
-              </div>
-              <div className="coe-card__body">
-                <div className="coe-card__title">Automated AI Testing</div>
-                <div className="coe-card__desc">Ship faster with AI-powered testing woven into every release.</div>
-                <ul style={{listStyle:'none',display:'flex',flexDirection:'column',gap:'4px',marginBottom:'14px'}}>
-                  {['Automation-first QA','Performance & resilience testing','Test strategy and tooling','Continuous quality systems'].map(i=>(
-                    <li key={i} style={{fontSize:'12px',color:'var(--text-2)',display:'flex',gap:'6px'}}><span style={{color:'var(--accent)'}}>→</span>{i}</li>
-                  ))}
-                </ul>
-                <span className="coe-card__cta">Explore</span>
-              </div>
-            </Link>
-
-            {/* GCC — medium card */}
-            <Link className="coe-card coe-card--md reveal reveal-delay-5" href="/gcc" style={{minHeight:'280px'}}>
-              <div className="coe-card__visual" style={{minHeight:'130px'}}>
-                <span className="coe-card__badge">Global</span>
-                <span className="coe-card__chip"><span>GCC</span><span>Enablement</span></span>
-                <AnimCanvas theme="gcc" animKey="card-gcc" />
-              </div>
-              <div className="coe-card__body">
-                <div className="coe-card__title">Global Capability Center (GCC)</div>
-                <div className="coe-card__desc">AI-enabled centers that operate as a true extension of your business.</div>
-                <ul style={{listStyle:'none',display:'flex',flexDirection:'column',gap:'4px',marginBottom:'14px'}}>
-                  {['GCC setup and operating model','Talent, tooling, and delivery governance','CoE design and scaling','Continuous performance improvement'].map(i=>(
-                    <li key={i} style={{fontSize:'12px',color:'var(--text-2)',display:'flex',gap:'6px'}}><span style={{color:'var(--accent)'}}>→</span>{i}</li>
-                  ))}
-                </ul>
-                <span className="coe-card__cta">Explore GCC</span>
-              </div>
-            </Link>
-
-          </div>{/* end coe-rail */}
+            {coeCards.map((card) => (
+              <CoeCard key={card.href} {...card} />
+            ))}
+          </div>
         </div>{/* end container */}
       </section>{/* end coe-section */}
 
       {/* STARTIT */}
-      <section style={{padding:'100px 0',borderTop:'1px solid var(--line)',background:'var(--ink-1)'}}>
+      <section className="landing-band landing-band--ink">
         <div className="container">
           <div className="two-col">
             <div>
@@ -221,7 +192,7 @@ export default function HomePage() {
                 <Link href="/contact" className="btn btn--ghost">Book a strategy call</Link>
               </div>
             </div>
-            <div style={{display:'grid',gridTemplateColumns:'repeat(2,1fr)',gap:'12px'}}>
+            <div className="landing-startit-grid">
               {[
                 ['Track 01','AI Literacy','Nail the AI Basics'],
                 ['Track 02','AI Strategy','From Hype to ROI'],
@@ -234,15 +205,15 @@ export default function HomePage() {
                   <div style={{fontSize:'12px',fontStyle:'italic',color:'var(--accent-2)'}}>{sub}</div>
                 </div>
               ))}
-              <div style={{background:'var(--ink-2)',border:'1px solid var(--line)',borderLeft:'2px solid var(--accent)',borderRadius:'var(--radius)',padding:'20px 22px',gridColumn:'span 2'}}>
+              <div className="landing-startit-grid__wide" style={{background:'var(--ink-2)',border:'1px solid var(--line)',borderLeft:'2px solid var(--accent)',borderRadius:'var(--radius)',padding:'20px 22px'}}>
                 <div style={{fontFamily:'var(--font-mono)',fontSize:'10px',letterSpacing:'0.16em',color:'var(--accent)',textTransform:'uppercase',marginBottom:'8px'}}>Track 05 · Frontier</div>
                 <div style={{fontFamily:'var(--font-display)',fontSize:'17px',fontWeight:500,letterSpacing:'-0.02em',marginBottom:'6px'}}>Quantum AI Training</div>
                 <div style={{fontSize:'12px',fontStyle:'italic',color:'var(--accent-2)'}}>Prepare for the Next Frontier</div>
               </div>
-              <div style={{gridColumn:'span 2',display:'flex',gap:'24px',paddingTop:'8px',borderTop:'1px solid var(--line)',marginTop:'4px'}}>
+              <div className="landing-startit-stats">
                 {[['8 wks','Cohort'],['5','Tracks'],['Hybrid','Delivery']].map(([v,l],i,a) => (
-                  <div key={l} style={{flex:1,display:'flex',alignItems:'center',gap:'24px'}}>
-                    <div style={{flex:1,textAlign:'center'}}>
+                  <div key={l} className="landing-startit-stats__cell" style={{display:'flex',alignItems:'center',gap:'16px'}}>
+                    <div style={{flex:1,textAlign:'center',minWidth:0}}>
                       <div style={{fontFamily:'var(--font-display)',fontSize:'22px',fontWeight:500,color:'var(--text-0)'}}>{v}</div>
                       <div style={{fontFamily:'var(--font-mono)',fontSize:'10px',letterSpacing:'0.14em',textTransform:'uppercase',color:'var(--text-3)',marginTop:'4px'}}>{l}</div>
                     </div>
@@ -256,13 +227,13 @@ export default function HomePage() {
       </section>
 
       {/* STRADIT VENTURE */}
-      <section style={{padding:'100px 0',borderTop:'1px solid var(--line)'}}>
+      <section className="landing-band">
         <div className="container">
           <div className="section-eyebrow" style={{marginBottom:'32px'}}>
             <span className="idx">Stradit Venture</span><span>Co-build · Equity-aligned</span>
           </div>
           <Link className="pair-card reveal" href="/contact" style={{display:'block',maxWidth:'100%'}}>
-            <div style={{display:'grid',gridTemplateColumns:'1.2fr 1fr',gap:'48px',alignItems:'center'}}>
+            <div className="pair-card__grid">
               <div>
                 <div className="num" style={{marginBottom:'10px'}}>→ Stradit Venture</div>
                 <div className="title"><em>Stradit</em> Venture</div>
