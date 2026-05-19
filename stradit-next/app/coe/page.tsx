@@ -111,17 +111,20 @@ export default function CoePage() {
             ))}
           </div>
 
-          {/* Active panel */}
+          {/* Active panel — use opacity/absolute to hide inactive panels so
+              canvas dimensions are preserved (height:0 would break the anim engine) */}
+          <div style={{ position: 'relative' }}>
           {practices.map((p, i) => (
             <div
               key={p.id}
               className="coe-slider-panel"
               style={{
-                visibility: active === i ? 'visible' : 'hidden',
                 position: active === i ? 'relative' : 'absolute',
-                pointerEvents: active === i ? 'auto' : 'none',
-                height: active === i ? 'auto' : 0,
+                top: 0, left: 0, right: 0,
                 opacity: active === i ? 1 : 0,
+                pointerEvents: active === i ? 'auto' : 'none',
+                zIndex: active === i ? 1 : 0,
+                transition: 'opacity 0.25s ease',
               }}
             >
               <div className="coe-slider-content">
@@ -153,6 +156,7 @@ export default function CoePage() {
               </div>
             </div>
           ))}
+          </div>
         </div>
       </section>
 
