@@ -56,6 +56,14 @@ const gains = [
 
 export default function CoePage() {
   const [active, setActive] = useState(0)
+  // Track a mount-key per panel. Incrementing it forces AnimCanvas to remount
+  // AFTER the panel is already visible, so getBoundingClientRect() returns real px.
+  const [mountKeys, setMountKeys] = useState<Record<number, number>>({ 0: 1 })
+
+  function switchTab(i: number) {
+    setActive(i)
+    setMountKeys(prev => ({ ...prev, [i]: (prev[i] || 0) + 1 }))
+  }
 
   return (
     <>
@@ -99,7 +107,7 @@ export default function CoePage() {
             {practices.map((p, i) => (
               <button
                 key={p.id}
-                onClick={() => setActive(i)}
+                onClick={() => switchTab(i)}
                 style={{
                   background: active === i ? 'var(--accent)' : 'var(--ink-1)',
                   color: active === i ? '#000' : 'var(--text-2)',
@@ -111,21 +119,15 @@ export default function CoePage() {
             ))}
           </div>
 
-          {/* Active panel — use opacity/absolute to hide inactive panels so
-              canvas dimensions are preserved (height:0 would break the anim engine) */}
-          <div style={{ position: 'relative' }}>
+          {/* Panels: inactive panels are hidden with display:none so they don't
+              consume layout. AnimCanvas only mounts when the panel is FIRST
+              shown (lazy via mountKeys), ensuring getBoundingClientRect() always
+              returns real pixel dimensions and the animation initialises correctly. */}
           {practices.map((p, i) => (
             <div
               key={p.id}
               className="coe-slider-panel"
-              style={{
-                position: active === i ? 'relative' : 'absolute',
-                top: 0, left: 0, right: 0,
-                opacity: active === i ? 1 : 0,
-                pointerEvents: active === i ? 'auto' : 'none',
-                zIndex: active === i ? 1 : 0,
-                transition: 'opacity 0.25s ease',
-              }}
+              style={{ display: active === i ? 'grid' : 'none' }}
             >
               <div className="coe-slider-content">
                 <div style={{fontFamily:'var(--font-mono)',fontSize:'10px',letterSpacing:'0.16em',color:'var(--accent)',marginBottom:'12px'}}>0{i+1}</div>
@@ -140,7 +142,7 @@ export default function CoePage() {
                     {practices.map((_,j) => (
                       <button
                         key={j}
-                        onClick={() => setActive(j)}
+                        onClick={() => switchTab(j)}
                         style={{
                           width:'8px',height:'8px',borderRadius:'50%',border:'none',cursor:'pointer',
                           background: active === j ? 'var(--accent)' : 'var(--line)',
@@ -152,11 +154,16 @@ export default function CoePage() {
                 </div>
               </div>
               <div className="coe-slider-canvas">
-                <AnimCanvas theme={p.theme} animKey={`coe-slider-${p.id}`} />
+                {/* Mount only after panel first activated; key forces fresh init */}
+                {mountKeys[i] && (
+                  <AnimCanvas
+                    theme={p.theme}
+                    animKey={`${p.id}-${mountKeys[i]}`}
+                  />
+                )}
               </div>
             </div>
           ))}
-          </div>
         </div>
       </section>
 
