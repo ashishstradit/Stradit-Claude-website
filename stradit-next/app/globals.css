@@ -2211,3 +2211,58 @@ h1, h2, h3, h4 {
   color: var(--text-0);
   border-color: var(--text-3);
 }
+
+/* ===== CASE STUDY EXPANDED CONTENT — RESPONSIVE GRIDS ===== */
+
+/* Common grid wrapper base */
+.cs-g2, .cs-g3, .cs-g4 {
+  display: grid;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.cs-g2  { grid-template-columns: 1fr 1fr; }
+.cs-g3  { grid-template-columns: repeat(3, 1fr); }
+.cs-g4  { grid-template-columns: repeat(4, 1fr); }
+
+/* Small stat cards row (e.g. 70+/QAs/Result in Testing why section) */
+.cs-mini-g3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* Step list wrapper + individual step */
+.cs-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.cs-step {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .cs-g2 { grid-template-columns: 1fr; }
+  .cs-g3 { grid-template-columns: 1fr 1fr; }
+  .cs-g4 { grid-template-columns: 1fr 1fr; }
+  .cs-mini-g3 { grid-template-columns: repeat(3, 1fr); }
+  .cs-step { grid-template-columns: 48px 1fr; gap: 16px; }
+}
+
+@media (max-width: 600px) {
+  .cs-g3 { grid-template-columns: 1fr; }
+  .cs-g4 { grid-template-columns: 1fr 1fr; }
+  .cs-mini-g3 { grid-template-columns: 1fr; gap: 10px; }
+  .cs-step { grid-template-columns: 1fr; gap: 6px; }
+  .cs-step > div:first-child { display: none; }
+}

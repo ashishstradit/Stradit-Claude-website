@@ -146,7 +146,7 @@ export default function CoeCyberPage() {
                 Our client is a prominent global financial institution specialising in asset management. Their technology landscape spans 300+ applications powered by Oracle, SQL Server, and DB2 databases — a sprawling estate with high stakes and zero tolerance for downtime.
               </p>
             </div>
-            <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'1px',background:'var(--line)',border:'1px solid var(--line)',borderRadius:'var(--radius-lg)',overflow:'hidden',marginBottom:'32px'}}>
+            <div className="cs-g2" style={{marginBottom:'32px'}}>
               {csChallenges.map((c,i) => (
                 <div key={i} style={{background:'var(--ink-1)',padding:'28px 24px',display:'flex',gap:'14px',alignItems:'flex-start'}}>
                   <span style={{fontFamily:'var(--font-mono)',fontSize:'10px',letterSpacing:'0.16em',color:'var(--accent)',flexShrink:0,marginTop:'3px'}}>{String(i+1).padStart(2,'0')}</span>
@@ -188,9 +188,9 @@ export default function CoeCyberPage() {
               <h2 style={{fontSize:'clamp(26px,3.5vw,40px)',letterSpacing:'-0.03em'}}>Proactive. Precise. <em style={gradText}>Battle-Tested.</em></h2>
               <p style={{color:'var(--text-1)',fontSize:'15px',lineHeight:'1.7'}}>Cybersecurity at StradIT is never reactive. We took a structured, multi-step approach to help this client overcome their cybersecurity challenges from the ground up.</p>
             </div>
-            <div style={{display:'flex',flexDirection:'column',gap:'1px',background:'var(--line)',border:'1px solid var(--line)',borderRadius:'var(--radius-lg)',overflow:'hidden',marginBottom:'32px'}}>
+            <div className="cs-steps" style={{marginBottom:'32px'}}>
               {csSteps.map(step => (
-                <div key={step.num} style={{background:'var(--ink-1)',padding:'28px 32px',display:'grid',gridTemplateColumns:'64px 1fr',gap:'24px',alignItems:'start'}}>
+                <div key={step.num} className="cs-step" style={{background:'var(--ink-1)',padding:'28px 32px'}}>
                   <div>
                     <div style={{fontFamily:'var(--font-mono)',fontSize:'9px',letterSpacing:'0.16em',color:'var(--text-3)',marginBottom:'2px',textTransform:'uppercase'}}>Step</div>
                     <div style={{fontFamily:'var(--font-display)',fontSize:'34px',fontWeight:600,letterSpacing:'-0.04em',lineHeight:1,background:'linear-gradient(135deg,var(--accent),var(--accent-2))',WebkitBackgroundClip:'text',backgroundClip:'text',color:'transparent'}}>{step.num}</div>
@@ -211,7 +211,7 @@ export default function CoeCyberPage() {
             <div className="section-eyebrow"><span className="idx">CS·04</span><span>Outcomes</span></div>
             <h2 style={{fontSize:'clamp(26px,3.5vw,40px)',letterSpacing:'-0.03em',marginBottom:'12px'}}>A Transformed <em style={gradText}>Cyber Resiliency Posture</em></h2>
             <p style={{color:'var(--text-1)',fontSize:'15px',lineHeight:'1.7',maxWidth:'680px',marginBottom:'40px'}}>Two years into our partnership, this institution still chooses StradIT.</p>
-            <div style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:'1px',background:'var(--line)',border:'1px solid var(--line)',borderRadius:'var(--radius-lg)',overflow:'hidden',marginBottom:'40px'}}>
+            <div className="cs-g4" style={{marginBottom:'40px'}}>
               {csOutcomes.map(o => (
                 <div key={o.l} style={{background:'var(--ink-2)',padding:'28px 20px',display:'flex',flexDirection:'column',gap:'6px'}}>
                   <div style={{fontFamily:'var(--font-display)',fontSize:'clamp(24px,3vw,36px)',fontWeight:600,letterSpacing:'-0.03em',background:'linear-gradient(120deg,var(--accent),var(--accent-2))',WebkitBackgroundClip:'text',backgroundClip:'text',color:'transparent',lineHeight:1.1}}>{o.v}</div>
@@ -219,7 +219,7 @@ export default function CoeCyberPage() {
                 </div>
               ))}
             </div>
-            <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'1px',background:'var(--line)',border:'1px solid var(--line)',borderRadius:'var(--radius-lg)',overflow:'hidden'}}>
+            <div className="cs-g2">
               {csResults.map((r,i) => (
                 <div key={i} style={{background:'var(--ink-1)',padding:'22px 24px',display:'flex',gap:'12px',alignItems:'flex-start'}}>
                   <span style={{color:'var(--accent)',flexShrink:0,marginTop:'2px'}}>→</span>

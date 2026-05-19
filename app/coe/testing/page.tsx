@@ -157,7 +157,7 @@ export default function CoeTestingPage() {
                 One of the world&apos;s major investment banks, offering investment management and financial services across the globe. The bank was using an outdated test automation setup, causing a heap of hurdles. As the bank planned to adopt cloud, AI integration, and advanced data analytics, it needed a testing approach that could keep pace without draining budgets. This is when StradIT decided to step in.
               </p>
             </div>
-            <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'1px',background:'var(--line)',border:'1px solid var(--line)',borderRadius:'var(--radius-lg)',overflow:'hidden',marginBottom:'32px'}}>
+            <div className="cs-g2" style={{marginBottom:'32px'}}>
               {csChallenges.map((c,i) => (
                 <div key={i} style={{background:'var(--ink-1)',padding:'28px 24px',display:'flex',gap:'14px',alignItems:'flex-start'}}>
                   <span style={{fontFamily:'var(--font-mono)',fontSize:'10px',letterSpacing:'0.16em',color:'var(--accent)',flexShrink:0,marginTop:'3px'}}>{String(i+1).padStart(2,'0')}</span>
@@ -180,7 +180,7 @@ export default function CoeTestingPage() {
                 <p style={{color:'var(--text-1)',fontSize:'15px',lineHeight:'1.7',marginBottom:'24px'}}>
                   StradIT brings practical, hands-on experience in building test automation frameworks that actually work for real teams. We understand that the best framework is the one that anyone can use without feeling like they&apos;re inventing the wheel.
                 </p>
-                <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:'16px'}}>
+                <div className="cs-mini-g3">
                   {[['70+','Experts'],['Fully-managed','QAs'],['Enterprise-grade','Result']].map(([v,l]) => (
                     <div key={l} style={{background:'var(--ink-3)',border:'1px solid var(--line)',borderRadius:'var(--radius)',padding:'20px 16px',textAlign:'center'}}>
                       <div style={{fontFamily:'var(--font-display)',fontSize:'22px',fontWeight:600,letterSpacing:'-0.03em',background:'linear-gradient(120deg,var(--accent),var(--accent-2))',WebkitBackgroundClip:'text',backgroundClip:'text',color:'transparent',marginBottom:'4px'}}>{v}</div>
@@ -209,7 +209,7 @@ export default function CoeTestingPage() {
               <h2 style={{fontSize:'clamp(26px,3.5vw,40px)',letterSpacing:'-0.03em'}}>A Complete <em style={gradText}>Testing Transformation</em></h2>
               <p style={{color:'var(--text-1)',fontSize:'15px',lineHeight:'1.7'}}>This client needed a complete transformation of how testing was done across their application portfolio. To achieve this goal, we delivered:</p>
             </div>
-            <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:'1px',background:'var(--line)',border:'1px solid var(--line)',borderRadius:'var(--radius-lg)',overflow:'hidden',marginBottom:'32px'}}>
+            <div className="cs-g3" style={{marginBottom:'32px'}}>
               {csOfferings.map((o,i) => (
                 <div key={i} style={{background:'var(--ink-1)',padding:'24px 20px',display:'flex',gap:'12px',alignItems:'flex-start'}}>
                   <span style={{color:'var(--accent)',flexShrink:0,marginTop:'2px'}}>→</span>
@@ -228,9 +228,9 @@ export default function CoeTestingPage() {
               <h2 style={{fontSize:'clamp(26px,3.5vw,40px)',letterSpacing:'-0.03em'}}>Lean, Agile, and <em style={gradText}>Laser-Focused</em></h2>
               <p style={{color:'var(--text-1)',fontSize:'15px',lineHeight:'1.7'}}>The testing and automation strategy we adopted was lean, agile, and laser-focused on the client&apos;s needs.</p>
             </div>
-            <div style={{display:'flex',flexDirection:'column',gap:'1px',background:'var(--line)',border:'1px solid var(--line)',borderRadius:'var(--radius-lg)',overflow:'hidden',marginBottom:'32px'}}>
+            <div className="cs-steps" style={{marginBottom:'32px'}}>
               {csSteps.map(step => (
-                <div key={step.num} style={{background:'var(--ink-2)',padding:'28px 32px',display:'grid',gridTemplateColumns:'64px 1fr',gap:'24px',alignItems:'start'}}>
+                <div key={step.num} className="cs-step" style={{background:'var(--ink-2)',padding:'28px 32px'}}>
                   <div>
                     <div style={{fontFamily:'var(--font-mono)',fontSize:'9px',letterSpacing:'0.16em',color:'var(--text-3)',marginBottom:'2px',textTransform:'uppercase'}}>Step</div>
                     <div style={{fontFamily:'var(--font-display)',fontSize:'34px',fontWeight:600,letterSpacing:'-0.04em',lineHeight:1,background:'linear-gradient(135deg,var(--accent),var(--accent-2))',WebkitBackgroundClip:'text',backgroundClip:'text',color:'transparent'}}>{step.num}</div>
@@ -256,7 +256,7 @@ export default function CoeTestingPage() {
             <p style={{color:'var(--text-1)',fontSize:'15px',lineHeight:'1.7',maxWidth:'680px',marginBottom:'40px'}}>
               Since launching the new framework in February 2024, the bank has experienced a genuine shift in how testing supports its delivery pipeline. The bank now has a testing foundation that scales with its ambitions, costs nothing to license, and puts quality in the hands of the people who understand the business best.
             </p>
-            <div style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:'1px',background:'var(--line)',border:'1px solid var(--line)',borderRadius:'var(--radius-lg)',overflow:'hidden',marginBottom:'40px'}}>
+            <div className="cs-g4" style={{marginBottom:'40px'}}>
               {csOutcomes.map(o => (
                 <div key={o.l} style={{background:'var(--ink-1)',padding:'28px 20px',display:'flex',flexDirection:'column',gap:'6px'}}>
                   <div style={{fontFamily:'var(--font-display)',fontSize:'clamp(24px,3vw,36px)',fontWeight:600,letterSpacing:'-0.03em',background:'linear-gradient(120deg,var(--accent),var(--accent-2))',WebkitBackgroundClip:'text',backgroundClip:'text',color:'transparent',lineHeight:1.1}}>{o.v}</div>
@@ -264,7 +264,7 @@ export default function CoeTestingPage() {
                 </div>
               ))}
             </div>
-            <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'1px',background:'var(--line)',border:'1px solid var(--line)',borderRadius:'var(--radius-lg)',overflow:'hidden'}}>
+            <div className="cs-g2">
               {csResults.map((r,i) => (
                 <div key={i} style={{background:'var(--ink-1)',padding:'22px 24px',display:'flex',gap:'12px',alignItems:'flex-start'}}>
                   <span style={{color:'var(--accent)',flexShrink:0,marginTop:'2px'}}>→</span>

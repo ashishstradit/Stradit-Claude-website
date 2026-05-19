@@ -181,7 +181,7 @@ export default function CoeCloudPage() {
               <h2 style={{fontSize:'clamp(26px,3.5vw,40px)',letterSpacing:'-0.03em'}}>A Complete <em style={gradText}>Cloud Advisory Programme</em></h2>
               <p style={{color:'var(--text-1)',fontSize:'15px',lineHeight:'1.7'}}>A six-track engagement covering every dimension of cloud readiness.</p>
             </div>
-            <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:'1px',background:'var(--line)',border:'1px solid var(--line)',borderRadius:'var(--radius-lg)',overflow:'hidden',marginBottom:'32px'}}>
+            <div className="cs-g3" style={{marginBottom:'32px'}}>
               {csScope.map((s,i) => (
                 <div key={i} style={{background:'var(--ink-1)',padding:'24px 20px',display:'flex',gap:'12px',alignItems:'flex-start'}}>
                   <span style={{color:'var(--accent)',flexShrink:0,marginTop:'2px'}}>→</span>
@@ -200,9 +200,9 @@ export default function CoeCloudPage() {
               <h2 style={{fontSize:'clamp(26px,3.5vw,40px)',letterSpacing:'-0.03em'}}>Cloud Strategy Backed by <em style={gradText}>Financial Precision</em></h2>
               <p style={{color:'var(--text-1)',fontSize:'15px',lineHeight:'1.7'}}>Five focused workstreams that turned a stalled programme into a clear path forward.</p>
             </div>
-            <div style={{display:'flex',flexDirection:'column',gap:'1px',background:'var(--line)',border:'1px solid var(--line)',borderRadius:'var(--radius-lg)',overflow:'hidden',marginBottom:'32px'}}>
+            <div className="cs-steps" style={{marginBottom:'32px'}}>
               {csSteps.map(step => (
-                <div key={step.num} style={{background:'var(--ink-2)',padding:'28px 32px',display:'grid',gridTemplateColumns:'64px 1fr',gap:'24px',alignItems:'start'}}>
+                <div key={step.num} className="cs-step" style={{background:'var(--ink-2)',padding:'28px 32px'}}>
                   <div>
                     <div style={{fontFamily:'var(--font-mono)',fontSize:'9px',letterSpacing:'0.16em',color:'var(--text-3)',marginBottom:'2px',textTransform:'uppercase'}}>Step</div>
                     <div style={{fontFamily:'var(--font-display)',fontSize:'34px',fontWeight:600,letterSpacing:'-0.04em',lineHeight:1,background:'linear-gradient(135deg,var(--accent),var(--accent-2))',WebkitBackgroundClip:'text',backgroundClip:'text',color:'transparent'}}>{step.num}</div>
@@ -223,7 +223,7 @@ export default function CoeCloudPage() {
             <div className="section-eyebrow"><span className="idx">CS·05</span><span>Outcomes</span></div>
             <h2 style={{fontSize:'clamp(26px,3.5vw,40px)',letterSpacing:'-0.03em',marginBottom:'12px'}}>Cloud Clarity. <em style={gradText}>Cost Confidence.</em></h2>
             <p style={{color:'var(--text-1)',fontSize:'15px',lineHeight:'1.7',maxWidth:'680px',marginBottom:'40px'}}>The client moved from a cloud conversation that had stalled for years to a funded, phased programme with full regulatory clearance.</p>
-            <div style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:'1px',background:'var(--line)',border:'1px solid var(--line)',borderRadius:'var(--radius-lg)',overflow:'hidden',marginBottom:'40px'}}>
+            <div className="cs-g4" style={{marginBottom:'40px'}}>
               {csOutcomes.map(o => (
                 <div key={o.l} style={{background:'var(--ink-1)',padding:'28px 20px',display:'flex',flexDirection:'column',gap:'6px'}}>
                   <div style={{fontFamily:'var(--font-display)',fontSize:'clamp(24px,3vw,36px)',fontWeight:600,letterSpacing:'-0.03em',background:'linear-gradient(120deg,var(--accent),var(--accent-2))',WebkitBackgroundClip:'text',backgroundClip:'text',color:'transparent',lineHeight:1.1}}>{o.v}</div>
@@ -231,7 +231,7 @@ export default function CoeCloudPage() {
                 </div>
               ))}
             </div>
-            <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'1px',background:'var(--line)',border:'1px solid var(--line)',borderRadius:'var(--radius-lg)',overflow:'hidden'}}>
+            <div className="cs-g2">
               {csResults.map((r,i) => (
                 <div key={i} style={{background:'var(--ink-1)',padding:'22px 24px',display:'flex',gap:'12px',alignItems:'flex-start'}}>
                   <span style={{color:'var(--accent)',flexShrink:0,marginTop:'2px'}}>→</span>

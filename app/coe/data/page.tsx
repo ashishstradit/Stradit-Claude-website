@@ -194,7 +194,7 @@ export default function CoeDataPage() {
                 A global investment bank running multi-asset trading operations spanning equities, fixed income, foreign exchange, and derivatives. Despite the scale of their operations, their data infrastructure had not kept pace — patching the old system was not the answer. They needed a complete transformation, and StradIT was their best bet.
               </p>
             </div>
-            <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'1px',background:'var(--line)',border:'1px solid var(--line)',borderRadius:'var(--radius-lg)',overflow:'hidden',marginBottom:'32px'}}>
+            <div className="cs-g2" style={{marginBottom:'32px'}}>
               {csChallenges.map((c,i) => (
                 <div key={i} style={{background:'var(--ink-1)',padding:'28px 24px',display:'flex',gap:'14px',alignItems:'flex-start'}}>
                   <span style={{fontFamily:'var(--font-mono)',fontSize:'10px',letterSpacing:'0.16em',color:'var(--accent)',flexShrink:0,marginTop:'3px'}}>{String(i+1).padStart(2,'0')}</span>
@@ -238,7 +238,7 @@ export default function CoeDataPage() {
               <h2 style={{fontSize:'clamp(26px,3.5vw,40px)',letterSpacing:'-0.03em'}}>More Than a <em style={gradText}>Technology Upgrade</em></h2>
               <p style={{color:'var(--text-1)',fontSize:'15px',lineHeight:'1.7'}}>The bank needed a platform that could unify scattered data sources, deliver real-time insights, and scale gracefully as trading volumes grow.</p>
             </div>
-            <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:'1px',background:'var(--line)',border:'1px solid var(--line)',borderRadius:'var(--radius-lg)',overflow:'hidden',marginBottom:'32px'}}>
+            <div className="cs-g3" style={{marginBottom:'32px'}}>
               {csOfferings.map((o,i) => (
                 <div key={i} style={{background:'var(--ink-1)',padding:'24px 20px',display:'flex',gap:'12px',alignItems:'flex-start'}}>
                   <span style={{color:'var(--accent)',flexShrink:0,marginTop:'2px'}}>→</span>
@@ -257,9 +257,9 @@ export default function CoeDataPage() {
               <h2 style={{fontSize:'clamp(26px,3.5vw,40px)',letterSpacing:'-0.03em'}}>Clarity to Chaos. <em style={gradText}>Confidence to the Client.</em></h2>
               <p style={{color:'var(--text-1)',fontSize:'15px',lineHeight:'1.7'}}>A structured six-step approach to bring order to complexity.</p>
             </div>
-            <div style={{display:'flex',flexDirection:'column',gap:'1px',background:'var(--line)',border:'1px solid var(--line)',borderRadius:'var(--radius-lg)',overflow:'hidden',marginBottom:'32px'}}>
+            <div className="cs-steps" style={{marginBottom:'32px'}}>
               {csSteps.map(step => (
-                <div key={step.num} style={{background:'var(--ink-2)',padding:'28px 32px',display:'grid',gridTemplateColumns:'64px 1fr',gap:'24px',alignItems:'start'}}>
+                <div key={step.num} className="cs-step" style={{background:'var(--ink-2)',padding:'28px 32px'}}>
                   <div>
                     <div style={{fontFamily:'var(--font-mono)',fontSize:'9px',letterSpacing:'0.16em',color:'var(--text-3)',marginBottom:'2px',textTransform:'uppercase'}}>Step</div>
                     <div style={{fontFamily:'var(--font-display)',fontSize:'34px',fontWeight:600,letterSpacing:'-0.04em',lineHeight:1,background:'linear-gradient(135deg,var(--accent),var(--accent-2))',WebkitBackgroundClip:'text',backgroundClip:'text',color:'transparent'}}>{step.num}</div>
@@ -281,7 +281,7 @@ export default function CoeDataPage() {
             <div className="section-eyebrow"><span className="idx">CS·05</span><span>Outcomes</span></div>
             <h2 style={{fontSize:'clamp(26px,3.5vw,40px)',letterSpacing:'-0.03em',marginBottom:'12px'}}>The Results <em style={gradText}>Spoke for Themselves</em></h2>
             <p style={{color:'var(--text-1)',fontSize:'15px',lineHeight:'1.7',maxWidth:'680px',marginBottom:'40px'}}>The bank moved from firefighting data issues to confidently leveraging AI-powered analytics as a competitive advantage.</p>
-            <div style={{display:'grid',gridTemplateColumns:'repeat(4,1fr)',gap:'1px',background:'var(--line)',border:'1px solid var(--line)',borderRadius:'var(--radius-lg)',overflow:'hidden',marginBottom:'40px'}}>
+            <div className="cs-g4" style={{marginBottom:'40px'}}>
               {csOutcomes.map(o => (
                 <div key={o.l} style={{background:'var(--ink-1)',padding:'28px 20px',display:'flex',flexDirection:'column',gap:'6px'}}>
                   <div style={{fontFamily:'var(--font-display)',fontSize:'clamp(24px,3vw,36px)',fontWeight:600,letterSpacing:'-0.03em',background:'linear-gradient(120deg,var(--accent),var(--accent-2))',WebkitBackgroundClip:'text',backgroundClip:'text',color:'transparent',lineHeight:1.1}}>{o.v}</div>
@@ -289,7 +289,7 @@ export default function CoeDataPage() {
                 </div>
               ))}
             </div>
-            <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'1px',background:'var(--line)',border:'1px solid var(--line)',borderRadius:'var(--radius-lg)',overflow:'hidden'}}>
+            <div className="cs-g2">
               {csResults.map((r,i) => (
                 <div key={i} style={{background:'var(--ink-1)',padding:'24px 28px',display:'flex',gap:'14px',alignItems:'flex-start'}}>
                   <span style={{color:'var(--accent)',flexShrink:0,marginTop:'2px'}}>→</span>
