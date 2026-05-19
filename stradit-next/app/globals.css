@@ -463,33 +463,15 @@ h1, h2, h3, h4 {
     transition-duration: 0.12s;
   }
 
-  /* ── Animated accent bar (replaces canvas on mobile) ── */
-  .coe-card__visual { display: none !important; }
-  .coe-card::before {
-    content: "";
-    display: block;
-    height: 3px;
-    width: 100%;
-    flex-shrink: 0;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      var(--accent) 20%,
-      var(--accent-2, #4cc8ff) 50%,
-      var(--accent) 80%,
-      transparent 100%
-    );
-    background-size: 200% 100%;
-    animation: coe-bar-slide 2.4s linear infinite;
-    border-radius: 12px 12px 0 0;
-  }
+  /* ── Canvas: show on mobile with reduced height ── */
+  .coe-card__visual { display: block !important; min-height: 140px !important; }
+  .coe-card--lg .coe-card__visual { min-height: 160px !important; }
 
-  /* Open card — glow + faster bar */
+  /* Open card — glow */
   .coe-card--open {
     background: var(--ink-2);
     box-shadow: 0 6px 28px rgba(255,122,61,0.2), 0 0 0 1px rgba(255,122,61,0.18);
   }
-  .coe-card--open::before { animation-duration: 1.2s; }
 
   /* ── Body ── */
   .coe-card__body { padding: 16px 18px 20px; border-top: none; }
