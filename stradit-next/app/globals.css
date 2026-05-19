@@ -268,6 +268,12 @@ h1, h2, h3, h4 {
   .footer__grid { grid-template-columns: 1fr 1fr; }
   .footer__brand { grid-column: span 2; }
 }
+@media (max-width: 560px) {
+  .footer { margin-top: 40px; }
+  .footer__grid { grid-template-columns: 1fr; gap: 24px; }
+  .footer__brand { grid-column: span 1; }
+  .footer__bottom { flex-direction: column; gap: 8px; }
+}
 
 /* Reveal */
 .reveal { opacity: 1; transform: none; }
@@ -1064,6 +1070,7 @@ h1, h2, h3, h4 {
   .cards-3-bottom { grid-template-columns: 1fr; }
   .two-col { grid-template-columns: 1fr; gap: 40px; }
   .two-col--start { grid-template-columns: 1fr; gap: 40px; }
+  .section-eyebrow { margin-bottom: 28px; }
   .section { padding: 64px 0; }
 
   /* COE slider */
@@ -1118,9 +1125,13 @@ h1, h2, h3, h4 {
   }
 }
 
+@media (max-width: 700px) {
+  .hero__hud { display: none; }
+}
 @media (max-width: 600px) {
   .section { padding: 48px 0; }
-  .hero__hud { display: none; }
+  .two-col { gap: 28px; }
+  .two-col--start { gap: 28px; }
   .hero__cta { flex-direction: column; align-items: flex-start; }
   .hero__cta .btn { width: 100%; justify-content: center; }
   .coe-tab-strip button { flex: 1 1 100%; text-align: left; }
@@ -1148,7 +1159,7 @@ h1, h2, h3, h4 {
   gap: 48px;
   align-items: center;
 }
-@media (max-width: 760px) {
+@media (max-width: 700px) {
   .pair-card > div[style] {
     grid-template-columns: 1fr !important;
     gap: 24px !important;
@@ -2034,7 +2045,7 @@ h1, h2, h3, h4 {
 @media (max-width: 700px) {
   .cta-band {
     grid-template-columns: 1fr !important;
-    padding: 40px 24px !important;
+    padding: 40px 28px !important;
     gap: 24px !important;
   }
   .cta-band .btn {
@@ -2054,6 +2065,11 @@ h1, h2, h3, h4 {
   .contact-grid {
     grid-template-columns: 1fr !important;
     gap: 48px !important;
+  }
+}
+@media (max-width: 600px) {
+  .contact-grid {
+    gap: 32px !important;
   }
 }
 
@@ -2257,6 +2273,10 @@ h1, h2, h3, h4 {
   .cs-g4 { grid-template-columns: 1fr 1fr; }
   .cs-mini-g3 { grid-template-columns: repeat(3, 1fr); }
   .cs-step { grid-template-columns: 48px 1fr; gap: 16px; }
+}
+
+@media (max-width: 700px) {
+  .cs-mini-g3 { grid-template-columns: 1fr 1fr; gap: 10px; }
 }
 
 @media (max-width: 600px) {

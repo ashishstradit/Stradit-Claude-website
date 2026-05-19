@@ -146,7 +146,7 @@ export default function HomePage() {
       </section>{/* end coe-section */}
 
       {/* STARTIT */}
-      <section style={{padding:'100px 0',borderTop:'1px solid var(--line)',background:'var(--ink-1)'}}>
+      <section className="section" style={{borderTop:'1px solid var(--line)',background:'var(--ink-1)'}}>
         <div className="container">
           <div className="two-col">
             <div>
@@ -186,7 +186,7 @@ export default function HomePage() {
                 <div style={{fontFamily:'var(--font-display)',fontSize:'17px',fontWeight:500,letterSpacing:'-0.02em',marginBottom:'6px'}}>Quantum AI Training</div>
                 <div style={{fontSize:'12px',fontStyle:'italic',color:'var(--accent-2)'}}>Prepare for the Next Frontier</div>
               </div>
-              <div style={{gridColumn:'span 2',display:'flex',gap:'24px',paddingTop:'8px',borderTop:'1px solid var(--line)',marginTop:'4px'}}>
+              <div style={{gridColumn:'span 2',display:'flex',gap:'16px',paddingTop:'8px',borderTop:'1px solid var(--line)',marginTop:'4px'}}>
                 {[['8 wks','Cohort'],['5','Tracks'],['Hybrid','Delivery']].map(([v,l],i,a) => (
                   <div key={l} style={{flex:1,display:'flex',alignItems:'center',gap:'24px'}}>
                     <div style={{flex:1,textAlign:'center'}}>
@@ -203,7 +203,7 @@ export default function HomePage() {
       </section>
 
       {/* STRADIT VENTURE */}
-      <section style={{padding:'100px 0',borderTop:'1px solid var(--line)'}}>
+      <section className="section" style={{borderTop:'1px solid var(--line)'}}>
         <div className="container">
           <div className="section-eyebrow" style={{marginBottom:'32px'}}>
             <span className="idx">Stradit Venture</span><span>Co-build · Equity-aligned</span>
@@ -229,7 +229,7 @@ export default function HomePage() {
       </section>
 
       {/* EXCELLENCE VERIFIED */}
-      <section style={{padding:'100px 0',borderTop:'1px solid var(--line)',background:'var(--ink-1)'}}>
+      <section className="section" style={{borderTop:'1px solid var(--line)',background:'var(--ink-1)'}}>
         <div className="container">
           <div style={{textAlign:'center',marginBottom:'56px'}}>
             <h2 style={{fontSize:'clamp(32px,4.5vw,56px)',letterSpacing:'-0.03em',lineHeight:'1.05',marginBottom:'16px'}}>
@@ -280,7 +280,7 @@ export default function HomePage() {
       </section>
 
       {/* FINAL CTA BAND */}
-      <section style={{padding:'100px 0',borderTop:'1px solid var(--line)'}}>
+      <section className="section" style={{borderTop:'1px solid var(--line)'}}>
         <div className="container">
           <div style={{
             background:'radial-gradient(ellipse 80% 100% at 0% 50%,rgba(255,122,61,0.15),transparent 60%),radial-gradient(ellipse 60% 100% at 100% 50%,rgba(76,200,255,0.08),transparent 60%),var(--ink-2)',

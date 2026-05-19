@@ -84,7 +84,7 @@ export default function CoeCyberPage() {
       </header>
 
       {/* APPROACH */}
-      <section className="section" style={{paddingTop:'100px'}}>
+      <section className="section">
         <div className="container">
           <div className="section-eyebrow"><span className="idx">01</span><span>Our Approach</span></div>
           <div className="section-intro">
