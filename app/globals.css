@@ -287,7 +287,7 @@ h1, h2, h3, h4 {
 .logos__item:hover { opacity: 1; color: var(--text-0); }
 @media (max-width: 760px) { .logos__row { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
 
-/* CoE cards */
+/* ── CoE section ──────────────────────────────────────────────── */
 .coe-section { padding: 100px 0; border-top: 1px solid var(--line); position: relative; }
 .coe-header { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; margin-bottom: 64px; }
 .coe-header h2 { font-size: clamp(34px, 4.5vw, 56px); letter-spacing: -0.03em; line-height: 1; }
@@ -295,7 +295,8 @@ h1, h2, h3, h4 {
 .coe-header p { color: var(--text-1); font-size: 16px; max-width: 520px; line-height: 1.6; }
 @media (max-width: 800px) { .coe-header { grid-template-columns: 1fr; gap: 24px; } }
 .coe-rail { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
-/* ── CoE card base ──────────────────────────────────────── */
+
+/* ── CoE card base ────────────────────────────────────────────── */
 .coe-card {
   position: relative;
   background: var(--ink-1);
@@ -307,13 +308,12 @@ h1, h2, h3, h4 {
   flex-direction: column;
   min-height: 360px;
   transition: border-color .25s ease, transform .3s cubic-bezier(0.2,0.7,0.2,1), box-shadow .3s ease;
-  isolation: isolate;
 }
 .coe-card--lg { grid-column: span 4; min-height: 440px; }
 .coe-card--md { grid-column: span 2; }
 .coe-card--sm { grid-column: span 2; }
 
-/* ── Visual (canvas) area ───────────────────────────────── */
+/* ── Visual (canvas) ──────────────────────────────────────────── */
 .coe-card__visual {
   position: relative;
   flex: 1;
@@ -330,7 +330,7 @@ h1, h2, h3, h4 {
 .coe-card__badge { position: absolute; top: 16px; left: 16px; z-index: 2; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-0); background: rgba(6,9,18,0.6); backdrop-filter: blur(10px); border: 1px solid var(--line-strong); padding: 6px 10px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px; }
 .coe-card__badge::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent-glow); }
 
-/* ── Card body ──────────────────────────────────────────── */
+/* ── Card body ────────────────────────────────────────────────── */
 .coe-card__body {
   padding: 22px 24px 24px;
   background: var(--ink-1);
@@ -353,18 +353,17 @@ h1, h2, h3, h4 {
   font-size: 13px;
   line-height: 1.55;
   margin-bottom: 12px;
-  transition: margin-bottom .25s ease;
 }
 .coe-card--lg .coe-card__desc { font-size: 14px; }
 
-/* ── 4 bullet highlights (hidden by default) ────────────── */
+/* ── 4 bullet highlights — hidden by default ──────────────────── */
 .coe-card__highlights {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 7px;
   max-height: 0;
   opacity: 0;
   overflow: hidden;
@@ -381,12 +380,10 @@ h1, h2, h3, h4 {
 }
 .coe-card__highlight > span { color: var(--accent); flex-shrink: 0; font-size: 11px; }
 
-/* ── Mobile toggle button (hidden on desktop) ───────────── */
-.coe-card__toggle {
-  display: none;
-}
+/* ── Mobile toggle (hidden on desktop) ───────────────────────── */
+.coe-card__toggle { display: none; }
 
-/* ── CTA link ───────────────────────────────────────────── */
+/* ── CTA link ─────────────────────────────────────────────────── */
 .coe-card__cta {
   display: inline-flex;
   align-items: center;
@@ -402,11 +399,8 @@ h1, h2, h3, h4 {
 }
 .coe-card__cta::after { content: "→"; transition: transform .2s ease; }
 
-/* ── Desktop hover (≥ 701 px) ───────────────────────────── */
+/* ── DESKTOP hover reveal (≥ 701px) ──────────────────────────── */
 @media (min-width: 701px) {
-  .coe-card { cursor: default; }
-
-  /* Lift + accent border on hover */
   .coe-card:hover {
     border-color: var(--accent);
     transform: translateY(-4px);
@@ -415,60 +409,105 @@ h1, h2, h3, h4 {
   .coe-card:hover .coe-card__visual canvas { transform: scale(1.06); }
   .coe-card:hover .coe-card__cta::after { transform: translateX(4px); }
 
-  /* Reveal the 4 bullets */
+  /* ★ Reveal 4 bullets on hover ★ */
   .coe-card:hover .coe-card__highlights {
     max-height: 240px;
     opacity: 1;
     margin-bottom: 12px;
     pointer-events: auto;
   }
-
-  /* Tighten desc spacing when bullets visible */
-  .coe-card:hover .coe-card__desc { margin-bottom: 8px; }
-
-  /* Hide the mobile toggle on desktop */
+  .coe-card:hover .coe-card__desc { margin-bottom: 6px; }
   .coe-card__toggle { display: none !important; }
 }
 
-/* ── Tablet two-column (1100 → 701 px) ─────────────────── */
+/* ── Tablet 2-col (1100 → 701px) ─────────────────────────────── */
 @media (max-width: 1100px) {
   .coe-rail { grid-template-columns: repeat(2, 1fr); }
   .coe-card--lg, .coe-card--md, .coe-card--sm { grid-column: span 1; }
 }
 
-/* ── Mobile single-column (≤ 700 px) ────────────────────── */
+/* ── MOBILE single-col (≤ 700px) ─────────────────────────────── */
+
+/* Animated gradient bar sweeping across card top */
+@keyframes coe-bar-slide {
+  0%   { background-position: 0% 0%; }
+  100% { background-position: 200% 0%; }
+}
+
 @media (max-width: 700px) {
-  .coe-rail { grid-template-columns: 1fr !important; gap: 10px; }
+  .coe-rail { grid-template-columns: 1fr !important; gap: 12px; }
+
+  /* ── Card base: starts invisible, JS adds .coe-card--visible ── */
   .coe-card, .coe-card--lg, .coe-card--md, .coe-card--sm {
     grid-column: 1 / -1 !important;
     min-height: unset;
-    border-left: 3px solid var(--accent);
-    transform: none !important;
-    box-shadow: none !important;
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+      transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+      box-shadow 0.25s ease,
+      border-color 0.25s ease;
+    box-shadow: 0 2px 14px rgba(0,0,0,0.28);
   }
-  .coe-card--open {
-    border-color: var(--accent);
-    background: var(--ink-2);
+
+  /* Triggered by IntersectionObserver in CoeCard.tsx */
+  .coe-card--visible {
+    opacity: 1;
+    transform: translateY(0);
   }
-  /* Hide canvas on mobile — save space */
+
+  /* Tap feedback */
+  .coe-card--visible:active {
+    transform: scale(0.978);
+    transition-duration: 0.12s;
+  }
+
+  /* ── Animated accent bar (replaces canvas on mobile) ── */
   .coe-card__visual { display: none !important; }
-  .coe-card__body { padding: 18px 18px 20px; border-top: none; }
+  .coe-card::before {
+    content: "";
+    display: block;
+    height: 3px;
+    width: 100%;
+    flex-shrink: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--accent) 20%,
+      var(--accent-2, #4cc8ff) 50%,
+      var(--accent) 80%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: coe-bar-slide 2.4s linear infinite;
+    border-radius: 12px 12px 0 0;
+  }
+
+  /* Open card — glow + faster bar */
+  .coe-card--open {
+    background: var(--ink-2);
+    box-shadow: 0 6px 28px rgba(255,122,61,0.2), 0 0 0 1px rgba(255,122,61,0.18);
+  }
+  .coe-card--open::before { animation-duration: 1.2s; }
+
+  /* ── Body ── */
+  .coe-card__body { padding: 16px 18px 20px; border-top: none; }
   .coe-card__title { font-size: 16px !important; line-height: 1.25; }
   .coe-card--lg .coe-card__title { font-size: 18px !important; }
-  .coe-card__desc { font-size: 13px; margin-bottom: 0; }
+  .coe-card__desc { font-size: 13px; margin-bottom: 0; color: var(--text-2); }
 
-  /* Mobile toggle button */
+  /* ── Toggle button ── */
   .coe-card__toggle {
     display: flex;
     align-items: center;
-    gap: 6px;
+    justify-content: space-between;
     background: none;
     border: none;
     border-top: 1px solid var(--line);
-    padding: 10px 0 8px;
-    margin-top: 10px;
+    padding: 11px 0 8px;
+    margin-top: 12px;
     width: 100%;
-    text-align: left;
     font-family: var(--font-mono);
     font-size: 10px;
     letter-spacing: 0.12em;
@@ -476,18 +515,39 @@ h1, h2, h3, h4 {
     color: var(--accent);
     cursor: pointer;
   }
-  .coe-card__toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .coe-card__toggle::after {
+    content: "↓";
+    font-size: 14px;
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  .coe-card--open .coe-card__toggle::after { transform: rotate(180deg); }
+  .coe-card__toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
 
-  /* Reveal bullets when open on mobile */
+  /* ── Bullet highlights expand ── */
   .coe-card--open .coe-card__highlights {
-    max-height: 260px;
+    max-height: 300px;
     opacity: 1;
     margin-top: 10px;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
     pointer-events: auto;
   }
-  .coe-card__highlight { font-size: 13px; }
-  .coe-card__cta { padding-top: 10px; font-size: 11px; }
+  .coe-card__highlight {
+    font-size: 13px;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.24s ease, transform 0.24s ease;
+  }
+  .coe-card--open .coe-card__highlight          { opacity: 1; transform: translateX(0); }
+  .coe-card--open .coe-card__highlight:nth-child(1) { transition-delay: 0.05s; }
+  .coe-card--open .coe-card__highlight:nth-child(2) { transition-delay: 0.11s; }
+  .coe-card--open .coe-card__highlight:nth-child(3) { transition-delay: 0.17s; }
+  .coe-card--open .coe-card__highlight:nth-child(4) { transition-delay: 0.23s; }
+
+  /* ── CTA ── */
+  .coe-card__cta { padding-top: 10px; }
+
+  /* ── Section ── */
   .coe-section { padding: 52px 0; }
   .coe-header { margin-bottom: 24px; }
   .coe-header h2 { font-size: clamp(26px, 8vw, 38px); }
@@ -495,8 +555,89 @@ h1, h2, h3, h4 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .coe-card__highlights { transition: none; }
-  .coe-card { transition: none; }
+  .coe-card { transition: none !important; }
+  .coe-card, .coe-card__highlights, .coe-card__highlight,
+  .coe-card::before { animation: none !important; transition: none !important; }
+  .coe-card--visible { opacity: 1; transform: none; }
+}
+
+/* Case Study card */
+.cs-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--ink-2);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  gap: 20px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color .22s ease, transform .28s cubic-bezier(0.2,0.7,0.2,1), box-shadow .28s ease;
+  position: relative;
+  overflow: hidden;
+}
+.cs-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 100% 0%, rgba(255,122,61,0.1), transparent 70%);
+  pointer-events: none;
+}
+.cs-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.4), 0 0 0 1px var(--accent-soft);
+}
+.cs-card__tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.cs-card__title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--text-0);
+}
+.cs-card__desc {
+  color: var(--text-2);
+  font-size: 13px;
+  line-height: 1.65;
+  flex: 1;
+}
+.cs-card__stats {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.cs-card__stat-v {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-0);
+}
+.cs-card__stat-l {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-top: 2px;
+}
+.cs-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
 }
 
 /* Pair card */
@@ -511,10 +652,13 @@ h1, h2, h3, h4 {
 .pair-card .cta-link::after { content: "→"; transition: transform .2s ease; }
 .pair-card:hover .cta-link::after { transform: translateX(4px); }
 
-.coe-card { min-height: 280px; }
-.coe-card--lg { grid-column: span 4; min-height: 340px; }
-.coe-card__visual { min-height: 160px; }
-.coe-card--lg .coe-card__visual { min-height: 200px; }
+/* CoE card size overrides for mid-range screens */
+@media (max-width: 1280px) and (min-width: 701px) {
+  .coe-card { min-height: 280px; }
+  .coe-card--lg { min-height: 340px; }
+  .coe-card__visual { min-height: 160px; }
+  .coe-card--lg .coe-card__visual { min-height: 200px; }
+}
 
 /* CoE card chip */
 .coe-card__chip {
@@ -1036,6 +1180,12 @@ h1, h2, h3, h4 {
     grid-template-columns: 1fr !important;
     padding: 40px 28px !important;
   }
+}
+
+/* Case study page — mobile overrides */
+@media (max-width: 700px) {
+  .cs-card { padding: 24px 20px; }
+  .cs-card__title { font-size: 18px; }
 }
 
 /* StartIT section grid */
@@ -1864,52 +2014,14 @@ h1, h2, h3, h4 {
   .nav__submenu a { padding: 10px 16px; font-size: 13px; }
 }
 
-/* CoE card highlights: hidden by default, shown on .coe-card:hover / :focus-within (see coe-card block) */
-
-.landing-band {
-  padding: clamp(56px, 12vw, 100px) 0;
-  border-top: 1px solid var(--line);
-}
-.landing-band--ink { background: var(--ink-1); }
-.landing-startit-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-}
-.landing-startit-grid__wide { grid-column: span 2; }
-.landing-startit-stats {
-  grid-column: span 2;
-  display: flex;
-  gap: 16px;
-  padding-top: 8px;
-  border-top: 1px solid var(--line);
-  margin-top: 4px;
-}
-.landing-startit-stats__cell {
-  flex: 1;
-  text-align: center;
-  min-width: 0;
-}
-.pair-card__grid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 48px;
-  align-items: center;
-}
+/* Hide card bullet lists on mobile for cleaner look — handled in coe-card block above */
 
 /* Landing page inline section grids */
 @media (max-width: 900px) {
   /* StartIT, Venture pair-card inner grids */
   .two-col { grid-template-columns: 1fr !important; gap: 40px !important; }
-  .landing-startit-grid { grid-template-columns: 1fr; }
-  .landing-startit-grid__wide,
-  .landing-startit-stats { grid-column: span 1; }
-  .pair-card__grid {
-    grid-template-columns: 1fr !important;
-    gap: 24px !important;
-  }
 
-  /* StartIT tracks 2-col inner grid (legacy inline styles) */
+  /* StartIT tracks 2-col inner grid */
   div[style*="repeat(2,1fr)"][style*="gap:'12px'"] {
     grid-template-columns: 1fr !important;
   }
@@ -1929,27 +2041,7 @@ h1, h2, h3, h4 {
 }
 
 @media (max-width: 600px) {
-  .hero__inner { padding: 56px 0 48px; }
-  .hero__cta { margin-bottom: 48px; }
-  .hero__cta .btn { flex: 1 1 100%; justify-content: center; }
-  .hero__meta { grid-template-columns: 1fr; }
-  .hero__meta-cell {
-    border-right: none !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-    padding-bottom: 16px;
-    margin-bottom: 16px;
-    border-bottom: 1px solid var(--line);
-  }
-  .hero__meta-cell:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-  .hero__meta-cell:nth-child(3),
-  .hero__meta-cell:nth-child(4) { border-top: none; margin-top: 0; padding-top: 0; }
-  .hero__hud { display: none; }
-  .landing-startit-stats { flex-direction: column; gap: 12px; }
-  .pair-card { padding: 28px 22px 24px; min-height: unset; }
-  .pair-card .row { flex-wrap: wrap; gap: 16px !important; }
-
-  /* Track 5 span 2 reset (legacy inline styles) */
+  /* Track 5 span 2 reset */
   div[style*="gridColumn:'span 2'"] {
     grid-column: span 1 !important;
   }
