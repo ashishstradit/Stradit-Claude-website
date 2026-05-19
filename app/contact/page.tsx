@@ -65,17 +65,25 @@ export default function ContactPage() {
               <div>
                 <div className="section-eyebrow"><span className="idx">01</span><span>Reach Out Your Way</span></div>
                 <h2 style={{fontSize:'clamp(24px,3vw,36px)',letterSpacing:'-0.03em',marginBottom:'24px'}}>Reach Out Your Way</h2>
-                <a href="mailto:reachout@stradit.com" style={{display:'flex',alignItems:'center',gap:'16px',background:'var(--ink-1)',border:'1px solid var(--line)',borderRadius:'var(--radius)',padding:'20px 24px',transition:'all .2s ease',textDecoration:'none',color:'inherit'}}
-                  onMouseEnter={e=>(e.currentTarget as HTMLAnchorElement).style.borderColor='var(--accent)'}
-                  onMouseLeave={e=>(e.currentTarget as HTMLAnchorElement).style.borderColor='var(--line)'}>
-                  <div style={{width:'40px',height:'40px',borderRadius:'10px',background:'var(--accent-soft)',display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0}}>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                  </div>
-                  <div>
-                    <div style={{fontFamily:'var(--font-mono)',fontSize:'10px',letterSpacing:'0.14em',textTransform:'uppercase',color:'var(--text-3)',marginBottom:'4px'}}>Email Us</div>
-                    <div style={{fontFamily:'var(--font-display)',fontSize:'17px',fontWeight:500,color:'var(--accent)'}}>reachout@stradit.com</div>
-                  </div>
-                </a>
+                <div style={{display:'flex',flexDirection:'column',gap:'12px'}}>
+                  {[
+                    {label:'General Enquiries',email:'reachout@stradit.com'},
+                    {label:'Sales',email:'sales@stradit.com'},
+                    {label:'Careers',email:'jobs@stradit.com'},
+                  ].map(item=>(
+                    <a key={item.email} href={`mailto:${item.email}`} style={{display:'flex',alignItems:'center',gap:'16px',background:'var(--ink-1)',border:'1px solid var(--line)',borderRadius:'var(--radius)',padding:'20px 24px',transition:'all .2s ease',textDecoration:'none',color:'inherit'}}
+                      onMouseEnter={e=>(e.currentTarget as HTMLAnchorElement).style.borderColor='var(--accent)'}
+                      onMouseLeave={e=>(e.currentTarget as HTMLAnchorElement).style.borderColor='var(--line)'}>
+                      <div style={{width:'40px',height:'40px',borderRadius:'10px',background:'var(--accent-soft)',display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0}}>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                      </div>
+                      <div>
+                        <div style={{fontFamily:'var(--font-mono)',fontSize:'10px',letterSpacing:'0.14em',textTransform:'uppercase',color:'var(--text-3)',marginBottom:'4px'}}>{item.label}</div>
+                        <div style={{fontFamily:'var(--font-display)',fontSize:'17px',fontWeight:500,color:'var(--accent)'}}>{item.email}</div>
+                      </div>
+                    </a>
+                  ))}
+                </div>
               </div>
 
               {/* Follow the Journey */}
