@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import AnimCanvas from '@/components/AnimCanvas'
+import CaseStudyToggle from '@/components/CaseStudyToggle'
 
 export const metadata = {
   title: '70% Faster Due Diligence with Purpose-Built AI Agents — StradIT Case Study',
@@ -87,6 +88,8 @@ export default function AiAgentsCaseStudyPage() {
           <span>Case Study · AI</span>
         </div>
       </header>
+
+      <CaseStudyToggle>
 
       {/* ── 01 CLIENT OVERVIEW ── */}
       <section className="section" style={{paddingTop:'100px'}}>
@@ -370,6 +373,8 @@ export default function AiAgentsCaseStudyPage() {
           </div>
         </div>
       </section>
+
+      </CaseStudyToggle>
 
       <Footer />
     </>

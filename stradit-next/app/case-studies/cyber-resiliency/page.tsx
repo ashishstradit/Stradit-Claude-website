@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import AnimCanvas from '@/components/AnimCanvas'
+import CaseStudyToggle from '@/components/CaseStudyToggle'
 
 export const metadata = {
   title: 'Zero Data Loss Readiness Across 300+ Applications — StradIT Case Study',
@@ -110,6 +111,8 @@ export default function CyberResiliencyPage() {
           <span>Case Study · Cyber</span>
         </div>
       </header>
+
+      <CaseStudyToggle>
 
       {/* ── 01 CLIENT OVERVIEW ── */}
       <section className="section" style={{paddingTop:'100px'}}>
@@ -413,6 +416,8 @@ export default function CyberResiliencyPage() {
           </div>
         </div>
       </section>
+
+      </CaseStudyToggle>
 
       <Footer />
     </>

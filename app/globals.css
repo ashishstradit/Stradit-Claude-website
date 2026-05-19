@@ -2122,3 +2122,47 @@ h1, h2, h3, h4 {
 .hero--carousel::before {
   display: none !important;
 }
+
+/* ===== CASE STUDY TOGGLE ===== */
+.cs-expand {
+  overflow: hidden;
+  transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: max-height;
+}
+
+.cs-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.cs-toggle-btn--open {
+  background: var(--ink-2);
+  color: var(--text-1);
+  border: 1px solid var(--line-strong);
+}
+.cs-toggle-btn--open:hover {
+  background: var(--ink-3);
+  border-color: var(--text-3);
+  color: var(--text-0);
+}
+
+@media (max-width: 600px) {
+  .cs-toggle-btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 14px;
+    padding: 14px 24px;
+  }
+  .cs-trigger .container {
+    padding: 0 var(--pad-x);
+  }
+}
