@@ -604,6 +604,41 @@
       const cellW = (W - pad * 3) / cols;
       const cellH = (H - pad * (cols === 1 ? 5 : 3)) / (cols === 1 ? 4 : 2);
 
+      // ---- COMPACT MODE: canvas too short for full dashboard (mobile cards) ----
+      if (cellH < 40) {
+        if (ts - lastBarTick > 1100) { for (const b of bars) b.target = rand(0.15, 0.95); lastBarTick = ts; }
+        const bx = pad, bw = W - pad * 2;
+        const by = pad + 20, bh = H - by - pad;
+        if (bh > 4) {
+          ctx.font = "9px 'JetBrains Mono', monospace";
+          ctx.fillStyle = "rgba(255,255,255,0.45)";
+          ctx.fillText("VOLUME · 12M", bx, pad + 13);
+          const bgap = 3;
+          const barW = (bw - bgap * (bars.length - 1)) / bars.length;
+          for (let i = 0; i < bars.length; i++) {
+            const b = bars[i];
+            b.value += (b.target - b.value) * 0.08;
+            const h = b.value * bh;
+            const x = bx + i * (barW + bgap);
+            const y = by + bh - h;
+            if (h > 0) {
+              const grd = ctx.createLinearGradient(0, y, 0, y + h);
+              grd.addColorStop(0, rgb(b.mix, 0.9));
+              grd.addColorStop(1, rgb(b.mix, 0.2));
+              ctx.fillStyle = grd;
+              ctx.fillRect(x, y, Math.max(1, barW), h);
+              ctx.fillStyle = rgb(b.mix, 1);
+              ctx.fillRect(x, y, Math.max(1, barW), 2);
+            }
+          }
+          ctx.strokeStyle = "rgba(255,255,255,0.15)";
+          ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(bx, by + bh + 0.5); ctx.lineTo(bx + bw, by + bh + 0.5); ctx.stroke();
+        }
+        requestAnimationFrame(frame);
+        return;
+      }
+
       // ---- BAR CHART (top-left) ----
       drawPanel(pad, pad, cellW, cellH, "VOLUME · 12M");
       if (ts - lastBarTick > 1100) {
