@@ -295,46 +295,208 @@ h1, h2, h3, h4 {
 .coe-header p { color: var(--text-1); font-size: 16px; max-width: 520px; line-height: 1.6; }
 @media (max-width: 800px) { .coe-header { grid-template-columns: 1fr; gap: 24px; } }
 .coe-rail { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
-.coe-card { position: relative; background: var(--ink-1); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; text-decoration: none; color: inherit; display: flex; flex-direction: column; min-height: 360px; transition: all .3s cubic-bezier(0.2,0.7,0.2,1); isolation: isolate; }
+/* ── CoE card base ──────────────────────────────────────── */
+.coe-card {
+  position: relative;
+  background: var(--ink-1);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  min-height: 360px;
+  transition: border-color .25s ease, transform .3s cubic-bezier(0.2,0.7,0.2,1), box-shadow .3s ease;
+  isolation: isolate;
+}
 .coe-card--lg { grid-column: span 4; min-height: 440px; }
 .coe-card--md { grid-column: span 2; }
 .coe-card--sm { grid-column: span 2; }
-.coe-card--md { grid-column: span 2; }
-.coe-card--sm { grid-column: span 2; }
-.coe-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 24px 60px rgba(0,0,0,0.4), 0 0 0 1px var(--accent-soft); }
-.coe-card__visual { position: relative; flex: 1; min-height: 220px; background: var(--ink-2); overflow: hidden; }
+
+/* ── Visual (canvas) area ───────────────────────────────── */
+.coe-card__visual {
+  position: relative;
+  flex: 1;
+  min-height: 220px;
+  background: var(--ink-2);
+  overflow: hidden;
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
 .coe-card--lg .coe-card__visual { min-height: 280px; }
 .coe-card__visual canvas { width: 100% !important; height: 100% !important; display: block; transition: transform .6s ease; }
-.coe-card:hover .coe-card__visual canvas { transform: scale(1.06); }
 .coe-card__visual::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(10,16,32,0.55) 100%); pointer-events: none; }
 .coe-card__badge { position: absolute; top: 16px; left: 16px; z-index: 2; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-0); background: rgba(6,9,18,0.6); backdrop-filter: blur(10px); border: 1px solid var(--line-strong); padding: 6px 10px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px; }
 .coe-card__badge::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent-glow); }
-.coe-card__body { padding: 24px 24px 26px; background: var(--ink-1); border-top: 1px solid var(--line); }
-.coe-card__title { font-family: var(--font-display); font-size: 19px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 8px; color: var(--text-0); }
+
+/* ── Card body ──────────────────────────────────────────── */
+.coe-card__body {
+  padding: 22px 24px 24px;
+  background: var(--ink-1);
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+}
+.coe-card__title {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 8px;
+  color: var(--text-0);
+}
 .coe-card--lg .coe-card__title { font-size: 26px; }
-.coe-card__desc { color: var(--text-2); font-size: 13px; line-height: 1.55; margin-bottom: 14px; }
-.coe-card--lg .coe-card__desc { font-size: 14px; max-width: 540px; }
-.coe-card__cta { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+.coe-card__desc {
+  color: var(--text-2);
+  font-size: 13px;
+  line-height: 1.55;
+  margin-bottom: 12px;
+  transition: margin-bottom .25s ease;
+}
+.coe-card--lg .coe-card__desc { font-size: 14px; }
+
+/* ── 4 bullet highlights (hidden by default) ────────────── */
+.coe-card__highlights {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transition: max-height .38s cubic-bezier(0.2,0.8,0.2,1), opacity .28s ease, margin .28s ease;
+}
+.coe-card__highlight {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  font-size: 12.5px;
+  color: var(--text-1);
+  line-height: 1.45;
+}
+.coe-card__highlight > span { color: var(--accent); flex-shrink: 0; font-size: 11px; }
+
+/* ── Mobile toggle button (hidden on desktop) ───────────── */
+.coe-card__toggle {
+  display: none;
+}
+
+/* ── CTA link ───────────────────────────────────────────── */
+.coe-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  text-decoration: none;
+  margin-top: auto;
+  padding-top: 14px;
+}
 .coe-card__cta::after { content: "→"; transition: transform .2s ease; }
-.coe-card:hover .coe-card__cta::after { transform: translateX(4px); }
+
+/* ── Desktop hover (≥ 701 px) ───────────────────────────── */
+@media (min-width: 701px) {
+  .coe-card { cursor: default; }
+
+  /* Lift + accent border on hover */
+  .coe-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 28px 64px rgba(0,0,0,0.45), 0 0 0 1px var(--accent-soft);
+  }
+  .coe-card:hover .coe-card__visual canvas { transform: scale(1.06); }
+  .coe-card:hover .coe-card__cta::after { transform: translateX(4px); }
+
+  /* Reveal the 4 bullets */
+  .coe-card:hover .coe-card__highlights {
+    max-height: 240px;
+    opacity: 1;
+    margin-bottom: 12px;
+    pointer-events: auto;
+  }
+
+  /* Tighten desc spacing when bullets visible */
+  .coe-card:hover .coe-card__desc { margin-bottom: 8px; }
+
+  /* Hide the mobile toggle on desktop */
+  .coe-card__toggle { display: none !important; }
+}
+
+/* ── Tablet two-column (1100 → 701 px) ─────────────────── */
 @media (max-width: 1100px) {
   .coe-rail { grid-template-columns: repeat(2, 1fr); }
   .coe-card--lg, .coe-card--md, .coe-card--sm { grid-column: span 1; }
 }
+
+/* ── Mobile single-column (≤ 700 px) ────────────────────── */
 @media (max-width: 700px) {
-  .coe-rail { grid-template-columns: 1fr !important; gap: 12px; }
+  .coe-rail { grid-template-columns: 1fr !important; gap: 10px; }
   .coe-card, .coe-card--lg, .coe-card--md, .coe-card--sm {
     grid-column: 1 / -1 !important;
     min-height: unset;
-    border-left: 2px solid var(--accent);
+    border-left: 3px solid var(--accent);
+    transform: none !important;
+    box-shadow: none !important;
   }
+  .coe-card--open {
+    border-color: var(--accent);
+    background: var(--ink-2);
+  }
+  /* Hide canvas on mobile — save space */
   .coe-card__visual { display: none !important; }
-  .coe-card__body { padding: 24px 20px; border-top: none; }
-  .coe-card__title { font-size: 17px !important; }
-  .coe-card--lg .coe-card__title { font-size: 19px !important; }
-  .coe-card__desc { font-size: 13px; margin-bottom: 12px; }
-  .coe-section { padding: 60px 0; }
-  .coe-header { margin-bottom: 32px; }
+  .coe-card__body { padding: 18px 18px 20px; border-top: none; }
+  .coe-card__title { font-size: 16px !important; line-height: 1.25; }
+  .coe-card--lg .coe-card__title { font-size: 18px !important; }
+  .coe-card__desc { font-size: 13px; margin-bottom: 0; }
+
+  /* Mobile toggle button */
+  .coe-card__toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    border-top: 1px solid var(--line);
+    padding: 10px 0 8px;
+    margin-top: 10px;
+    width: 100%;
+    text-align: left;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    cursor: pointer;
+  }
+  .coe-card__toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* Reveal bullets when open on mobile */
+  .coe-card--open .coe-card__highlights {
+    max-height: 260px;
+    opacity: 1;
+    margin-top: 10px;
+    margin-bottom: 4px;
+    pointer-events: auto;
+  }
+  .coe-card__highlight { font-size: 13px; }
+  .coe-card__cta { padding-top: 10px; font-size: 11px; }
+  .coe-section { padding: 52px 0; }
+  .coe-header { margin-bottom: 24px; }
+  .coe-header h2 { font-size: clamp(26px, 8vw, 38px); }
+  .coe-header p { font-size: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coe-card__highlights { transition: none; }
+  .coe-card { transition: none; }
 }
 
 /* Pair card */
@@ -1702,14 +1864,52 @@ h1, h2, h3, h4 {
   .nav__submenu a { padding: 10px 16px; font-size: 13px; }
 }
 
-/* Hide card bullet lists on mobile for cleaner look — handled in coe-card block above */
+/* CoE card highlights: hidden by default, shown on .coe-card:hover / :focus-within (see coe-card block) */
+
+.landing-band {
+  padding: clamp(56px, 12vw, 100px) 0;
+  border-top: 1px solid var(--line);
+}
+.landing-band--ink { background: var(--ink-1); }
+.landing-startit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.landing-startit-grid__wide { grid-column: span 2; }
+.landing-startit-stats {
+  grid-column: span 2;
+  display: flex;
+  gap: 16px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+  margin-top: 4px;
+}
+.landing-startit-stats__cell {
+  flex: 1;
+  text-align: center;
+  min-width: 0;
+}
+.pair-card__grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
 
 /* Landing page inline section grids */
 @media (max-width: 900px) {
   /* StartIT, Venture pair-card inner grids */
   .two-col { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .landing-startit-grid { grid-template-columns: 1fr; }
+  .landing-startit-grid__wide,
+  .landing-startit-stats { grid-column: span 1; }
+  .pair-card__grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
 
-  /* StartIT tracks 2-col inner grid */
+  /* StartIT tracks 2-col inner grid (legacy inline styles) */
   div[style*="repeat(2,1fr)"][style*="gap:'12px'"] {
     grid-template-columns: 1fr !important;
   }
@@ -1729,7 +1929,27 @@ h1, h2, h3, h4 {
 }
 
 @media (max-width: 600px) {
-  /* Track 5 span 2 reset */
+  .hero__inner { padding: 56px 0 48px; }
+  .hero__cta { margin-bottom: 48px; }
+  .hero__cta .btn { flex: 1 1 100%; justify-content: center; }
+  .hero__meta { grid-template-columns: 1fr; }
+  .hero__meta-cell {
+    border-right: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero__meta-cell:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .hero__meta-cell:nth-child(3),
+  .hero__meta-cell:nth-child(4) { border-top: none; margin-top: 0; padding-top: 0; }
+  .hero__hud { display: none; }
+  .landing-startit-stats { flex-direction: column; gap: 12px; }
+  .pair-card { padding: 28px 22px 24px; min-height: unset; }
+  .pair-card .row { flex-wrap: wrap; gap: 16px !important; }
+
+  /* Track 5 span 2 reset (legacy inline styles) */
   div[style*="gridColumn:'span 2'"] {
     grid-column: span 1 !important;
   }
@@ -1760,6 +1980,54 @@ h1, h2, h3, h4 {
     grid-template-columns: 1fr !important;
     gap: 48px !important;
   }
+}
+
+/* Contact email cards */
+.contact-email-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--ink-1);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  transition: border-color .2s ease, background .2s ease;
+  text-decoration: none;
+  color: inherit;
+}
+.contact-email-card:hover {
+  border-color: var(--accent);
+  background: var(--ink-2);
+}
+.contact-email-card__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background .2s ease;
+}
+.contact-email-card:hover .contact-email-card__icon {
+  background: rgba(255,122,61,0.2);
+}
+.contact-email-card__label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 4px;
+}
+.contact-email-card__email {
+  font-family: var(--font-display);
+  font-size: clamp(13px, 2.2vw, 17px);
+  font-weight: 500;
+  color: var(--accent);
+  overflow-wrap: anywhere;
+  word-break: break-all;
 }
 
 /* Form row stack on mobile */
