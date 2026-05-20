@@ -235,10 +235,10 @@ export default function HomePage() {
             Global Scale,{' '}
             <em style={{fontStyle:'normal',background:'linear-gradient(120deg,var(--accent),var(--accent-2))',WebkitBackgroundClip:'text',backgroundClip:'text',color:'transparent'}}>Local Impact</em>
           </h2>
-          <p style={{color:'var(--text-1)',fontSize:'17px',lineHeight:'1.65',maxWidth:'680px',margin:'0 auto 32px',textAlign:'center'}}>
+          <p style={{color:'var(--text-1)',fontSize:'17px',lineHeight:'1.65',maxWidth:'680px',margin:'0 auto 32px',textAlign:'left'}}>
             We believe that the most powerful technologies should be accessible, scalable, and flawlessly engineered. From our team to your doorstep, we deliver the intelligence that moves the world.
           </p>
-          <div style={{textAlign:'center'}}>
+          <div style={{maxWidth:'680px',margin:'0 auto'}}>
             <Link href="/about" className="btn btn--ghost">
               Learn More
               <svg className="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
