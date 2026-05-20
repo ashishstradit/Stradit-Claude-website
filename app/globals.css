@@ -299,7 +299,7 @@ h1, h2, h3, h4 {
 
 /* ── CoE section ──────────────────────────────────────────────── */
 .coe-section { padding: 100px 0; border-top: 1px solid var(--line); position: relative; }
-.coe-header { display: flex; flex-direction: column; gap: 16px; margin-bottom: 64px; }
+.coe-header { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 16px; margin-bottom: 64px; }
 .coe-header h2 { font-size: clamp(28px, 4vw, 52px); letter-spacing: -0.03em; line-height: 1; white-space: nowrap; }
 .coe-header h2 em { font-style: normal; background: linear-gradient(120deg, var(--accent) 0%, var(--accent-2) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .coe-header p { color: var(--text-1); font-size: 16px; max-width: 600px; line-height: 1.6; }
