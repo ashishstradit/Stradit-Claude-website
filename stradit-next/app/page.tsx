@@ -74,7 +74,6 @@ export default function HomePage() {
       <header className="hero hero--carousel">
         <LandingCarousel />
         <div className="container hero__inner">
-          <div className="hero__eyebrow eyebrow">Applied AI · Engineering · Delivery</div>
           <h1 className="hero__title">
             <em>Applied AI and Engineering</em><br/>
             That Delivers <span className="blue">Measurable Change</span>
