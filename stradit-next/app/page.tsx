@@ -228,6 +228,19 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* GLOBAL SCALE LOCAL IMPACT */}
+      <section className="section" style={{borderTop:'1px solid var(--line)',background:'var(--ink-1)'}}>
+        <div className="container" style={{textAlign:'center'}}>
+          <h2 style={{fontSize:'clamp(28px,4vw,52px)',letterSpacing:'-0.03em',lineHeight:'1.08',marginBottom:'20px'}}>
+            Global Scale,{' '}
+            <em style={{fontStyle:'normal',background:'linear-gradient(120deg,var(--accent),var(--accent-2))',WebkitBackgroundClip:'text',backgroundClip:'text',color:'transparent'}}>Local Impact</em>
+          </h2>
+          <p style={{color:'var(--text-1)',fontSize:'17px',lineHeight:'1.65',maxWidth:'680px',margin:'0 auto'}}>
+            We believe that the most powerful technologies should be accessible, scalable, and flawlessly engineered. From our team to your doorstep, we deliver the intelligence that moves the world.
+          </p>
+        </div>
+      </section>
+
       {/* FINAL CTA BAND */}
       <section className="section" style={{borderTop:'1px solid var(--line)'}}>
         <div className="container">
