@@ -153,7 +153,7 @@ export default function HomePage() {
               <div className="section-eyebrow" style={{marginBottom:'24px'}}>
                 <span className="idx">StartIT</span><span>AI Training &amp; Upskilling</span>
               </div>
-              <h2 style={{fontSize:'clamp(34px,4.5vw,56px)',letterSpacing:'-0.03em',lineHeight:'1.02',marginBottom:'20px'}}>
+              <h2 style={{fontSize:'clamp(26px,4.5vw,56px)',letterSpacing:'-0.03em',lineHeight:'1.08',marginBottom:'20px'}}>
                 Turning your teams into{' '}
                 <em style={{fontStyle:'normal',background:'linear-gradient(120deg,var(--accent),var(--accent-2))',WebkitBackgroundClip:'text',backgroundClip:'text',color:'transparent'}}>AI powerhouses.</em>
               </h2>

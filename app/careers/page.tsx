@@ -80,14 +80,14 @@ export default function CareersPage() {
         </div>
         <div className="container hero__inner">
           <div className="eyebrow" style={{marginBottom:'28px'}}>Careers · Join Stradit</div>
-          <h1 style={{fontFamily:'var(--font-display)',fontSize:'clamp(38px,5.5vw,76px)',fontWeight:400,letterSpacing:'-0.038em',lineHeight:'0.98',marginBottom:'24px'}}>
+          <h1 className="hero__title" style={{fontSize:'clamp(38px,5.5vw,76px)',letterSpacing:'-0.038em',marginBottom:'24px'}}>
             Building for the future<br/>of global{' '}
             <em style={{fontStyle:'normal',background:'linear-gradient(120deg,var(--accent),var(--accent-2),var(--gold))',WebkitBackgroundClip:'text',backgroundClip:'text',color:'transparent'}}>capacity.</em>
           </h1>
           <p style={{fontSize:'clamp(16px,1.4vw,19px)',color:'var(--text-1)',maxWidth:'600px',marginBottom:'36px',lineHeight:'1.55'}}>
             We&apos;re looking for engineers, architects, data scientists, and operators who want to solve real challenges, create meaningful impact, and deliver results that matter at the most demanding regulated institutions on the planet.
           </p>
-          <div style={{display:'flex',gap:'12px',flexWrap:'wrap',marginBottom:'72px'}}>
+          <div className="hero__cta" style={{marginBottom:'56px'}}>
             <a className="btn btn--primary" href="#open-roles">
               View Open Roles<svg className="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
