@@ -177,56 +177,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* EXCELLENCE VERIFIED */}
-      <section className="section" style={{borderTop:'1px solid var(--line)',background:'var(--ink-1)'}}>
-        <div className="container" style={{textAlign:'center'}}>
-          <div style={{marginBottom:'56px'}}>
-            <h2 style={{fontSize:'clamp(32px,4.5vw,56px)',letterSpacing:'-0.03em',lineHeight:'1.05',marginBottom:'16px'}}>
-              Excellence, Verified at the Foundation
-            </h2>
-            <p style={{color:'var(--text-1)',fontSize:'17px',lineHeight:'1.6',maxWidth:'560px',margin:'0 auto'}}>
-              At StradIT, excellence is not a mere promise. It is the core of our DNA.
-            </p>
-          </div>
-        </div>
-
-        {/* Marquee strip */}
-        <div style={{overflow:'hidden',borderTop:'1px solid var(--line)',borderBottom:'1px solid var(--line)',padding:'20px 0',background:'var(--ink-0)'}}>
-          <div style={{
-            display:'flex',
-            animation:'marquee 28s linear infinite',
-            width:'max-content',
-          }}>
-            {[...Array(2)].map((_,ri) => (
-              <div key={ri} style={{display:'flex',flexShrink:0}}>
-                {[
-                  '70+ Elite Engineering Minds',
-                  '5,000+ Cloud Instances',
-                  '99.9% Operational Resiliency',
-                  'High-Velocity Deployment',
-                  'Compliance-First Architecture',
-                ].map((item) => (
-                  <span key={item} style={{
-                    display:'inline-flex',
-                    alignItems:'center',
-                    gap:'16px',
-                    padding:'0 40px',
-                    fontFamily:'var(--font-mono)',
-                    fontSize:'13px',
-                    letterSpacing:'0.12em',
-                    textTransform:'uppercase',
-                    color:'var(--text-1)',
-                    whiteSpace:'nowrap',
-                  }}>
-                    <span style={{width:'6px',height:'6px',borderRadius:'50%',background:'var(--accent)',boxShadow:'0 0 8px var(--accent-glow)',flexShrink:0}} />
-                    {item}
-                  </span>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* GLOBAL SCALE LOCAL IMPACT */}
       <section className="section" style={{borderTop:'1px solid var(--line)',background:'var(--ink-1)'}}>
