@@ -177,32 +177,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* STRADIT VENTURE */}
-      <section className="section" style={{borderTop:'1px solid var(--line)'}}>
-        <div className="container">
-          <div className="section-eyebrow" style={{marginBottom:'32px'}}>
-            <span className="idx">Stradit Venture</span><span>Co-build · Equity-aligned</span>
-          </div>
-          <Link className="pair-card reveal" href="/contact" style={{display:'block',maxWidth:'100%'}}>
-            <div style={{display:'grid',gridTemplateColumns:'1.2fr 1fr',gap:'48px',alignItems:'center'}}>
-              <div>
-                <div className="num" style={{marginBottom:'10px'}}>→ Stradit Venture</div>
-                <div className="title"><em>Stradit</em> Venture</div>
-                <div className="desc" style={{maxWidth:'540px'}}>We co-build AI-native financial products with operators and asset managers — taking ideas from concept to production-grade in 12-week sprints. Equity-aligned, engineering-led, regulator-aware.</div>
-              </div>
-              <div>
-                <div className="row" style={{marginBottom:'24px',display:'flex',gap:'24px'}}>
-                  <div><div className="stat__v">12-wk</div><div className="stat__l">Sprint</div></div>
-                  <div><div className="stat__v">8</div><div className="stat__l">Active</div></div>
-                  <div><div className="stat__v">14</div><div className="stat__l">Shipped</div></div>
-                </div>
-                <span className="cta-link">Pitch us a product</span>
-              </div>
-            </div>
-          </Link>
-        </div>
-      </section>
-
       {/* EXCELLENCE VERIFIED */}
       <section className="section" style={{borderTop:'1px solid var(--line)',background:'var(--ink-1)'}}>
         <div className="container">
