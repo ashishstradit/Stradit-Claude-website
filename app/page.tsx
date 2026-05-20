@@ -105,31 +105,6 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* ABOUT STRADIT */}
-      <section className="section" style={{paddingBottom:'48px',borderTop:'1px solid var(--line)'}}>
-        <div className="container">
-          <div className="section-eyebrow"><span className="idx">01</span><span>The Firm</span></div>
-          <Link className="pair-card reveal" href="/about" style={{display:'block',maxWidth:'100%'}}>
-            <div style={{display:'grid',gridTemplateColumns:'1.2fr 1fr',gap:'48px',alignItems:'center'}}>
-              <div>
-                <div className="num" style={{marginBottom:'10px'}}>→ About Stradit</div>
-                <div className="title">About <em>Stradit</em></div>
-                <div className="desc" style={{maxWidth:'540px'}}>Engineers and operators building the applied AI layer for global finance. We sit alongside CTOs, CIOs and COOs at the most regulated institutions in the world — delivering production AI with the governance and rigor regulators demand.</div>
-              </div>
-              <div>
-                <div className="row" style={{marginBottom:'24px',display:'flex',gap:'24px'}}>
-                  <div><div className="stat__v">2014</div><div className="stat__l">Founded</div></div>
-                  <div><div className="stat__v">300+</div><div className="stat__l">Projects</div></div>
-                  <div><div className="stat__v">5</div><div className="stat__l">Practices</div></div>
-                  <div><div className="stat__v">4</div><div className="stat__l">Regions</div></div>
-                </div>
-                <span className="cta-link">Meet the firm</span>
-              </div>
-            </div>
-          </Link>
-        </div>
-      </section>
-
       {/* CENTERS OF EXCELLENCE */}
       <section className="coe-section">
         <div className="container">
