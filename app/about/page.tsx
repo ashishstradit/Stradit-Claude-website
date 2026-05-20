@@ -112,34 +112,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* OUR PHILOSOPHY */}
-      <section className="section" style={{background:'var(--ink-1)',borderTop:'1px solid var(--line)',borderBottom:'1px solid var(--line)'}}>
-        <div className="container">
-          <div className="section-eyebrow"><span className="idx">04</span><span>Our Philosophy</span></div>
-          <div className="section-intro" style={{marginBottom:'48px'}}>
-            <h2 style={{fontSize:'clamp(30px,4vw,48px)',letterSpacing:'-0.03em'}}>At StradIT, every innovation is guided by <em style={{fontStyle:'normal',background:'linear-gradient(120deg,var(--accent),var(--accent-2))',WebkitBackgroundClip:'text',backgroundClip:'text',color:'transparent'}}>governance and accountability.</em></h2>
-            <p style={{color:'var(--text-1)',fontSize:'16px',lineHeight:'1.7'}}>Ensuring AI and technology deliver real, responsible, and lasting impact.</p>
-          </div>
-          <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:'1px',background:'var(--line)',border:'1px solid var(--line)',borderRadius:'var(--radius-lg)',overflow:'hidden',marginBottom:'40px'}}>
-            {[
-              {title:'Technology with Accountability',desc:'We ensure tech is explainable, supervised, and aligned. Our solutions include built-in guardrails for data, security, and compliance.'},
-              {title:'Engineering with Purpose',desc:'We are purpose-driven. Every solution, integration, and AI automation is meticulously designed to decode complexity and solve tangible business problems.'},
-              {title:'Domain‑First Thinking',desc:'Our teams speak your language. Deep domain expertise across LLMs, governance, and guardrails shapes every design, strategy, and AI model we build.'},
-            ].map((p,i)=>(
-              <div key={p.title} className={`reveal reveal-delay-${i+1}`} style={{background:'var(--ink-2)',padding:'36px 28px'}}>
-                <div style={{fontFamily:'var(--font-mono)',fontSize:'10px',letterSpacing:'0.16em',color:'var(--accent)',marginBottom:'12px'}}>0{i+1}</div>
-                <div style={{fontFamily:'var(--font-display)',fontSize:'20px',fontWeight:500,letterSpacing:'-0.02em',marginBottom:'12px'}}>{p.title}</div>
-                <p style={{color:'var(--text-2)',fontSize:'14px',lineHeight:'1.65'}}>{p.desc}</p>
-              </div>
-            ))}
-          </div>
-          <Link href="/contact" className="btn btn--ghost">
-            See Our Philosophy in Action
-            <svg className="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </Link>
-        </div>
-      </section>
-
       {/* GLOBAL DELIVERY MODEL */}
       <section className="section">
         <div className="container">
