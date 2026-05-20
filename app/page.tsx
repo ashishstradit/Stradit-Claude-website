@@ -94,15 +94,6 @@ export default function HomePage() {
             <div className="hero__meta-cell"><div className="hero__meta-k">Coverage</div><div className="hero__meta-v">4 regions <small>USA · UK · Europe · Asia</small></div></div>
           </div>
         </div>
-        <div className="hero__hud">
-          <span className="pulse">Live · StradIT AI Mesh</span>
-          <span className="hero__hud-grid">
-            <span>NODES <b>1,284</b></span>
-            <span>LATENCY <b>42ms</b></span>
-            <span>UPTIME <b>99.99%</b></span>
-          </span>
-          <span>v2026.05</span>
-        </div>
       </header>
 
       {/* CENTERS OF EXCELLENCE */}
