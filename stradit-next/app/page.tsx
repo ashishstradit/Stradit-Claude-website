@@ -132,7 +132,7 @@ export default function HomePage() {
                 Turning your teams into{' '}
                 <em style={{fontStyle:'normal',background:'linear-gradient(120deg,var(--accent),var(--accent-2))',WebkitBackgroundClip:'text',backgroundClip:'text',color:'transparent'}}>AI powerhouses.</em>
               </h2>
-              <p style={{color:'var(--text-1)',fontSize:'17px',lineHeight:'1.65',marginBottom:'32px',maxWidth:'480px'}}>
+              <p style={{color:'var(--text-1)',fontSize:'17px',lineHeight:'1.65',marginBottom:'32px',maxWidth:'480px',textAlign:'left'}}>
                 From &apos;AI Curious&apos; to &apos;AI Certified&apos; in only 8 weeks — training mapped to enterprise roles, grounded in domain realities, and backed by Stradit&apos;s Centers of Excellence.
               </p>
               <div style={{display:'flex',gap:'12px',flexWrap:'wrap'}}>
@@ -179,8 +179,8 @@ export default function HomePage() {
 
       {/* EXCELLENCE VERIFIED */}
       <section className="section" style={{borderTop:'1px solid var(--line)',background:'var(--ink-1)'}}>
-        <div className="container">
-          <div style={{textAlign:'center',marginBottom:'56px'}}>
+        <div className="container" style={{textAlign:'center'}}>
+          <div style={{marginBottom:'56px'}}>
             <h2 style={{fontSize:'clamp(32px,4.5vw,56px)',letterSpacing:'-0.03em',lineHeight:'1.05',marginBottom:'16px'}}>
               Excellence, Verified at the Foundation
             </h2>
