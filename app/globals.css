@@ -1159,10 +1159,10 @@ h1, h2, h3, h4 {
   .hero__sub { font-size: 15px; margin-bottom: 24px; }
   .hero__cta { margin-bottom: 32px; gap: 10px; }
 
-  /* Buttons: reduce size on mobile */
-  .btn { padding: 11px 18px; font-size: 13px; gap: 8px; }
-  .hero__cta { flex-direction: column; align-items: stretch; }
-  .hero__cta .btn { width: 100%; justify-content: center; text-align: center; }
+  /* Buttons: natural size on mobile — NOT full-width */
+  .btn { padding: 11px 20px; font-size: 13px; gap: 8px; }
+  .hero__cta { flex-direction: column; align-items: flex-start; gap: 10px; }
+  /* hero__cta buttons stay auto-width (pill shape, not a full-width bar) */
   .coe-tab-strip button { flex: 1 1 100%; text-align: left; }
   .coe-slider-content { padding: 28px 20px; }
   .coe-slider-canvas { height: 200px; }
@@ -2074,12 +2074,14 @@ h1, h2, h3, h4 {
 @media (max-width: 700px) {
   .cta-band {
     grid-template-columns: 1fr !important;
-    padding: 40px 28px !important;
-    gap: 24px !important;
+    padding: 36px 24px !important;
+    gap: 20px !important;
   }
   .cta-band .btn {
-    width: 100%;
-    justify-content: center;
+    padding: 12px 24px !important;
+    font-size: 14px !important;
+    width: auto;
+    align-self: flex-start;
   }
 }
 

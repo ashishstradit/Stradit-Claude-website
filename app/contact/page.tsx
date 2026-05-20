@@ -149,7 +149,7 @@ export default function ContactPage() {
                     <label htmlFor="c-message" style={{fontFamily:'var(--font-mono)',fontSize:'10px',letterSpacing:'0.16em',textTransform:'uppercase',color:'var(--text-3)',display:'block',marginBottom:'6px'}}>Message *</label>
                     <textarea id="c-message" placeholder="Tell us what you're building or exploring..." required rows={5} style={{width:'100%',background:'var(--ink-1)',border:'1px solid var(--line)',borderRadius:'var(--radius-sm)',padding:'12px 14px',color:'var(--text-0)',fontSize:'14px',fontFamily:'inherit',outline:'none',resize:'vertical'}} />
                   </div>
-                  <button type="submit" className="btn btn--primary" style={{width:'100%',justifyContent:'center',fontSize:'15px',padding:'16px'}}>
+                  <button type="submit" className="btn btn--primary" style={{width:'100%',justifyContent:'center',fontSize:'14px',padding:'13px 20px'}}>
                     Submit
                     <svg className="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                   </button>
