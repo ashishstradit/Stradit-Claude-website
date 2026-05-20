@@ -120,62 +120,6 @@ export default function HomePage() {
         </div>{/* end container */}
       </section>{/* end coe-section */}
 
-      {/* STARTIT */}
-      <section className="section" style={{borderTop:'1px solid var(--line)',background:'var(--ink-1)'}}>
-        <div className="container">
-          <div className="two-col">
-            <div>
-              <div className="section-eyebrow" style={{marginBottom:'24px'}}>
-                <span className="idx">StartIT</span><span>AI Training &amp; Upskilling</span>
-              </div>
-              <h2 style={{fontSize:'clamp(26px,4.5vw,56px)',letterSpacing:'-0.03em',lineHeight:'1.08',marginBottom:'20px'}}>
-                Turning your teams into{' '}
-                <em style={{fontStyle:'normal',background:'linear-gradient(120deg,var(--accent),var(--accent-2))',WebkitBackgroundClip:'text',backgroundClip:'text',color:'transparent'}}>AI powerhouses.</em>
-              </h2>
-              <p style={{color:'var(--text-1)',fontSize:'17px',lineHeight:'1.65',marginBottom:'32px',maxWidth:'480px',textAlign:'left'}}>
-                From &apos;AI Curious&apos; to &apos;AI Certified&apos; in only 8 weeks — training mapped to enterprise roles, grounded in domain realities, and backed by Stradit&apos;s Centers of Excellence.
-              </p>
-              <div style={{display:'flex',gap:'12px',flexWrap:'wrap'}}>
-                <Link href="/startit" className="btn btn--primary">
-                  Explore StartIT
-                  <svg className="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                </Link>
-                <Link href="/contact" className="btn btn--ghost">Book a strategy call</Link>
-              </div>
-            </div>
-            <div style={{display:'grid',gridTemplateColumns:'repeat(2,1fr)',gap:'12px'}}>
-              {[
-                ['Track 01','AI Literacy','Nail the AI Basics'],
-                ['Track 02','AI Strategy','From Hype to ROI'],
-                ['Track 03','AI Technical','Production-Ready AI'],
-                ['Track 04','AI Applied','Build the Breakthrough'],
-              ].map(([t,title,sub]) => (
-                <div key={t} style={{background:'var(--ink-2)',border:'1px solid var(--line)',borderRadius:'var(--radius)',padding:'20px 22px'}}>
-                  <div style={{fontFamily:'var(--font-mono)',fontSize:'10px',letterSpacing:'0.16em',color:'var(--accent)',textTransform:'uppercase',marginBottom:'8px'}}>{t}</div>
-                  <div style={{fontFamily:'var(--font-display)',fontSize:'17px',fontWeight:500,letterSpacing:'-0.02em',marginBottom:'6px'}}>{title}</div>
-                  <div style={{fontSize:'12px',fontStyle:'italic',color:'var(--accent-2)'}}>{sub}</div>
-                </div>
-              ))}
-              <div style={{background:'var(--ink-2)',border:'1px solid var(--line)',borderLeft:'2px solid var(--accent)',borderRadius:'var(--radius)',padding:'20px 22px',gridColumn:'span 2'}}>
-                <div style={{fontFamily:'var(--font-mono)',fontSize:'10px',letterSpacing:'0.16em',color:'var(--accent)',textTransform:'uppercase',marginBottom:'8px'}}>Track 05 · Frontier</div>
-                <div style={{fontFamily:'var(--font-display)',fontSize:'17px',fontWeight:500,letterSpacing:'-0.02em',marginBottom:'6px'}}>Quantum AI Training</div>
-                <div style={{fontSize:'12px',fontStyle:'italic',color:'var(--accent-2)'}}>Prepare for the Next Frontier</div>
-              </div>
-              <div style={{gridColumn:'span 2',display:'flex',gap:'16px',paddingTop:'8px',borderTop:'1px solid var(--line)',marginTop:'4px'}}>
-                {[['8 wks','Cohort'],['5','Tracks'],['Hybrid','Delivery']].map(([v,l],i,a) => (
-                  <div key={l} style={{flex:1,display:'flex',alignItems:'center',gap:'24px'}}>
-                    <div style={{flex:1,textAlign:'center'}}>
-                      <div style={{fontFamily:'var(--font-display)',fontSize:'22px',fontWeight:500,color:'var(--text-0)'}}>{v}</div>
-                      <div style={{fontFamily:'var(--font-mono)',fontSize:'10px',letterSpacing:'0.14em',textTransform:'uppercase',color:'var(--text-3)',marginTop:'4px'}}>{l}</div>
-                    </div>
-                    {i < a.length - 1 && <div style={{width:'1px',height:'40px',background:'var(--line)'}} />}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
 
       {/* GLOBAL SCALE LOCAL IMPACT */}
