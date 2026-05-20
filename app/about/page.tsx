@@ -112,42 +112,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* GLOBAL DELIVERY MODEL */}
-      <section className="section">
-        <div className="container">
-          <div className="section-eyebrow"><span className="idx">05</span><span>Global Delivery Model</span></div>
-          <div className="two-col--start" style={{marginBottom:'48px'}}>
-            <div>
-              <h2 style={{fontSize:'clamp(30px,4vw,48px)',letterSpacing:'-0.03em',marginBottom:'16px'}}>Built on the <em style={{fontStyle:'normal',background:'linear-gradient(120deg,var(--accent),var(--accent-2))',WebkitBackgroundClip:'text',backgroundClip:'text',color:'transparent'}}>Sun Model</em></h2>
-              <p style={{color:'var(--text-1)',fontSize:'16px',lineHeight:'1.7',marginBottom:'24px'}}>
-                Our AI-enhanced delivery model guarantees zero downtime and non-stop execution for our Fortune 500 partners. We blend global talent with local impact and continuous delivery, keeping your projects always optimized and truly non-stop.
-              </p>
-              <p style={{color:'var(--text-1)',fontSize:'15px',lineHeight:'1.7',marginBottom:'32px'}}>
-                Regardless of the delivery model our clients prefer, they experience consistency, speed, and quality. Our global teams unfailingly meet deadlines while upholding the highest standards of quality and innovation.
-              </p>
-              <Link href="/contact" className="btn btn--primary">
-                Request Your Tailored Delivery
-                <svg className="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-              </Link>
-            </div>
-            <div style={{display:'grid',gridTemplateColumns:'repeat(2,1fr)',gap:'16px'}}>
-              {[
-                {model:'On-site Model',desc:'Direct collaboration at the client locations'},
-                {model:'Offsite Model',desc:'Dedicated delivery centers near client hubs'},
-                {model:'Offshore Model',desc:'Global talent pool across geographies'},
-                {model:'Hybrid Model',desc:'Blending onsite, offsite, and offshore models'},
-              ].map((m,i)=>(
-                <div key={m.model} className={`reveal reveal-delay-${i+1}`} style={{background:'var(--ink-1)',border:'1px solid var(--line)',borderRadius:'var(--radius)',padding:'24px'}}>
-                  <div style={{fontFamily:'var(--font-mono)',fontSize:'10px',letterSpacing:'0.14em',color:'var(--accent)',textTransform:'uppercase',marginBottom:'8px'}}>0{i+1}</div>
-                  <div style={{fontFamily:'var(--font-display)',fontSize:'16px',fontWeight:500,letterSpacing:'-0.01em',marginBottom:'6px'}}>{m.model}</div>
-                  <div style={{color:'var(--text-2)',fontSize:'13px',lineHeight:'1.55'}}>{m.desc}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* WE TAKE PRIDE IN */}
       <section className="section" style={{background:'var(--ink-1)',borderTop:'1px solid var(--line)'}}>
         <div className="container">
