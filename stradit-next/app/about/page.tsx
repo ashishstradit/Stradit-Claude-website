@@ -14,27 +14,33 @@ export default function AboutPage() {
       <header className="hero hero--compact hero--carousel">
         <HeroCarousel />
         <div className="container hero__inner">
+          <div className="hero__eyebrow eyebrow">About Stradit · Est. 2014</div>
           <h1 className="hero__title">
-            About <em>StradIT</em>
+            Engineers building<br/>intelligent solutions<br/>for <em>global finance.</em>
           </h1>
-          <p className="hero__sub" style={{fontSize:'clamp(18px,2vw,22px)',fontWeight:500,marginBottom:'20px'}}>
-            Shaping the Future Through <em style={{fontStyle:'normal',background:'linear-gradient(120deg,var(--accent),var(--accent-2))',WebkitBackgroundClip:'text',backgroundClip:'text',color:'transparent'}}>AI-Powered Innovation</em>
-          </p>
-          <p className="hero__sub" style={{marginBottom:'16px'}}>
-            StradIT is a trusted technology partner for enterprises that want AI to drive measurable business outcomes, not just make headlines. We deliver end-to-end transformation by aligning technology with strategic and operational priorities.
-          </p>
-          <p className="hero__sub" style={{marginBottom:'16px'}}>
-            Our capabilities include Global Capability Center (GCC) setup and optimization, AI automation, legacy modernization, analytics, and testing — helping organizations scale innovation with control, speed, and confidence, with AI as the engine behind every capability.
-          </p>
           <p className="hero__sub" style={{marginBottom:'32px'}}>
-            At the core of StradIT is deep domain expertise across applied AI, data analytics, cybersecurity, cloud and infrastructure, testing, and quality engineering.
+            We deliver real results for the world's top 10 global financial institutions — turning complex technology challenges into production systems that move metrics, with the governance and rigor regulators demand.
           </p>
           <div className="hero__cta">
             <Link href="/contact" className="btn btn--primary">
-              Start Your Digital Transformation
+              Meet the team
               <svg className="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </Link>
+            <Link href="/gcc" className="btn btn--ghost">Our delivery model</Link>
           </div>
+          <div className="hero__meta">
+            <div className="hero__meta-cell"><div className="hero__meta-k">Founded</div><div className="hero__meta-v">2014 <small>USA · UK · Europe · Asia</small></div></div>
+            <div className="hero__meta-cell"><div className="hero__meta-k">Projects</div><div className="hero__meta-v">500+ <small>enterprise programs delivered</small></div></div>
+            <div className="hero__meta-cell"><div className="hero__meta-k">Practices</div><div className="hero__meta-v">5 <small>Centers of Excellence</small></div></div>
+            <div className="hero__meta-cell"><div className="hero__meta-k">Advisors</div><div className="hero__meta-v">Top 10 <small>global financial institutions</small></div></div>
+          </div>
+        </div>
+        <div className="hero__hud">
+          <span className="pulse">Origin · Global</span>
+          <span className="hero__hud-grid">
+            <span>YEARS <b>12</b></span><span>CLIENTS <b>50+</b></span>
+          </span>
+          <span>About · v2026.05</span>
         </div>
       </header>
 
