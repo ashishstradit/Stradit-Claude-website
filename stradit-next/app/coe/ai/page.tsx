@@ -4,7 +4,7 @@ import Footer from '@/components/Footer'
 import AnimCanvas from '@/components/AnimCanvas'
 import CaseStudySection from '@/components/CaseStudySection'
 
-export const metadata = { title: 'Applied Artificial Intelligence — StradIT' }
+export const metadata = { title: 'AI Solutions Center of Excellence — StradIT' }
 
 const cards = [
   { title:'AI Engineering', desc:'From model designing to deployment, StradIT delivers meticulously formulated frameworks for AI solutions.', items:['Tailored ML and generative AI models','Accelerators and integration toolkits','LLMOps and MLOps foundations'] },
@@ -52,8 +52,8 @@ export default function CoeAiPage() {
       <header className="hero hero--compact">
         <div className="hero__canvas"><AnimCanvas theme="ai" /></div>
         <div className="container hero__inner">
-          <div className="hero__eyebrow eyebrow">Center of Excellence · Applied AI</div>
-          <h1 className="hero__title">Applied <em>Artificial Intelligence</em></h1>
+          <div className="hero__eyebrow eyebrow">Center of Excellence · AI Solutions</div>
+          <h1 className="hero__title">AI Solutions <em>Center of Excellence</em></h1>
           <p className="hero__sub">Intelligent AI for a Smarter Future</p>
           <p style={{color:'var(--text-1)',fontSize:'16px',lineHeight:'1.65',maxWidth:'600px',marginBottom:'36px'}}>
             AI should not live in slides and pilots. It should run inside real workflows. StradIT builds secured, governed, and ready to scale enterprise-grade AI solutions across ML, generative AI, LLMs, guardrails, assurance AI, and maturity models.
@@ -65,11 +65,10 @@ export default function CoeAiPage() {
             </Link>
             <Link href="/coe" className="btn btn--ghost">All practices</Link>
           </div>
-          <div className="hero__meta">
+          <div className="hero__meta hero__meta--three">
             <div className="hero__meta-cell"><div className="hero__meta-v">60%</div><div className="hero__meta-k">Workflow Efficiency Gain</div></div>
             <div className="hero__meta-cell"><div className="hero__meta-v">4x Faster</div><div className="hero__meta-k">Knowledge Retrieval</div></div>
             <div className="hero__meta-cell"><div className="hero__meta-v">50% Better</div><div className="hero__meta-k">Time-to-Value</div></div>
-            <div className="hero__meta-cell"><div className="hero__meta-k">Reference</div><div className="hero__meta-v" style={{fontSize:'12px',lineHeight:'1.4'}}><small>About — Social Driver</small></div></div>
           </div>
         </div>
         <div className="hero__hud">
@@ -95,7 +94,7 @@ export default function CoeAiPage() {
             {cards.slice(0,2).map((card,i) => (
               <div key={card.title} className={`reveal reveal-delay-${i+1}`} style={{background:'var(--ink-1)',padding:'36px 32px',display:'flex',flexDirection:'column',gap:'16px'}}>
                 <div style={{fontFamily:'var(--font-mono)',fontSize:'10px',letterSpacing:'0.16em',color:'var(--accent)'}}>0{i+1}</div>
-                <div style={{fontFamily:'var(--font-display)',fontSize:'20px',fontWeight:500,letterSpacing:'-0.02em'}}>{card.title}</div>
+                <h3 style={{fontFamily:'var(--font-display)',fontSize:'20px',fontWeight:500,letterSpacing:'-0.02em',margin:0}}>{card.title}</h3>
                 <p style={{color:'var(--text-2)',fontSize:'13px',lineHeight:'1.65',flex:1}}>{card.desc}</p>
                 <ul style={{listStyle:'none',display:'flex',flexDirection:'column',gap:'6px'}}>
                   {card.items.map(item => <li key={item} style={{fontSize:'13px',color:'var(--text-1)',display:'flex',gap:'8px'}}><span style={{color:'var(--accent)',flexShrink:0}}>→</span>{item}</li>)}
@@ -107,7 +106,7 @@ export default function CoeAiPage() {
             {cards.slice(2).map((card,i) => (
               <div key={card.title} className={`reveal reveal-delay-${i+1}`} style={{background:'var(--ink-1)',padding:'36px 28px',display:'flex',flexDirection:'column',gap:'16px'}}>
                 <div style={{fontFamily:'var(--font-mono)',fontSize:'10px',letterSpacing:'0.16em',color:'var(--accent)'}}>0{i+3}</div>
-                <div style={{fontFamily:'var(--font-display)',fontSize:'20px',fontWeight:500,letterSpacing:'-0.02em'}}>{card.title}</div>
+                <h3 style={{fontFamily:'var(--font-display)',fontSize:'20px',fontWeight:500,letterSpacing:'-0.02em',margin:0}}>{card.title}</h3>
                 <p style={{color:'var(--text-2)',fontSize:'13px',lineHeight:'1.65',flex:1}}>{card.desc}</p>
                 <ul style={{listStyle:'none',display:'flex',flexDirection:'column',gap:'6px'}}>
                   {card.items.map(item => <li key={item} style={{fontSize:'13px',color:'var(--text-1)',display:'flex',gap:'8px'}}><span style={{color:'var(--accent)',flexShrink:0}}>→</span>{item}</li>)}
@@ -131,6 +130,7 @@ export default function CoeAiPage() {
             </h2>
             <p style={{color:'var(--text-1)',fontSize:'16px',lineHeight:'1.7',marginBottom:'32px',maxWidth:'680px'}}>
               Our Center of Excellence around AI Solutions has helped global enterprises move from &quot;let&apos;s try AI&quot; to &quot;we can&apos;t imagine running this operation without it.&quot;
+              The stories below are proof of this.
             </p>
             <Link href="/contact" className="btn btn--primary">
               Validate AI With Confidence

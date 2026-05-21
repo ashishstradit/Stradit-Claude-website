@@ -24,11 +24,10 @@ export default function StartitPage() {
             </Link>
             <Link href="/coe" className="btn btn--ghost">Our Centers of Excellence</Link>
           </div>
-          <div className="hero__meta">
-            <div className="hero__meta-cell"><div className="hero__meta-k">Cohort model</div><div className="hero__meta-v">8-week <small>guided learning sprint</small></div></div>
-            <div className="hero__meta-cell"><div className="hero__meta-k">Tracks</div><div className="hero__meta-v">5 <small>role-based learning paths</small></div></div>
-            <div className="hero__meta-cell"><div className="hero__meta-k">Delivery</div><div className="hero__meta-v">Hybrid <small>in-person · remote · on-site</small></div></div>
-            <div className="hero__meta-cell"><div className="hero__meta-k">Output</div><div className="hero__meta-v">Capstone <small>portfolio + interview-ready</small></div></div>
+          <div className="hero__meta hero__meta--three">
+            <div className="hero__meta-cell"><div className="hero__meta-v">8-week</div><div className="hero__meta-k">Cohort Model</div></div>
+            <div className="hero__meta-cell"><div className="hero__meta-v">5</div><div className="hero__meta-k">Role-Based Tracks</div></div>
+            <div className="hero__meta-cell"><div className="hero__meta-v">Capstone</div><div className="hero__meta-k">Outputs</div></div>
           </div>
         </div>
         <div className="hero__hud">
@@ -109,9 +108,9 @@ export default function StartitPage() {
         <div className="container">
           <div className="section-eyebrow"><span className="idx">03</span><span>Build Rock-solid Confidence</span></div>
           <div className="startit-tracks-intro">
-            <h2 className="startit-heading startit-heading--tight">Five tracks.<br/>Every role. Every depth.</h2>
+            <h2 className="startit-heading startit-heading--tight">Build Rock-solid Confidence</h2>
             <p className="startit-tracks-intro__lead">
-              StartIT is organized into four tracks, so every participant learns what they need, at the right depth, with a shared language across business and technology.
+              StartIT is organized into five tracks, so every participant learns what they need, at the right depth, with a shared language across business and technology.
             </p>
           </div>
           <div className="startit-tracks-grid">
@@ -134,7 +133,7 @@ export default function StartitPage() {
               </div>
             ))}
             <div className="startit-track-card startit-track-card--wide reveal reveal-delay-4">
-              <div className="startit-track-card__idx">Track 5 · Frontier</div>
+              <div className="startit-track-card__idx">Track 5</div>
               <div className="startit-track-card__title">Quantum AI Training</div>
               <div className="startit-track-card__tag">Prepare for the Next Frontier</div>
               <div className="startit-track-wide-inner">
@@ -161,10 +160,10 @@ export default function StartitPage() {
         <div className="container">
           <div className="section-eyebrow"><span className="idx">04</span><span>The StartIT Transformation</span></div>
           <div className="startit-pillars-intro">
-            <h2 className="startit-heading startit-heading--pillars">
-              Move from scattered pilots to a unified, <em className="startit-gradient-text">AI-driven future.</em>
-            </h2>
-            <p className="startit-pillars-intro__lead">After completing StartIT, your organization will achieve critical pillars of maturity.</p>
+            <h2 className="startit-heading startit-heading--pillars">The StartIT Transformation</h2>
+            <p className="startit-pillars-intro__lead">
+              Move your organization away from scattered pilots and toward a unified, AI-driven future. After completing StartIT, your organization will achieve critical pillars of maturity.
+            </p>
           </div>
           <div className="startit-pillars-grid">
             {[
@@ -207,7 +206,7 @@ export default function StartitPage() {
       <section className="section startit-section startit-section--faq">
         <div className="container">
           <div className="section-eyebrow"><span className="idx">05</span><span>Frequently Asked Questions</span></div>
-          <h2 className="startit-faq-title">Common questions about StartIT</h2>
+          <h2 className="startit-faq-title">Frequently Asked Questions</h2>
           <div className="startit-faq-grid">
             {[
               { q: 'Q1', question: 'How long does the StartIT program run?', answer: 'Many clients start with a 6–12 week plan. StartIT is designed to adapt to your calendar, intensity, and cohort size.' },
