@@ -90,7 +90,7 @@ export default function GccPage() {
                 What You <em className="gcc-gradient-text">Unlock</em>
               </h2>
               <p className="gcc-unlock-lead">
-                StradIT helps you establish and run a captive center that functions as a seamless extension of your headquarters. From IT and finance to R&amp;D and customer operations, we help you centralize, scale, and innovate.
+                Build a captive center that works like an extension of your HQ. StradIT handles setup, operations, compliance, and scale across IT, finance, R&amp;D, and customer operations.
               </p>
             </div>
             <Link href="/contact" className="btn btn--ghost gcc-unlock-intro__btn">
@@ -100,15 +100,18 @@ export default function GccPage() {
           </div>
           <div className="gcc-unlock-grid">
             {[
-              { title: 'Global Talent, Local Expertise', desc: 'Access world-class professionals in tech, analytics, finance, and beyond in locations that make strategic sense.' },
-              { title: 'Cost Without Compromise', desc: 'Reduce operational costs by up to 50% while elevating quality and output.' },
-              { title: 'Speed to Scale', desc: 'Ramp up (or down) with agility. Your GCC grows with your ambitions.' },
-              { title: 'Innovation at the Core', desc: 'Transform your center into a hub for R&D, digital transformation, and next-gen capabilities.' },
-              { title: 'Total Visibility', desc: 'Track payroll, team performance, costs, and compliance — all in one place.' },
-              { title: 'One Partner, Full Stack', desc: 'No juggling vendors. Strategy, talent, compliance, and delivery under one roof.' },
+              { title: 'Global Talent, Local Expertise', desc: 'Build teams in the right locations with the skills you need.' },
+              { title: 'Cost Without Compromise', desc: 'Lower operating cost while protecting quality and output.' },
+              { title: 'Speed to Scale', desc: 'Ramp teams up or down as your roadmap changes.' },
+              { title: 'Innovation at the Core', desc: 'Turn your GCC into a digital transformation hub.' },
+              { title: 'Total Visibility', desc: 'Track payroll, performance, cost, and compliance clearly.' },
+              { title: 'One Partner, Full Stack', desc: 'Strategy, talent, compliance, and delivery in one place.' },
             ].map((item, i) => (
               <div key={item.title} className={`gcc-unlock-cell reveal reveal-delay-${i % 3}`}>
-                <div className="gcc-unlock-cell__idx">0{i + 1}</div>
+                <div className="gcc-unlock-cell__top">
+                  <span className="gcc-unlock-cell__idx">0{i + 1}</span>
+                  <span className="gcc-unlock-cell__pill">GCC</span>
+                </div>
                 <div className="gcc-unlock-cell__title">{item.title}</div>
                 <p className="gcc-unlock-cell__desc">{item.desc}</p>
               </div>

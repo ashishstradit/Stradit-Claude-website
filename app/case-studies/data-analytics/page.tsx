@@ -2,7 +2,6 @@ import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import AnimCanvas from '@/components/AnimCanvas'
-import CaseStudyToggle from '@/components/CaseStudyToggle'
 
 export const metadata = {
   title: 'Reduction in Manual Reporting & Scalability Delivered — StradIT Case Study',
@@ -72,20 +71,6 @@ const steps = [
   },
 ]
 
-const outcomes = [
-  { v: '80%', l: 'Drop in manual reporting effort' },
-  { v: 'Minutes', l: 'Intraday risk visibility (was hours)' },
-  { v: '100%', l: 'Accurate, consistent trade data' },
-  { v: '6', l: 'Specialists. One high-impact squad.' },
-]
-
-const results = [
-  'Intraday risk visibility improved from hours to minutes',
-  'Manual reporting efforts dropped by 80%',
-  'Accurate and consistent trade and market data across all teams',
-  'Sharper insights enabling faster, smarter decisions',
-]
-
 export default function DataAnalyticsCaseStudyPage() {
   return (
     <>
@@ -132,8 +117,6 @@ export default function DataAnalyticsCaseStudyPage() {
           <span>Case Study · Data</span>
         </div>
       </header>
-
-      <CaseStudyToggle>
 
       {/* ── 01 CLIENT OVERVIEW ── */}
       <section className="section" style={{paddingTop:'100px'}}>
@@ -378,72 +361,6 @@ export default function DataAnalyticsCaseStudyPage() {
             The bank moved from firefighting data issues to confidently leveraging AI-powered
             analytics as a competitive advantage.
           </p>
-
-          {/* Stats row */}
-          <div style={{
-            display:'grid',
-            gridTemplateColumns:'repeat(4,1fr)',
-            gap:'1px',
-            background:'var(--line)',
-            border:'1px solid var(--line)',
-            borderRadius:'var(--radius-lg)',
-            overflow:'hidden',
-            marginBottom:'48px',
-          }}>
-            {outcomes.map((o) => (
-              <div key={o.l} style={{
-                background:'var(--ink-1)',
-                padding:'36px 28px',
-                display:'flex',
-                flexDirection:'column',
-                gap:'8px',
-              }}>
-                <div style={{
-                  fontFamily:'var(--font-display)',
-                  fontSize:'clamp(26px,3vw,40px)',
-                  fontWeight:600,
-                  letterSpacing:'-0.03em',
-                  background:'linear-gradient(120deg,var(--accent),var(--accent-2))',
-                  WebkitBackgroundClip:'text',
-                  backgroundClip:'text',
-                  color:'transparent',
-                  lineHeight:1.1,
-                }}>{o.v}</div>
-                <div style={{
-                  fontFamily:'var(--font-mono)',
-                  fontSize:'11px',
-                  letterSpacing:'0.12em',
-                  textTransform:'uppercase',
-                  color:'var(--text-3)',
-                  lineHeight:1.4,
-                }}>{o.l}</div>
-              </div>
-            ))}
-          </div>
-
-          {/* Result bullets */}
-          <div style={{
-            display:'grid',
-            gridTemplateColumns:'1fr 1fr',
-            gap:'1px',
-            background:'var(--line)',
-            border:'1px solid var(--line)',
-            borderRadius:'var(--radius-lg)',
-            overflow:'hidden',
-          }}>
-            {results.map((r, i) => (
-              <div key={i} style={{
-                background:'var(--ink-1)',
-                padding:'28px 32px',
-                display:'flex',
-                gap:'16px',
-                alignItems:'flex-start',
-              }}>
-                <span style={{color:'var(--accent)',flexShrink:0,marginTop:'2px'}}>→</span>
-                <span style={{color:'var(--text-1)',fontSize:'15px',lineHeight:'1.6'}}>{r}</span>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -484,8 +401,6 @@ export default function DataAnalyticsCaseStudyPage() {
           </div>
         </div>
       </section>
-
-      </CaseStudyToggle>
 
       <Footer />
     </>

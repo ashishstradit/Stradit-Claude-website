@@ -117,37 +117,10 @@ export default function CareersPage() {
         </div>
       </header>
 
-      {/* WHY STRADIT */}
-      <section className="section" style={{paddingBottom:'60px'}}>
-        <div className="container">
-          <div className="section-eyebrow"><span className="idx">01</span><span>Why Stradit</span></div>
-          <div className="values-grid">
-            {[
-              {n:'01',title:'Work on real production AI',desc:'No toy demos. You\'ll ship governed LLM workflows, agents, and data systems that run inside the most regulated institutions in the world.'},
-              {n:'02',title:'Deep domain, not shallow consulting',desc:'Our teams are embedded with clients long-term. You\'ll develop genuine expertise in capital markets, risk, and financial operations — not just surface-level delivery.'},
-              {n:'03',title:'Engineer-led culture',desc:'Decisions are made by people who write code. Senior engineers run programs, set architecture, and have real ownership over outcomes.'},
-              {n:'04',title:'Global reach, local feel',desc:'Three hubs — New York, London, US and UK — with genuine follow-the-sun collaboration and flexible hybrid working by design.'},
-              {n:'05',title:'5 Centers of Excellence',desc:'Specialize deeply in Applied AI, Data Analytics, Cyber Security, Cloud & Infrastructure, or QA Engineering — with clear career paths in each.'},
-              {n:'06',title:'StartIT training included',desc:'Every Stradit team member gets access to our AI upskilling program — keeping you at the frontier regardless of your starting point.'},
-            ].map((v, i) => (
-              <div
-                key={v.n}
-                className={`value-card reveal${i > 0 && i < 5 ? ` reveal-delay-${i}` : ''}`}
-                style={i === 5 ? { transitionDelay: '.40s' } : undefined}
-              >
-                <div className="value-card__num">{v.n}</div>
-                <div className="value-card__title">{v.title}</div>
-                <div className="value-card__desc">{v.desc}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* OPEN ROLES */}
       <section className="section" id="open-roles" style={{paddingTop:'60px',borderTop:'1px solid var(--line)'}}>
         <div className="container">
-          <div className="section-eyebrow"><span className="idx">02</span><span>Open Roles</span></div>
+          <div className="section-eyebrow"><span className="idx">01</span><span>Open Roles</span></div>
           <div className="careers-open-intro">
             <h2 className="careers-open-intro__title">18 open roles across<br/>our global practices.</h2>
             <p className="careers-open-intro__lead">We hire for depth and curiosity. If you don&apos;t see your exact role below, send an open application — we&apos;re always interested in exceptional people.</p>
@@ -199,7 +172,7 @@ export default function CareersPage() {
       {/* APPLICATION FORM */}
       <section className="section apply-section" id="apply" ref={applyRef as any}>
         <div className="container">
-          <div className="section-eyebrow"><span className="idx">03</span><span>Apply</span></div>
+          <div className="section-eyebrow"><span className="idx">02</span><span>Apply</span></div>
           <div className="apply-form-wrap">
             <div className="apply-intro">
               <h2>Apply to Stradit</h2>

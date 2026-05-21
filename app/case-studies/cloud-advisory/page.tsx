@@ -2,7 +2,6 @@ import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import AnimCanvas from '@/components/AnimCanvas'
-import CaseStudyToggle from '@/components/CaseStudyToggle'
 
 export const metadata = {
   title: '30% Less Operations Cost with Cloud Advisory — StradIT Case Study',
@@ -61,13 +60,6 @@ const steps = [
   },
 ]
 
-const outcomes = [
-  { v: '30%', l: 'Reduction in operations cost' },
-  { v: '70%', l: 'Reduction in software licence cost' },
-  { v: '50%', l: 'Faster application deployment' },
-  { v: '5,000+', l: 'Cloud instances managed' },
-]
-
 export default function CloudAdvisoryCaseStudyPage() {
   return (
     <>
@@ -114,8 +106,6 @@ export default function CloudAdvisoryCaseStudyPage() {
           <span>Case Study · Cloud</span>
         </div>
       </header>
-
-      <CaseStudyToggle>
 
       {/* ── 01 CLIENT OVERVIEW ── */}
       <section className="section" style={{paddingTop:'100px'}}>
@@ -369,48 +359,6 @@ export default function CloudAdvisoryCaseStudyPage() {
             built in from the start.
           </p>
 
-          {/* Stats */}
-          <div style={{
-            display:'grid',
-            gridTemplateColumns:'repeat(4,1fr)',
-            gap:'1px',
-            background:'var(--line)',
-            border:'1px solid var(--line)',
-            borderRadius:'var(--radius-lg)',
-            overflow:'hidden',
-            marginBottom:'48px',
-          }}>
-            {outcomes.map((o) => (
-              <div key={o.l} style={{
-                background:'var(--ink-1)',
-                padding:'36px 28px',
-                display:'flex',
-                flexDirection:'column',
-                gap:'8px',
-              }}>
-                <div style={{
-                  fontFamily:'var(--font-display)',
-                  fontSize:'clamp(26px,3vw,40px)',
-                  fontWeight:600,
-                  letterSpacing:'-0.03em',
-                  background:'linear-gradient(120deg,var(--accent),var(--accent-2))',
-                  WebkitBackgroundClip:'text',
-                  backgroundClip:'text',
-                  color:'transparent',
-                  lineHeight:1.1,
-                }}>{o.v}</div>
-                <div style={{
-                  fontFamily:'var(--font-mono)',
-                  fontSize:'11px',
-                  letterSpacing:'0.12em',
-                  textTransform:'uppercase',
-                  color:'var(--text-3)',
-                  lineHeight:1.4,
-                }}>{o.l}</div>
-              </div>
-            ))}
-          </div>
-
           {/* Callout */}
           <p style={{
             color:'var(--text-1)',
@@ -465,8 +413,6 @@ export default function CloudAdvisoryCaseStudyPage() {
           </div>
         </div>
       </section>
-
-      </CaseStudyToggle>
 
       <Footer />
     </>

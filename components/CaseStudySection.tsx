@@ -1,4 +1,5 @@
 'use client'
+import Link from 'next/link'
 import { useState } from 'react'
 
 interface Props {
@@ -10,7 +11,9 @@ interface Props {
   cardTitle: React.ReactNode
   cardDesc: string
   stats: [string, string][]
-  children: React.ReactNode
+  href?: string
+  ctaLabel?: string
+  children?: React.ReactNode
 }
 
 export default function CaseStudySection({
@@ -22,9 +25,12 @@ export default function CaseStudySection({
   cardTitle,
   cardDesc,
   stats,
+  href,
+  ctaLabel = 'Read Case Study',
   children,
 }: Props) {
   const [open, setOpen] = useState(false)
+  const rendersInlineDetails = !href && Boolean(children)
 
   return (
     <>
@@ -51,34 +57,45 @@ export default function CaseStudySection({
                   </div>
                 ))}
               </div>
-              <button
-                onClick={() => setOpen(p => !p)}
-                className={`cs-inline-toggle ${open ? 'cs-inline-toggle--open' : 'cs-inline-toggle--closed'}`}
-              >
-                {open ? (
-                  <>
-                    Hide Case Study
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                      <path d="M18 15l-6-6-6 6" />
-                    </svg>
-                  </>
-                ) : (
-                  <>
-                    Read Case Study
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-                      <path d="M6 9l6 6 6-6" />
-                    </svg>
-                  </>
-                )}
-              </button>
+              {href ? (
+                <Link href={href} className="cs-inline-toggle cs-inline-toggle--closed">
+                  {ctaLabel}
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
+                </Link>
+              ) : rendersInlineDetails ? (
+                <button
+                  onClick={() => setOpen(p => !p)}
+                  className={`cs-inline-toggle ${open ? 'cs-inline-toggle--open' : 'cs-inline-toggle--closed'}`}
+                >
+                  {open ? (
+                    <>
+                      Hide Case Study
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                        <path d="M18 15l-6-6-6 6" />
+                      </svg>
+                    </>
+                  ) : (
+                    <>
+                      {ctaLabel}
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                        <path d="M6 9l6 6 6-6" />
+                      </svg>
+                    </>
+                  )}
+                </button>
+              ) : null}
             </div>
           </div>
         </div>
       </section>
 
-      <div className={`cs-inline-expand ${open ? 'cs-inline-expand--open' : ''}`}>
-        <div className="cs-inline-expand__inner">{children}</div>
-      </div>
+      {rendersInlineDetails && (
+        <div className={`cs-inline-expand ${open ? 'cs-inline-expand--open' : ''}`}>
+          <div className="cs-inline-expand__inner">{children}</div>
+        </div>
+      )}
     </>
   )
 }

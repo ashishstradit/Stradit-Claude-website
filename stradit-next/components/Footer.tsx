@@ -39,7 +39,6 @@ export default function Footer() {
         </div>
         <div className="footer__bottom">
           <span>© {year} Stradit LLC · All rights reserved</span>
-          <span>v2026.05 · Built for institutional scale</span>
         </div>
       </div>
     </footer>

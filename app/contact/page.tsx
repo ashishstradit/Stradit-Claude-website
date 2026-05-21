@@ -37,12 +37,6 @@ export default function ContactPage() {
             Got a question? A challenge? A vision that needs a partner?<br/>
             Whether you&apos;re exploring a Global Capability Center, trying to unlock the true power of AI, migrating to the cloud, or just curious about what StradIT can do for you — we&apos;re here and we&apos;re listening.
           </p>
-          <div className="hero__meta">
-            <div className="hero__meta-cell"><div className="hero__meta-k">Response</div><div className="hero__meta-v">&lt;24h <small>business days</small></div></div>
-            <div className="hero__meta-cell"><div className="hero__meta-k">First call</div><div className="hero__meta-v">30 min <small>with senior architect</small></div></div>
-            <div className="hero__meta-cell"><div className="hero__meta-k">NDA</div><div className="hero__meta-v">On request <small>mutual, fast</small></div></div>
-            <div className="hero__meta-cell"><div className="hero__meta-k">Email</div><div className="hero__meta-v">reachout@ <small>stradit.com</small></div></div>
-          </div>
         </div>
         <div className="hero__hud">
           <span className="pulse">Inbox · Open</span>

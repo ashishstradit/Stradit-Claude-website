@@ -2,7 +2,6 @@ import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import AnimCanvas from '@/components/AnimCanvas'
-import CaseStudyToggle from '@/components/CaseStudyToggle'
 
 export const metadata = {
   title: '70% Faster Due Diligence with Purpose-Built AI Agents — StradIT Case Study',
@@ -22,24 +21,6 @@ const whyPoints = [
   'Autonomous workflows that intelligently escalate exceptions to human reviewers',
   'Continuous learning loops to increase accuracy with each completed task',
   'Enterprise-level security, compliance, and full audit trails',
-]
-
-const outcomes = [
-  { v: '70%+', l: 'Faster due diligence' },
-  { v: '5,000%', l: 'ROI on the investment' },
-  { v: '40+', l: 'Deals per year (was a few)' },
-  { v: '24/7', l: 'Ops across 50+ jurisdictions' },
-]
-
-const results = [
-  'AltsIQ identified 95%+ of operational risks without missing a beat',
-  'Due diligence reduced from a 2-week slog to a 2-minute exercise',
-  'Deal capacity grew from a few per year to 40+ at the same cost point',
-  'AI agent cost: $250/month vs. $200K/year for a human analyst',
-  'Operations now run 24/7 across 50+ jurisdictions in 10+ languages',
-  'Compliance analysis improved for speed, accuracy, and explainability',
-  'Portfolio and fund analysis available on demand — not weeks later',
-  'The company scaled with intelligence, not headcount',
 ]
 
 export default function AiAgentsCaseStudyPage() {
@@ -88,8 +69,6 @@ export default function AiAgentsCaseStudyPage() {
           <span>Case Study · AI</span>
         </div>
       </header>
-
-      <CaseStudyToggle>
 
       {/* ── 01 CLIENT OVERVIEW ── */}
       <section className="section" style={{paddingTop:'100px'}}>
@@ -267,72 +246,6 @@ export default function AiAgentsCaseStudyPage() {
             The results demonstrated what purpose-built AI agents can do when built with the
             right expertise and deployed with the right governance.
           </p>
-
-          {/* Stats */}
-          <div style={{
-            display:'grid',
-            gridTemplateColumns:'repeat(4,1fr)',
-            gap:'1px',
-            background:'var(--line)',
-            border:'1px solid var(--line)',
-            borderRadius:'var(--radius-lg)',
-            overflow:'hidden',
-            marginBottom:'48px',
-          }}>
-            {outcomes.map((o) => (
-              <div key={o.l} style={{
-                background:'var(--ink-2)',
-                padding:'36px 28px',
-                display:'flex',
-                flexDirection:'column',
-                gap:'8px',
-              }}>
-                <div style={{
-                  fontFamily:'var(--font-display)',
-                  fontSize:'clamp(26px,3vw,40px)',
-                  fontWeight:600,
-                  letterSpacing:'-0.03em',
-                  background:'linear-gradient(120deg,var(--accent),var(--accent-2))',
-                  WebkitBackgroundClip:'text',
-                  backgroundClip:'text',
-                  color:'transparent',
-                  lineHeight:1.1,
-                }}>{o.v}</div>
-                <div style={{
-                  fontFamily:'var(--font-mono)',
-                  fontSize:'11px',
-                  letterSpacing:'0.12em',
-                  textTransform:'uppercase',
-                  color:'var(--text-3)',
-                  lineHeight:1.4,
-                }}>{o.l}</div>
-              </div>
-            ))}
-          </div>
-
-          {/* Result bullets — 2 columns */}
-          <div style={{
-            display:'grid',
-            gridTemplateColumns:'1fr 1fr',
-            gap:'1px',
-            background:'var(--line)',
-            border:'1px solid var(--line)',
-            borderRadius:'var(--radius-lg)',
-            overflow:'hidden',
-          }}>
-            {results.map((r, i) => (
-              <div key={i} style={{
-                background:'var(--ink-1)',
-                padding:'24px 28px',
-                display:'flex',
-                gap:'14px',
-                alignItems:'flex-start',
-              }}>
-                <span style={{color:'var(--accent)',flexShrink:0,marginTop:'2px'}}>→</span>
-                <span style={{color:'var(--text-1)',fontSize:'14px',lineHeight:'1.6'}}>{r}</span>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -373,8 +286,6 @@ export default function AiAgentsCaseStudyPage() {
           </div>
         </div>
       </section>
-
-      </CaseStudyToggle>
 
       <Footer />
     </>

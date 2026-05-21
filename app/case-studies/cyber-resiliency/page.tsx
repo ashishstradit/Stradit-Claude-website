@@ -2,7 +2,6 @@ import Link from 'next/link'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import AnimCanvas from '@/components/AnimCanvas'
-import CaseStudyToggle from '@/components/CaseStudyToggle'
 
 export const metadata = {
   title: 'Zero Data Loss Readiness Across 300+ Applications — StradIT Case Study',
@@ -38,13 +37,6 @@ const steps = [
   },
 ]
 
-const outcomes = [
-  { v: '300+', l: 'Applications assessed, tested & documented' },
-  { v: '100%', l: 'Tailored test plans per application' },
-  { v: 'Zero',  l: 'Data loss in recovery scenarios' },
-  { v: '2+ yrs', l: 'Ongoing partnership retained' },
-]
-
 const whyPoints = [
   '100% tailored cybersecurity advisory',
   'Recovery frameworks built from the ground up',
@@ -56,13 +48,6 @@ const challenges = [
   'Blind spots in tracking data entry points',
   'Absence of standard operating procedures',
   'Critical gaps in backup processes',
-]
-
-const results = [
-  'Automated data comparison tools for faster recovery validation',
-  'Clear, actionable playbooks ready for any incident',
-  'Reduced risk exposure across critical infrastructure',
-  'Confidence in zero data loss recovery',
 ]
 
 export default function CyberResiliencyPage() {
@@ -111,8 +96,6 @@ export default function CyberResiliencyPage() {
           <span>Case Study · Cyber</span>
         </div>
       </header>
-
-      <CaseStudyToggle>
 
       {/* ── 01 CLIENT OVERVIEW ── */}
       <section className="section" style={{paddingTop:'100px'}}>
@@ -311,72 +294,6 @@ export default function CyberResiliencyPage() {
             Two years into our partnership, this institution still chooses StradIT. The reason is
             simple: a tailored cybersecurity strategy that makes threats a thing of the past.
           </p>
-
-          {/* Stats row */}
-          <div style={{
-            display:'grid',
-            gridTemplateColumns:'repeat(4, 1fr)',
-            gap:'1px',
-            background:'var(--line)',
-            border:'1px solid var(--line)',
-            borderRadius:'var(--radius-lg)',
-            overflow:'hidden',
-            marginBottom:'48px',
-          }}>
-            {outcomes.map((o) => (
-              <div key={o.l} style={{
-                background:'var(--ink-2)',
-                padding:'36px 28px',
-                display:'flex',
-                flexDirection:'column',
-                gap:'8px',
-              }}>
-                <div style={{
-                  fontFamily:'var(--font-display)',
-                  fontSize:'clamp(28px,3vw,42px)',
-                  fontWeight:600,
-                  letterSpacing:'-0.03em',
-                  background:'linear-gradient(120deg,var(--accent),var(--accent-2))',
-                  WebkitBackgroundClip:'text',
-                  backgroundClip:'text',
-                  color:'transparent',
-                  lineHeight:1.1,
-                }}>{o.v}</div>
-                <div style={{
-                  fontFamily:'var(--font-mono)',
-                  fontSize:'11px',
-                  letterSpacing:'0.12em',
-                  textTransform:'uppercase',
-                  color:'var(--text-3)',
-                  lineHeight:1.4,
-                }}>{o.l}</div>
-              </div>
-            ))}
-          </div>
-
-          {/* Result bullets */}
-          <div style={{
-            display:'grid',
-            gridTemplateColumns:'1fr 1fr',
-            gap:'1px',
-            background:'var(--line)',
-            border:'1px solid var(--line)',
-            borderRadius:'var(--radius-lg)',
-            overflow:'hidden',
-          }}>
-            {results.map((r, i) => (
-              <div key={i} style={{
-                background:'var(--ink-1)',
-                padding:'28px 32px',
-                display:'flex',
-                gap:'16px',
-                alignItems:'flex-start',
-              }}>
-                <span style={{color:'var(--accent)',flexShrink:0,marginTop:'2px'}}>→</span>
-                <span style={{color:'var(--text-1)',fontSize:'15px',lineHeight:'1.6'}}>{r}</span>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -416,8 +333,6 @@ export default function CyberResiliencyPage() {
           </div>
         </div>
       </section>
-
-      </CaseStudyToggle>
 
       <Footer />
     </>
