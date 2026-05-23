@@ -44,20 +44,20 @@ export default function LandingCarousel() {
         {slides.map((s, i) => (
           <div key={i} style={{position:'absolute',inset:0,opacity:active===i?1:0,transition:'opacity 1.4s cubic-bezier(0.4,0,0.2,1)',pointerEvents:active===i?'auto':'none'}}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={s.img} alt={s.alt} loading={i===0?'eager':'lazy'} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 35%',display:'block',filter:'brightness(0.48) saturate(1.15)'}} />
-            <div style={{position:'absolute',inset:0,background:'linear-gradient(110deg,rgba(255,122,61,0.20) 0%,transparent 55%),linear-gradient(250deg,rgba(76,200,255,0.16) 0%,transparent 55%)'}} />
-            <div style={{position:'absolute',bottom:'76px',right:'clamp(20px,4vw,56px)',textAlign:'right',maxWidth:'340px',opacity:active===i?1:0,transform:active===i?'translateY(0)':'translateY(10px)',transition:'opacity .7s ease .5s,transform .7s ease .5s',pointerEvents:'none'}}>
+            <img src={s.img} alt={s.alt} loading={i===0?'eager':'lazy'} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 35%',display:'block',filter:'brightness(0.68) saturate(1.28) contrast(1.06)'}} />
+            <div style={{position:'absolute',inset:0,background:'linear-gradient(110deg,rgba(255,122,61,0.15) 0%,transparent 58%),linear-gradient(250deg,rgba(76,200,255,0.12) 0%,transparent 58%)'}} />
+            <div className="hero-carousel-caption" style={{position:'absolute',bottom:'76px',right:'clamp(20px,4vw,56px)',textAlign:'right',maxWidth:'340px',opacity:active===i?1:0,transform:active===i?'translateY(0)':'translateY(10px)',transition:'opacity .7s ease .5s,transform .7s ease .5s',pointerEvents:'none'}}>
               <div style={{fontFamily:'var(--font-display)',fontSize:'clamp(13px,1.1vw,16px)',color:'rgba(255,255,255,0.88)',letterSpacing:'-0.01em',lineHeight:'1.35',borderRight:'2px solid var(--accent)',paddingRight:'14px',marginBottom:'8px'}}>{s.caption}</div>
               <div style={{fontFamily:'var(--font-mono)',fontSize:'10px',letterSpacing:'0.14em',textTransform:'uppercase',color:'var(--accent)'}}>{s.tag}</div>
             </div>
           </div>
         ))}
         {/* Vignette — left-heavy so text is readable */}
-        <div style={{position:'absolute',inset:0,background:'radial-gradient(ellipse 55% 100% at 15% 50%,rgba(6,9,18,0.88) 0%,rgba(6,9,18,0.45) 40%,transparent 70%),linear-gradient(180deg,transparent 0%,rgba(6,9,18,0.3) 70%,var(--ink-0) 100%)',pointerEvents:'none',zIndex:1}} />
+        <div style={{position:'absolute',inset:0,background:'radial-gradient(ellipse 55% 100% at 15% 50%,rgba(6,9,18,0.74) 0%,rgba(6,9,18,0.34) 42%,rgba(6,9,18,0.08) 72%,transparent 84%),linear-gradient(180deg,rgba(6,9,18,0.06) 0%,rgba(6,9,18,0.18) 70%,var(--ink-0) 100%)',pointerEvents:'none',zIndex:1}} />
       </div>
 
       {/* Dot nav */}
-      <div style={{position:'absolute',bottom:'88px',left:'50%',transform:'translateX(-50%)',zIndex:5,display:'flex',gap:'8px',alignItems:'center'}}>
+      <div className="hero-carousel-dots" style={{position:'absolute',bottom:'88px',left:'50%',transform:'translateX(-50%)',zIndex:5,display:'flex',gap:'8px',alignItems:'center'}}>
         {slides.map((_,i) => (
           <button key={i} onClick={()=>goTo(i)} style={{width:active===i?'22px':'6px',height:'6px',borderRadius:'3px',background:active===i?'var(--accent)':'rgba(255,255,255,0.28)',border:'none',padding:0,cursor:'pointer',transition:'all .35s ease',boxShadow:active===i?'0 0 10px rgba(255,122,61,0.5)':'none'}} />
         ))}

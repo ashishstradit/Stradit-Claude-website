@@ -74,19 +74,19 @@ export default function HomePage() {
       <header className="hero hero--carousel">
         <LandingCarousel />
         <div className="container hero__inner">
-          <h1 className="hero__title">
+          <h1 className="hero__title reveal">
             <em>Applied AI and Engineering</em><br/>
             That Delivers <span className="blue">Measurable Change</span>
           </h1>
-          <p className="hero__sub">StradIT helps you turn technology into a lasting edge through applied AI and high-quality engineering delivery.</p>
-          <div className="hero__cta">
+          <p className="hero__sub reveal reveal-delay-1">StradIT helps you turn technology into a lasting edge through applied AI and high-quality engineering delivery.</p>
+          <div className="hero__cta reveal reveal-delay-2">
             <Link href="/contact" className="btn btn--primary">
               Start Your Digital Transformation
               <svg className="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </Link>
             <Link href="/coe" className="btn btn--ghost">Explore Our Center of Excellence</Link>
           </div>
-          <div className="hero__meta">
+          <div className="hero__meta reveal reveal-delay-3">
             <div className="hero__meta-cell"><div className="hero__meta-k">Engagements</div><div className="hero__meta-v">40+ <small>capital-markets programs</small></div></div>
             <div className="hero__meta-cell"><div className="hero__meta-k">Production AI</div><div className="hero__meta-v">120+ <small>governed workflows shipped</small></div></div>
             <div className="hero__meta-cell"><div className="hero__meta-k">Delivery</div><div className="hero__meta-v">8 wks <small>median time-to-value</small></div></div>
@@ -103,8 +103,8 @@ export default function HomePage() {
             <p className="reveal reveal-delay-1">AI built into every layer so your enterprise doesn&apos;t just keep up, it pulls ahead.</p>
           </div>
           <div className="coe-rail">
-            {coeCards.map((card) => (
-              <CoeCard key={card.href} {...card} />
+            {coeCards.map((card, index) => (
+              <CoeCard key={card.href} {...card} revealClass={`reveal reveal-delay-${Math.min(index, 4)}`} />
             ))}
           </div>{/* end coe-rail */}
         </div>{/* end container */}
@@ -115,7 +115,7 @@ export default function HomePage() {
       {/* GLOBAL SCALE LOCAL IMPACT */}
       <section className="section global-impact-section">
         <div className="container">
-          <div className="global-impact-card">
+          <div className="global-impact-card reveal reveal-zoom">
             <div className="global-impact-copy">
               <div className="section-eyebrow"><span className="idx">04</span><span>Global Delivery</span></div>
               <h2>
@@ -150,7 +150,7 @@ export default function HomePage() {
             gridTemplateColumns:'1fr auto',
             gap:'48px',
             alignItems:'center',
-          }} className="cta-band">
+          }} className="cta-band reveal reveal-zoom">
             <div>
               <h2 style={{fontSize:'clamp(28px,4vw,52px)',letterSpacing:'-0.03em',marginBottom:'16px',lineHeight:'1.05'}}>
                 Ready to turn innovation<br/>into execution?

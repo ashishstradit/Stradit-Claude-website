@@ -44,6 +44,14 @@ export default function CoeCard({
   useEffect(() => {
     const el = ref.current
     if (!el) return
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    if (reducedMotion || !('IntersectionObserver' in window)) {
+      setVisible(true)
+      return
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -60,7 +68,7 @@ export default function CoeCard({
   return (
     <article
       ref={ref}
-      className={`coe-card coe-card--${size} ${revealClass}${visible ? ' coe-card--visible' : ''}${open ? ' coe-card--open' : ''}`.trim()}
+      className={`coe-card coe-card--${size} ${revealClass}${visible ? ' coe-card--visible in' : ''}${open ? ' coe-card--open' : ''}`.trim()}
       style={style}
     >
       {/* Canvas visual — navigates on click */}

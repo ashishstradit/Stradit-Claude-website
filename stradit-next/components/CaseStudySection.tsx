@@ -33,13 +33,13 @@ export default function CaseStudySection({
         style={sectionStyle ?? { background: 'var(--ink-1)', borderTop: '1px solid var(--line)' }}
       >
         <div className="container">
-          <div className="section-eyebrow">
+          <div className="section-eyebrow reveal">
             <span className="idx">{eyebrowIdx}</span>
             <span>{eyebrowLabel}</span>
           </div>
           <div className="two-col">
-            {left}
-            <div className="cs-card" style={{ cursor: 'default', textDecoration: 'none', color: 'inherit' }}>
+            <div className="reveal reveal-from-left reveal-delay-1">{left}</div>
+            <div className="cs-card reveal reveal-from-right reveal-delay-2" style={{ cursor: 'default', textDecoration: 'none', color: 'inherit' }}>
               <div className="cs-card__tag">{tag}</div>
               <div className="cs-card__title">{cardTitle}</div>
               <p className="cs-card__desc">{cardDesc}</p>

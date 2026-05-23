@@ -91,12 +91,12 @@ export default function HeroCarousel() {
               src={s.img}
               alt={s.alt}
               loading={i === 0 ? 'eager' : 'lazy'}
-              style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 35%',display:'block',filter:'brightness(0.55) saturate(1.2)'}}
+              style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 35%',display:'block',filter:'brightness(0.72) saturate(1.3) contrast(1.06)'}}
             />
             {/* colour overlay */}
-            <div style={{position:'absolute',inset:0,background:'linear-gradient(115deg,rgba(255,122,61,0.32) 0%,rgba(255,122,61,0.08) 35%,transparent 60%),linear-gradient(255deg,rgba(76,200,255,0.24) 0%,rgba(76,200,255,0.06) 35%,transparent 60%)'}} />
+            <div style={{position:'absolute',inset:0,background:'linear-gradient(115deg,rgba(255,122,61,0.2) 0%,rgba(255,122,61,0.05) 38%,transparent 62%),linear-gradient(255deg,rgba(76,200,255,0.16) 0%,rgba(76,200,255,0.04) 38%,transparent 62%)'}} />
             {/* caption */}
-            <div style={{
+            <div className="hero-carousel-caption" style={{
               position:'absolute',bottom:'76px',right:'clamp(20px,4vw,56px)',
               textAlign:'right',maxWidth:'340px',
               opacity: active === i ? 1 : 0,
@@ -111,11 +111,11 @@ export default function HeroCarousel() {
         ))}
 
         {/* Vignette overlay for text readability */}
-        <div style={{position:'absolute',inset:0,background:'radial-gradient(ellipse 55% 100% at 15% 50%,rgba(6,9,18,0.88) 0%,rgba(6,9,18,0.45) 40%,transparent 70%),linear-gradient(180deg,transparent 0%,rgba(6,9,18,0.3) 70%,var(--ink-0) 100%)',pointerEvents:'none',zIndex:1}} />
+        <div style={{position:'absolute',inset:0,background:'radial-gradient(ellipse 55% 100% at 15% 50%,rgba(6,9,18,0.72) 0%,rgba(6,9,18,0.34) 42%,rgba(6,9,18,0.08) 72%,transparent 84%),linear-gradient(180deg,rgba(6,9,18,0.06) 0%,rgba(6,9,18,0.18) 70%,var(--ink-0) 100%)',pointerEvents:'none',zIndex:1}} />
       </div>
 
       {/* Dot nav */}
-      <div style={{position:'absolute',bottom:'88px',left:'50%',transform:'translateX(-50%)',zIndex:5,display:'flex',gap:'8px',alignItems:'center'}}>
+      <div className="hero-carousel-dots" style={{position:'absolute',bottom:'88px',left:'50%',transform:'translateX(-50%)',zIndex:5,display:'flex',gap:'8px',alignItems:'center'}}>
         {slides.map((_, i) => (
           <button
             key={i}
