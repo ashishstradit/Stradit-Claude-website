@@ -17,6 +17,17 @@ const slides = [
 ]
 
 const INTERVAL = 5000
+const IMAGE_WIDTHS = [960, 1280, 1800, 2400, 3200]
+
+function imageUrl(src: string, width: number) {
+  return src
+    .replace(/([?&])w=\d+/, `$1w=${width}`)
+    .replace(/([?&])q=\d+/, '$1q=92')
+}
+
+function imageSrcSet(src: string) {
+  return IMAGE_WIDTHS.map((width) => `${imageUrl(src, width)} ${width}w`).join(', ')
+}
 
 export default function LandingCarousel() {
   const [active, setActive] = useState(0)
@@ -42,9 +53,9 @@ export default function LandingCarousel() {
     <>
       <div style={{position:'absolute',inset:0,zIndex:0,overflow:'hidden'}}>
         {slides.map((s, i) => (
-          <div key={i} style={{position:'absolute',inset:0,opacity:active===i?1:0,transition:'opacity 1.4s cubic-bezier(0.4,0,0.2,1)',pointerEvents:active===i?'auto':'none'}}>
+          <div key={i} style={{position:'absolute',inset:0,opacity:active===i?1:0,transition:'opacity 1.4s cubic-bezier(0.4,0,0.2,1)',pointerEvents:active===i?'auto':'none',willChange:'opacity',transform:'translateZ(0)',backfaceVisibility:'hidden'}}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={s.img} alt={s.alt} loading={i===0?'eager':'lazy'} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 35%',display:'block',filter:'brightness(0.68) saturate(1.28) contrast(1.06)'}} />
+            <img src={imageUrl(s.img, 2400)} srcSet={imageSrcSet(s.img)} sizes="100vw" alt={s.alt} loading={i===0?'eager':'lazy'} fetchPriority={i===0?'high':'auto'} decoding={i===0?'sync':'async'} draggable={false} style={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center 35%',display:'block',filter:'brightness(0.68) saturate(1.28) contrast(1.06)',transform:'translateZ(0)',backfaceVisibility:'hidden',imageRendering:'auto'}} />
             <div style={{position:'absolute',inset:0,background:'linear-gradient(110deg,rgba(255,122,61,0.15) 0%,transparent 58%),linear-gradient(250deg,rgba(76,200,255,0.12) 0%,transparent 58%)'}} />
             <div className="hero-carousel-caption" style={{position:'absolute',bottom:'76px',right:'clamp(20px,4vw,56px)',textAlign:'right',maxWidth:'340px',opacity:active===i?1:0,transform:active===i?'translateY(0)':'translateY(10px)',transition:'opacity .7s ease .5s,transform .7s ease .5s',pointerEvents:'none'}}>
               <div style={{fontFamily:'var(--font-display)',fontSize:'clamp(13px,1.1vw,16px)',color:'rgba(255,255,255,0.88)',letterSpacing:'-0.01em',lineHeight:'1.35',borderRight:'2px solid var(--accent)',paddingRight:'14px',marginBottom:'8px'}}>{s.caption}</div>
