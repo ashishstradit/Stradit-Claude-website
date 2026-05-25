@@ -18,6 +18,13 @@ export default function ScrollReveal() {
       return
     }
 
+    const isInInitialView = (element: HTMLElement) => {
+      const rect = element.getBoundingClientRect()
+      const viewportHeight = window.innerHeight || document.documentElement.clientHeight
+
+      return rect.top < viewportHeight * 0.88 && rect.bottom > 0
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -35,6 +42,12 @@ export default function ScrollReveal() {
 
     elements.forEach((element) => {
       element.classList.remove('in')
+
+      if (isInInitialView(element)) {
+        element.classList.add('in')
+        return
+      }
+
       observer.observe(element)
     })
 
