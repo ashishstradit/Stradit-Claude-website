@@ -14,7 +14,6 @@ export default function AboutPage() {
       <header className="hero hero--compact hero--carousel">
         <HeroCarousel />
         <div className="container hero__inner">
-          <div className="hero__eyebrow eyebrow">About Stradit · Est. 2014</div>
           <h1 className="hero__title">
             Engineers building<br/>intelligent solutions<br/>for <em>global finance.</em>
           </h1>

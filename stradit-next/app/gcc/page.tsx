@@ -14,7 +14,6 @@ export default function GccPage() {
       <header className="hero hero--compact">
         <div className="hero__canvas"><AnimCanvas theme="gcc" /></div>
         <div className="container hero__inner">
-          <div className="hero__eyebrow eyebrow">Global Capability Center · 4 Regions</div>
           <h1 className="hero__title">Your Global<br/><em>Capability Center</em></h1>
           <p className="hero__sub">
             Built by StradIT. Owned by you.<br/>

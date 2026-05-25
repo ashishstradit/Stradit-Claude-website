@@ -268,7 +268,7 @@ h1, h2, h3, h4 {
 }
 
 .hero--compact { min-height: 78vh; }
-.hero--compact .hero__title { font-size: clamp(30px, 4.2vw, 56px); }
+.hero--compact .hero__title { font-size: clamp(34px, 5vw, 68px); }
 .hero--compact .hero__inner { padding: 60px 0 40px; }
 
 /* Section */
@@ -1361,22 +1361,36 @@ h1, h2, h3, h4 {
     min-height: auto;
     padding-top: 68px;
   }
+  /* Full-width dark overlay on mobile so text is always readable */
+  .hero::before {
+    background:
+      linear-gradient(180deg, rgba(6,9,18,0.82) 0%, rgba(6,9,18,0.65) 55%, var(--ink-0) 100%);
+  }
   .hero__inner {
     padding: 34px clamp(18px, 5vw, 24px) 30px;
   }
-  .hero__title {
+  .hero__title,
+  .hero--compact .hero__title {
     font-size: clamp(28px, 6.2vw, 34px) !important;
     line-height: 1.08 !important;
     letter-spacing: -0.028em;
     max-width: 430px;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 18px;
+    text-align: left;
   }
-  .hero__sub {
-    max-width: 430px;
-    font-size: 15.5px;
-    line-height: 1.55;
-    margin-bottom: 24px;
+  .hero__sub,
+  .hero__inner > p:not(.hero__sub) {
+    max-width: 430px !important;
+    font-size: 15.5px !important;
+    line-height: 1.55 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: left;
   }
+  .hero__sub { margin-bottom: 24px !important; }
+  .hero__inner > p:not(.hero__sub) { margin-bottom: 36px !important; }
   .hero__cta {
     flex-direction: column;
     align-items: stretch;
@@ -1427,18 +1441,19 @@ h1, h2, h3, h4 {
   }
 
   /* Hero: smaller, legible title + breathing room */
-  .hero__title {
+  .hero__title,
+  .hero--compact .hero__title {
     font-size: clamp(25px, 7vw, 31px) !important;
     line-height: 1.12 !important;
     letter-spacing: -0.025em;
     margin-bottom: 18px;
   }
-  .hero--compact .hero__title {
-    font-size: clamp(20px, 7vw, 28px) !important;
-    line-height: 1.12 !important;
-  }
   .hero__inner { padding: 30px clamp(18px, 5vw, 22px) 28px; }
-  .hero__sub { font-size: 14.5px; margin-bottom: 22px; }
+  .hero__sub,
+  .hero__inner > p:not(.hero__sub) {
+    font-size: 14.5px !important;
+  }
+  .hero__sub { margin-bottom: 22px !important; }
   .hero__cta { margin-bottom: 30px; gap: 10px; }
   .hero__meta {
     padding-top: 20px;
@@ -3001,4 +3016,100 @@ h1, h2, h3, h4 {
   .cs-mini-g3 { grid-template-columns: 1fr; gap: 10px; }
   .cs-step { grid-template-columns: 1fr; gap: 6px; }
   .cs-step > div:first-child { display: none; }
+}
+
+
+/* ===== STATS BAR (below hero on cloud / testing / digital-assets) ===== */
+.stats-bar { border-bottom: 1px solid var(--line); background: var(--ink-1); }
+.stats-bar .hero__meta {
+  max-width: 100%;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  border-top: none;
+}
+
+/* On mobile the stats bar collapses to 2-col */
+@media (max-width: 700px) {
+  .stats-bar .hero__meta {
+    grid-template-columns: repeat(2, 1fr) !important;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .stats-bar .hero__meta-cell:nth-child(2) { border-right: none; }
+  .stats-bar .hero__meta-cell:nth-child(3),
+  .stats-bar .hero__meta-cell:nth-child(4) {
+    padding-top: 16px;
+    margin-top: 16px;
+    border-top: 1px solid var(--line);
+  }
+  .stats-bar .hero__meta-cell:nth-child(3) { padding-left: 0; }
+}
+
+/* ===== DIGITAL ASSETS PAGE — mobile ===== */
+
+/* Regulatory callout: 3-col → 1-col */
+@media (max-width: 860px) {
+  .da-reg-callout {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    padding: 28px 24px !important;
+  }
+  .da-reg-callout__stat { text-align: left; }
+}
+
+@media (max-width: 700px) {
+  .da-hero-copy {
+    max-width: 430px !important;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 14.5px !important;
+    line-height: 1.6 !important;
+    text-align: left;
+  }
+}
+
+/* Pillar grid: 3-col → 1-col */
+@media (max-width: 860px) {
+  .da-pillar-grid {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+@media (max-width: 560px) {
+  .da-pillar-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Engagement 2-col header + 3-col timeline → 1-col */
+@media (max-width: 860px) {
+  .da-engage-header {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    margin-bottom: 32px !important;
+  }
+  .da-timeline {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+}
+
+/* CTA banner 2-col → 1-col */
+@media (max-width: 700px) {
+  .da-cta-banner {
+    grid-template-columns: 1fr !important;
+    padding: 36px 24px !important;
+    gap: 24px !important;
+  }
+  .da-cta-banner__actions {
+    align-items: flex-start !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero--compact .hero__title {
+    font-size: clamp(25px, 7vw, 31px) !important;
+    line-height: 1.12 !important;
+  }
 }

@@ -19,6 +19,7 @@
       case 'vortex': vortex(canvas, theme); break;
       case 'beacon': beacon(canvas, theme); break;
       case 'careers': careers(canvas, theme); break;
+      case 'blockchain': blockchain(canvas, theme); break;
       default: neural(canvas, theme, { pulse: true });
     }
   };
@@ -132,6 +133,14 @@
       bg: "#060912",
       colorA: [255, 122, 61],
       colorB: [76, 200, 255],
+    },
+    // Digital Assets & Blockchain — on-chain settlement ledger
+    digitalassets: {
+      kind: "blockchain",
+      bg: "#060912",
+      colorA: [79, 209, 197],
+      colorB: [76, 200, 255],
+      colorC: [245, 183, 107],
     },
   };
 
@@ -2289,6 +2298,183 @@
       window.removeEventListener('resize', onResize);
       cancelAnimationFrame(rafId);
     };
+  }
+
+  // ---------------------------------------------------------
+  // Blockchain — on-chain settlement ledger (Digital Assets)
+  // ---------------------------------------------------------
+  function blockchain(canvas, theme) {
+    const { ctx, resize } = setupHiDPI(canvas);
+    let W, H, t = 0, nodes = [], txPool = [], blocks = [], txParticles = [];
+    let miningProg = 0, blockNum = 842190, lastSpawn = 0;
+
+    function rh() {
+      const c = "0123456789abcdef"; let h = "0x";
+      for (let i = 0; i < 8; i++) h += c[(Math.random() * 16) | 0];
+      return h;
+    }
+
+    function init2() {
+      const r = canvas.getBoundingClientRect(); W = r.width; H = r.height;
+      nodes = [];
+      const cx = W * 0.26, cy = H * 0.5;
+      const rs = [0, 0.22, 0.18, 0.28, 0.24, 0.32, 0.2, 0.26, 0.3];
+      const as = [0, 0.6, 2.1, 3.4, 4.9, 1.4, 5.6, 2.8, 0.2];
+      for (let i = 0; i < 9; i++) {
+        const R = Math.min(W, H) * rs[i];
+        nodes.push({ x: cx + Math.cos(as[i]) * R, y: cy + Math.sin(as[i]) * R * 0.7, phase: Math.random() * Math.PI * 2, role: i === 0 ? "lead" : "ptcp", ca: 0 });
+      }
+      blocks = [];
+      const lbls = ["EQUITY", "FIXED-INCOME", "ETF", "TREASURY", "MBS"];
+      for (let i = 5; i >= 1; i--) blocks.push({ num: blockNum - i, hash: rh(), txs: ((Math.random() * 80) + 20) | 0, glow: 0, label: lbls[(i - 1) % 5] });
+      miningProg = 0; txPool = []; txParticles = [];
+    }
+    init2();
+    window.addEventListener("resize", () => { resize(); init2(); });
+
+    function frame(ts) {
+      t += 0.016;
+      ctx.fillStyle = theme.bg; ctx.fillRect(0, 0, W, H);
+
+      // Hex grid background
+      ctx.strokeStyle = "rgba(79,209,197,0.05)"; ctx.lineWidth = 0.8;
+      const hs = 28, hr = hs * Math.sqrt(3) / 2;
+      for (let row = -1; row < H / (hs * 1.5) + 2; row++) {
+        for (let col = -1; col < W / (hr * 2) + 2; col++) {
+          const xo = row % 2 === 0 ? 0 : hr, hx = col * hr * 2 + xo, hy = row * hs * 1.5;
+          ctx.beginPath();
+          for (let k = 0; k < 6; k++) {
+            const a = k * Math.PI / 3 + Math.PI / 6;
+            if (k === 0) ctx.moveTo(hx + Math.cos(a) * hs * 0.48, hy + Math.sin(a) * hs * 0.48);
+            else ctx.lineTo(hx + Math.cos(a) * hs * 0.48, hy + Math.sin(a) * hs * 0.48);
+          }
+          ctx.closePath(); ctx.stroke();
+        }
+      }
+
+      // Gossip lines between nodes
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const a = nodes[i], b = nodes[j];
+          if (Math.hypot(a.x - b.x, a.y - b.y) > W * 0.24) continue;
+          const pulse = (Math.sin(t * 2 + i * 0.7 + j * 0.4) + 1) * 0.5;
+          ctx.strokeStyle = rgba(theme.colorA, 0.05 + pulse * 0.09); ctx.lineWidth = 0.8;
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        }
+      }
+
+      // Nodes
+      for (const n of nodes) {
+        n.phase += 0.018;
+        const pulse = (Math.sin(n.phase) + 1) * 0.5;
+        const isLead = n.role === "lead", nr = isLead ? 14 : 9, col = isLead ? theme.colorC : theme.colorA;
+        ctx.fillStyle = rgba(col, 0.10 + pulse * 0.1); ctx.beginPath(); ctx.arc(n.x, n.y, nr + 8, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = rgba(col, 0.15 + n.ca * 0.3); ctx.beginPath(); ctx.arc(n.x, n.y, nr, 0, Math.PI * 2); ctx.fill();
+        ctx.strokeStyle = rgba(col, 0.6 + pulse * 0.4); ctx.lineWidth = isLead ? 2 : 1.5;
+        ctx.beginPath(); ctx.arc(n.x, n.y, nr, 0, Math.PI * 2); ctx.stroke();
+        ctx.font = `${isLead ? 8 : 7}px JetBrains Mono,monospace`;
+        ctx.fillStyle = rgba(col, 0.9); ctx.textAlign = "center"; ctx.textBaseline = "middle";
+        ctx.fillText(isLead ? "CUST" : "PTCP", n.x, n.y);
+        ctx.textAlign = "left"; ctx.textBaseline = "alphabetic";
+        if (n.ca > 0) n.ca -= 0.025;
+      }
+
+      // TX Pool
+      if (ts - lastSpawn > 700 && txPool.length < 7) {
+        txPool.push({ x: W * 0.47 + rand(-16, 16), y: H * 0.25 + Math.random() * H * 0.5, type: ["EQ", "ETF", "FI", "UST"][(Math.random() * 4) | 0], age: 0 });
+        lastSpawn = ts;
+      }
+      ctx.font = "8px JetBrains Mono,monospace"; ctx.fillStyle = rgba(theme.colorB, 0.25);
+      ctx.fillText("PENDING TXS", W * 0.45, H * 0.14);
+      for (let i = txPool.length - 1; i >= 0; i--) {
+        const tx = txPool[i]; tx.age += 0.016; tx.y -= 0.25;
+        if (miningProg > 0.75) {
+          txParticles.push({ x: tx.x, y: tx.y, tx2: W * 0.57 + blocks.length * 84, ty2: H * 0.5, p: 0 });
+          txPool.splice(i, 1); continue;
+        }
+        ctx.strokeStyle = rgba(theme.colorB, 0.55); ctx.lineWidth = 1;
+        ctx.strokeRect(tx.x - 8, tx.y - 7, 16, 14);
+        ctx.fillStyle = rgba(theme.colorB, 0.06); ctx.fillRect(tx.x - 8, tx.y - 7, 16, 14);
+        ctx.font = "7px JetBrains Mono,monospace"; ctx.fillStyle = rgba(theme.colorB, 0.85);
+        ctx.textAlign = "center"; ctx.textBaseline = "middle";
+        ctx.fillText(tx.type, tx.x, tx.y);
+        ctx.textAlign = "left"; ctx.textBaseline = "alphabetic";
+        if (tx.y < H * 0.1 || tx.age > 8) txPool.splice(i, 1);
+      }
+
+      // TX Particles flying into blocks
+      for (let i = txParticles.length - 1; i >= 0; i--) {
+        const p = txParticles[i]; p.p += 0.03;
+        if (p.p >= 1) { txParticles.splice(i, 1); continue; }
+        const ex = p.x + (p.tx2 - p.x) * p.p, ey = p.y + (p.ty2 - p.y) * p.p - Math.sin(p.p * Math.PI) * 28;
+        ctx.fillStyle = rgba(theme.colorC, 0.9 * (1 - p.p));
+        ctx.beginPath(); ctx.arc(ex, ey, 2.5, 0, Math.PI * 2); ctx.fill();
+      }
+
+      // Mining progress
+      miningProg += 0.0025;
+      if (miningProg >= 1) {
+        miningProg = 0; blockNum++;
+        const lb = ["EQUITY", "ETF", "FIXED-INCOME", "TREASURY", "MBS"];
+        blocks.push({ num: blockNum, hash: rh(), txs: ((Math.random() * 60) + 15) | 0, glow: 1, label: lb[blockNum % 5] });
+        if (blocks.length > 5) blocks.shift();
+        for (const n of nodes) n.ca = 1;
+      }
+
+      // Settlement ledger blocks
+      const cX = W * 0.56, cY = H * 0.17, bW = Math.min(Math.floor((W * 0.42) / 5.6), 72), bH = H * 0.47, bG = 8;
+      ctx.font = "8px JetBrains Mono,monospace"; ctx.fillStyle = rgba(theme.colorA, 0.3);
+      ctx.fillText("SETTLEMENT LEDGER · TOKENIZED SECURITIES", cX, cY - 8);
+      for (let i = 0; i < blocks.length; i++) {
+        const bl = blocks[i], bx2 = cX + i * (bW + bG), by = cY;
+        bl.glow = Math.max(0, bl.glow - 0.012);
+        const latest = i === blocks.length - 1, col = latest ? theme.colorC : theme.colorA;
+        if (i > 0) {
+          ctx.strokeStyle = rgba(theme.colorA, 0.35); ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+          ctx.beginPath(); ctx.moveTo(bx2 - bG + 1, by + bH * 0.4); ctx.lineTo(bx2 - 1, by + bH * 0.4);
+          ctx.stroke(); ctx.setLineDash([]);
+        }
+        ctx.fillStyle = rgba(col, 0.04 + bl.glow * 0.14); ctx.fillRect(bx2, by, bW, bH);
+        ctx.strokeStyle = rgba(col, 0.22 + bl.glow * 0.65); ctx.lineWidth = latest ? 1.5 : 1;
+        ctx.strokeRect(bx2 + 0.5, by + 0.5, bW, bH);
+        ctx.fillStyle = rgba(col, 0.06 + bl.glow * 0.08); ctx.fillRect(bx2, by, bW, 18);
+        ctx.font = "8px JetBrains Mono,monospace"; ctx.fillStyle = rgba(col, 0.95); ctx.textAlign = "center";
+        ctx.fillText("#" + bl.num, bx2 + bW / 2, by + 12);
+        ctx.font = "6px JetBrains Mono,monospace"; ctx.fillStyle = rgba(theme.colorB, 0.75);
+        ctx.fillText(bl.hash, bx2 + bW / 2, by + 27);
+        ctx.fillStyle = rgba(col, 0.7); ctx.fillText(bl.label, bx2 + bW / 2, by + 40);
+        ctx.font = "bold 14px Inter Tight,sans-serif"; ctx.fillStyle = rgba(col, 0.9);
+        ctx.fillText(bl.txs, bx2 + bW / 2, by + 62);
+        ctx.font = "6px JetBrains Mono,monospace"; ctx.fillStyle = rgba(col, 0.45);
+        ctx.fillText("TOKENS", bx2 + bW / 2, by + 73);
+        ctx.fillStyle = rgba(theme.colorA, 0.5); ctx.fillText("FINALIZED", bx2 + bW / 2, by + bH - 10);
+        ctx.textAlign = "left";
+      }
+
+      // New block being mined
+      const nbx = cX + blocks.length * (bW + bG), nby = cY, mp = miningProg;
+      ctx.strokeStyle = rgba(theme.colorC, 0.25 + Math.sin(t * 3) * 0.15); ctx.lineWidth = 1; ctx.setLineDash([4, 4]);
+      ctx.strokeRect(nbx + 0.5, nby + 0.5, bW, bH); ctx.setLineDash([]);
+      ctx.font = "7px JetBrains Mono,monospace"; ctx.fillStyle = rgba(theme.colorC, 0.55); ctx.textAlign = "center";
+      ctx.fillText("MINING", nbx + bW / 2, nby + 20);
+      ctx.strokeStyle = rgba(theme.colorC, 0.75); ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(nbx + bW / 2, nby + bH * 0.5, 13, -Math.PI / 2, -Math.PI / 2 + mp * Math.PI * 2); ctx.stroke();
+      ctx.font = "9px Inter Tight,sans-serif"; ctx.fillStyle = rgba(theme.colorC, 0.8);
+      ctx.fillText((mp * 100).toFixed(0) + "%", nbx + bW / 2, nby + bH * 0.5 + 4);
+      ctx.textAlign = "left";
+
+      // Live stats row
+      const sy = H * 0.73, sX = W * 0.56, sw3 = (W * 0.42) / 4;
+      const stats = [{ k: "BLOCK TIME", v: "12s" }, { k: "FINALITY", v: "T+0" }, { k: "THROUGHPUT", v: ((1800 + Math.sin(t) * 200) | 0) + " tps" }, { k: "NODES", v: "9 / 9" }];
+      for (let i = 0; i < stats.length; i++) {
+        const sx3 = sX + i * sw3;
+        ctx.font = "8px JetBrains Mono,monospace"; ctx.fillStyle = rgba(theme.colorA, 0.38); ctx.fillText(stats[i].k, sx3, sy);
+        ctx.font = "bold 13px Inter Tight,sans-serif"; ctx.fillStyle = rgba(theme.colorA, 0.95); ctx.fillText(stats[i].v, sx3, sy + 16);
+      }
+
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
   }
 
 })();

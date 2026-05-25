@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useRef } from 'react'
 
-type Theme = 'home' | 'about' | 'coe' | 'ai' | 'data' | 'cyber' | 'cloud' | 'testing' | 'gcc' | 'startit' | 'contact' | 'careers'
+type Theme = 'home' | 'about' | 'coe' | 'ai' | 'data' | 'cyber' | 'cloud' | 'testing' | 'gcc' | 'startit' | 'contact' | 'careers' | 'digitalassets'
 
 interface Props {
   theme: Theme

@@ -61,6 +61,15 @@ const coeCards = [
     highlights: ['GCC setup and operating model','Talent, tooling, and delivery governance','CoE design and scaling','Continuous performance improvement'],
     cta: 'Explore GCC',
   },
+  {
+    href: '/coe/digital-assets', size: 'md' as const, animDelay: 480,
+    badge: 'CoE · New', chips: ['Blockchain', 'Tokenization'],
+    theme: 'digitalassets' as const, animKey: 'card-digitalassets',
+    title: 'Digital Assets & Blockchain',
+    desc: 'Blockchain-native infrastructure for regulated on-chain capital markets.',
+    highlights: ['Distributed ledger infrastructure','Smart contract automation','Token issuance & custody','SEC · FCA · MiCA compliance'],
+    cta: 'Explore',
+  },
 ]
 
 export const metadata = { title: 'StradIT — Applied AI & Engineering for Capital Markets' }

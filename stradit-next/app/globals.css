@@ -1211,19 +1211,28 @@ h1, h2, h3, h4 {
   .hero__inner {
     padding: 34px clamp(18px, 5vw, 24px) 30px;
   }
-  .hero__title {
+  .hero__title,
+  .hero--compact .hero__title {
     font-size: clamp(28px, 6.2vw, 34px) !important;
     line-height: 1.08 !important;
     letter-spacing: -0.028em;
     max-width: 430px;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 18px;
+    text-align: left;
   }
-  .hero__sub {
-    max-width: 430px;
-    font-size: 15.5px;
-    line-height: 1.55;
-    margin-bottom: 24px;
+  .hero__sub,
+  .hero__inner > p:not(.hero__sub) {
+    max-width: 430px !important;
+    font-size: 15.5px !important;
+    line-height: 1.55 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: left;
   }
+  .hero__sub { margin-bottom: 24px !important; }
+  .hero__inner > p:not(.hero__sub) { margin-bottom: 36px !important; }
   .hero__cta {
     flex-direction: column;
     align-items: stretch;
@@ -1274,18 +1283,19 @@ h1, h2, h3, h4 {
   }
 
   /* Hero: smaller, legible title + breathing room */
-  .hero__title {
+  .hero__title,
+  .hero--compact .hero__title {
     font-size: clamp(25px, 7vw, 31px) !important;
     line-height: 1.12 !important;
     letter-spacing: -0.025em;
     margin-bottom: 18px;
   }
-  .hero--compact .hero__title {
-    font-size: clamp(20px, 7vw, 28px) !important;
-    line-height: 1.12 !important;
-  }
   .hero__inner { padding: 30px clamp(18px, 5vw, 22px) 28px; }
-  .hero__sub { font-size: 14.5px; margin-bottom: 22px; }
+  .hero__sub,
+  .hero__inner > p:not(.hero__sub) {
+    font-size: 14.5px !important;
+  }
+  .hero__sub { margin-bottom: 22px !important; }
   .hero__cta { margin-bottom: 30px; gap: 10px; }
   .hero__meta {
     padding-top: 20px;

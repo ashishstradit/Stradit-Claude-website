@@ -14,7 +14,6 @@ export default function StartitPage() {
       <header className="hero hero--compact">
         <div className="hero__canvas"><AnimCanvas theme="startit" /></div>
         <div className="container hero__inner">
-          <div className="hero__eyebrow eyebrow">StartIT · AI Training &amp; Upskilling</div>
           <h1 className="hero__title">Turning Your Teams Into<br/><em>AI Powerhouses</em></h1>
           <p className="hero__sub">From &apos;AI Curious&apos; to &apos;AI Certified&apos; in Only 8 Weeks with StartIT.</p>
           <div className="hero__cta">

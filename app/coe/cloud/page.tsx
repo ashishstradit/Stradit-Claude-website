@@ -22,7 +22,6 @@ export default function CoeCloudPage() {
       <header className="hero hero--compact">
         <div className="hero__canvas"><AnimCanvas theme="cloud" /></div>
         <div className="container hero__inner">
-          <div className="hero__eyebrow eyebrow">Center of Excellence · Cloud &amp; Infrastructure</div>
           <h1 className="hero__title">Cloud &amp; Infrastructure — <em>Applied AI</em></h1>
           <p className="hero__sub">Strategic, Scalable, Future-Ready Cloud for All</p>
           <p style={{color:'var(--text-1)',fontSize:'16px',lineHeight:'1.65',maxWidth:'600px',marginBottom:'36px'}}>
@@ -35,21 +34,27 @@ export default function CoeCloudPage() {
             </Link>
             <Link href="/coe" className="btn btn--ghost">All practices</Link>
           </div>
-          <div className="hero__meta">
-            <div className="hero__meta-cell"><div className="hero__meta-v">35% Lower</div><div className="hero__meta-k">Cloud Spend</div></div>
-            <div className="hero__meta-cell"><div className="hero__meta-v">99.9%</div><div className="hero__meta-k">Uptime Targets</div></div>
-            <div className="hero__meta-cell"><div className="hero__meta-v">4x Better</div><div className="hero__meta-k">Scalability</div></div>
-            <div className="hero__meta-cell"><div className="hero__meta-k">Reference</div><div className="hero__meta-v" style={{fontSize:'12px',lineHeight:'1.4'}}><small>About — Social Driver</small></div></div>
-          </div>
         </div>
         <div className="hero__hud">
           <span className="pulse">Cloud · Operational</span>
           <span className="hero__hud-grid">
-            <span>NODES <b>5K+</b></span><span>UPTIME <b>99.9%</b></span><span>REGIONS <b>4</b></span>
+            <span>NODES <b>5K+</b></span><span>UPTIME <b>99.99%</b></span><span>REGIONS <b>4</b></span>
           </span>
           <span>Cloud · v2026.05</span>
         </div>
       </header>
+
+      {/* STATS BAR */}
+      <div className="stats-bar">
+        <div className="container">
+          <div className="hero__meta">
+            <div className="hero__meta-cell"><div className="hero__meta-k">Cost Reduction</div><div className="hero__meta-v">34%</div><div className="hero__meta-k">avg. landing-zone client</div></div>
+            <div className="hero__meta-cell"><div className="hero__meta-k">Uptime</div><div className="hero__meta-v">99.99%</div><div className="hero__meta-k">platform SLO default</div></div>
+            <div className="hero__meta-cell"><div className="hero__meta-k">Migrations</div><div className="hero__meta-v">500+ apps</div><div className="hero__meta-k">across 30+ programs</div></div>
+            <div className="hero__meta-cell"><div className="hero__meta-k">Multi-cloud</div><div className="hero__meta-v">AWS · Azure · GCP</div><div className="hero__meta-k">+ on-prem hybrid</div></div>
+          </div>
+        </div>
+      </div>
 
       {/* APPROACH */}
       <section className="section">

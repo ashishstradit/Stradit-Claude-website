@@ -97,7 +97,6 @@ export default function CoeDataPage() {
       <header className="hero hero--compact">
         <div className="hero__canvas"><AnimCanvas theme="data" /></div>
         <div className="container hero__inner">
-          <div className="hero__eyebrow eyebrow">Center of Excellence · Data Analytics</div>
           <h1 className="hero__title">Data Analytics — <em>Applied AI</em></h1>
           <p className="hero__sub">Decode, Decide, and Dominate with Data</p>
           <p style={{color:'var(--text-1)',fontSize:'16px',lineHeight:'1.65',maxWidth:'600px',marginBottom:'36px'}}>

@@ -17,7 +17,6 @@ export default function CoeTestingPage() {
       <header className="hero hero--compact">
         <div className="hero__canvas"><AnimCanvas theme="testing" /></div>
         <div className="container hero__inner">
-          <div className="hero__eyebrow eyebrow">Center of Excellence · Quality Engineering</div>
           <h1 className="hero__title">Automated <em>AI Testing</em></h1>
           <p className="hero__sub">Engineering Trust in Every Line of Code</p>
           <p style={{color:'var(--text-1)',fontSize:'16px',lineHeight:'1.65',maxWidth:'600px',marginBottom:'36px'}}>
@@ -30,12 +29,6 @@ export default function CoeTestingPage() {
             </Link>
             <Link href="/coe" className="btn btn--ghost">All practices</Link>
           </div>
-          <div className="hero__meta">
-            <div className="hero__meta-cell"><div className="hero__meta-v">70+</div><div className="hero__meta-k">Professionals</div></div>
-            <div className="hero__meta-cell"><div className="hero__meta-v">3x faster</div><div className="hero__meta-k">Regression Cycles</div></div>
-            <div className="hero__meta-cell"><div className="hero__meta-v">40% Fewer</div><div className="hero__meta-k">Production Defects</div></div>
-            <div className="hero__meta-cell"><div className="hero__meta-k">Reference</div><div className="hero__meta-v" style={{fontSize:'12px',lineHeight:'1.4'}}><small>About — Social Driver</small></div></div>
-          </div>
         </div>
         <div className="hero__hud">
           <span className="pulse">Suite · Green</span>
@@ -45,6 +38,18 @@ export default function CoeTestingPage() {
           <span>QA · v2026.05</span>
         </div>
       </header>
+
+      {/* STATS BAR */}
+      <div className="stats-bar">
+        <div className="container">
+          <div className="hero__meta">
+            <div className="hero__meta-cell"><div className="hero__meta-k">Coverage</div><div className="hero__meta-v">92%</div><div className="hero__meta-k">avg. on critical flows</div></div>
+            <div className="hero__meta-cell"><div className="hero__meta-k">Flakiness</div><div className="hero__meta-v">&lt;0.4%</div><div className="hero__meta-k">managed, not endured</div></div>
+            <div className="hero__meta-cell"><div className="hero__meta-k">CI Time</div><div className="hero__meta-v">-58%</div><div className="hero__meta-k">after Stradit pipeline</div></div>
+            <div className="hero__meta-cell"><div className="hero__meta-k">Synth. Data</div><div className="hero__meta-v">PII-safe</div><div className="hero__meta-k">AI-generated, governed</div></div>
+          </div>
+        </div>
+      </div>
 
       {/* APPROACH */}
       <section className="section">

@@ -54,6 +54,7 @@ export default function Nav({ activePage }: { activePage?: string }) {
               <Link href="/coe/cloud" onClick={closeMenu}>Cloud & Infrastructure — Applied AI<small>Migration · Reliability · FinOps</small></Link>
               <Link href="/coe/testing" onClick={closeMenu}>Automated AI Testing<small>QA automation · Resilience</small></Link>
               <Link href="/gcc" onClick={closeMenu}>Global Capability Center (GCC)<small>GCC setup · Talent · Delivery governance</small></Link>
+              <Link href="/coe/digital-assets" onClick={closeMenu}>Digital Assets &amp; Blockchain<small>Tokenization · Smart contracts · On-chain settlement</small></Link>
             </div>
           </div>
           <Link href="/gcc" className={activePage === 'gcc' ? 'active' : ''} onClick={closeMenu}>Global Capability Center</Link>

@@ -12,7 +12,7 @@ type CoeCardProps = {
   visualStyle?: CSSProperties
   badge: string
   chips: string[]
-  theme: 'ai' | 'data' | 'cyber' | 'cloud' | 'testing' | 'gcc'
+  theme: 'ai' | 'data' | 'cyber' | 'cloud' | 'testing' | 'gcc' | 'digitalassets'
   animKey: string
   title: string
   desc: string

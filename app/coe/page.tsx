@@ -77,7 +77,6 @@ export default function CoePage() {
           background:'radial-gradient(ellipse 55% 90% at 15% 50%, rgba(6,9,18,0.95) 0%, rgba(6,9,18,0.6) 40%, transparent 70%), linear-gradient(180deg,transparent 0%,rgba(6,9,18,0.3) 70%,var(--ink-0) 100%)',
         }} />
         <div className="container hero__inner">
-          <div className="hero__eyebrow eyebrow">Center of Excellence</div>
           <h1 className="hero__title">Our Center of <em>Excellence</em></h1>
           <p className="hero__sub">From Insight to Innovation With AI and Tech Engineering</p>
           <p style={{color:'var(--text-1)',fontSize:'16px',lineHeight:'1.65',maxWidth:'600px',marginBottom:'36px'}}>

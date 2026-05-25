@@ -57,7 +57,6 @@ export default function CoeTestingPage() {
       <header className="hero hero--compact">
         <div className="hero__canvas"><AnimCanvas theme="testing" /></div>
         <div className="container hero__inner">
-          <div className="hero__eyebrow eyebrow">Center of Excellence · Quality Engineering</div>
           <h1 className="hero__title">Automated <em>AI Testing</em></h1>
           <p className="hero__sub">Engineering Trust in Every Line of Code</p>
           <p style={{color:'var(--text-1)',fontSize:'16px',lineHeight:'1.65',maxWidth:'600px',marginBottom:'36px'}}>

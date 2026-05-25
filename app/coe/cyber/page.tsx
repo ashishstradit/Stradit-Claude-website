@@ -23,7 +23,6 @@ export default function CoeCyberPage() {
       <header className="hero hero--compact">
         <div className="hero__canvas"><AnimCanvas theme="cyber" /></div>
         <div className="container hero__inner">
-          <div className="hero__eyebrow eyebrow">Center of Excellence · Cyber Security</div>
           <h1 className="hero__title">Cyber Security — <em>Applied AI</em></h1>
           <p className="hero__sub">Securing Today for Quick Scalability Tomorrow</p>
           <p style={{color:'var(--text-1)',fontSize:'16px',lineHeight:'1.65',maxWidth:'600px',marginBottom:'36px'}}>

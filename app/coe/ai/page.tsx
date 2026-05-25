@@ -25,7 +25,6 @@ export default function CoeAiPage() {
       <header className="hero hero--compact">
         <div className="hero__canvas"><AnimCanvas theme="ai" /></div>
         <div className="container hero__inner">
-          <div className="hero__eyebrow eyebrow">Center of Excellence · AI Solutions</div>
           <h1 className="hero__title">AI Solutions <em>Center of Excellence</em></h1>
           <p className="hero__sub">Intelligent AI for a Smarter Future</p>
           <p style={{color:'var(--text-1)',fontSize:'16px',lineHeight:'1.65',maxWidth:'600px',marginBottom:'36px'}}>
